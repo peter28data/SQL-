@@ -1,0 +1,6 @@
+# Aggregating Finances: Difference between active/Non-active Users
+
+SELECT
+  active,
+  COUNT(payment_id) AS num_transactions,
+  
