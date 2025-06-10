@@ -1,6 +1,46 @@
-# Aggregating Finances: Difference between active/Non-active Users
+#1 Aggregating Finances: Difference of active/Non-active Users
+The following query will return two records since it is grouped by active status, which has 'false' or 'true'. The selected fields are active status, number of transactions in each active status, the average amount spent in each active status, and the total amount spend by active status.
 
 SELECT
   active,
   COUNT(payment_id) AS num_transactions,
-  
+  AVG(amount) AS avg_amount,
+  SUM(amount) AS total_amount
+FROM payment AS p
+INNER JOIN customer AS c
+ON p.customer_id = c.customer_id
+GROUP BY active;
+
+
+
+#2 Aggregating Strings: Demonstrate family-friendly/multi-lingual collection
+The query below will return a column with a list of all the different languages following by a column including all the film titles that are available in that language. This query demonstrates only films released in 2010 with a 'G' rating by combining two tables on the primary key 'language_id'.
+SELECT
+  name,
+  STRING_AGG(title, ',') AS film_titles
+FROM film AS f
+INNER JOIN language AS l
+  ON f.language_id = l.language_id
+WHERE release_year = 2010
+  AND rating = 'G'
+GROUP BY name;
+
+
+
+#3 Navigating Database
+A database can have hundreds of tables and individually selecting all columns from each table would be an inefficient way to scrub through the tables for the right data to answer a business question. An efficient way is to query the list of tables by querying a specific system table such as Postgres or Oracle. This returns schema name, table name, and table owner such as Postgres
+SELECT *
+FROM pg_catalog.pg_tables
+WHERE schema_name = 'public';
+
+# SQL Server - TSQL
+SELECT *
+FROM INFORMATION_SCHEMA.TABLES;
+
+# MySQL
+SHOW TABLES;
+
+
+
+
+
