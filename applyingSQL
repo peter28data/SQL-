@@ -31,7 +31,7 @@ GROUP BY name;
 A database can have hundreds of tables and individually selecting all columns from each table would be an inefficient way to scrub through the tables for the right data to answer a business question. An efficient way is to query the list of tables by querying a specific system table such as Postgres or Oracle. This returns schema name, table name, and table owner such as Postgres
 SELECT *
 FROM pg_catalog.pg_tables
-WHERE schema_name = 'public';
+WHERE schemaname = 'public';
 
 # SQL Server - TSQL
 SELECT *
