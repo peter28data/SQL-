@@ -1,4 +1,5 @@
-#1 Aggregating Finances: Difference of active/Non-active Users
+#1 Aggregating Finances: 
+Difference of active/Non-active Users
 The following query will return two records grouped by active status, 'false' or 'true'. The selected fields are active status, number of transactions in each active status, the average amount spent in each active status, and the total amount spend by active status.
 
 SELECT
@@ -13,7 +14,8 @@ GROUP BY active;
 
 
 
-#2 Aggregating Strings: Demonstrate family-friendly/multi-lingual collection
+#2 Aggregating Strings: 
+Demonstrate family-friendly/multi-lingual films
 The query below will return a column with a list of all the different languages following by a column including all the film titles that are available in that language. This query demonstrates only films released in 2010 with a 'G' rating by combining two tables on the primary key 'language_id'.
 SELECT
   name,
@@ -50,6 +52,26 @@ WHERE table_schema = 'public'
 GROUP BY table_name;
 SELECT *
 FROM table_columns
+
+
+
+#5 Aggregate Film Lenths
+The query returns a report of the average length of films grouped by categories, joined by two tables on a unique identifier for the films.
+SELECT category,
+  AVG(length) AS average_length
+FROM film AS f
+INNER JOIN category AS c
+ON f.film_id = c.film_id
+GROUP BY category
+ORDER BY average_length;
+
+
+
+
+#6 Aggregate Film Rentals
+Returning number of rentals in each city to identify business opportunities for the best customer contrasting the potential detractors.
+Join the 'rental' table and 'address' table for city information
+Problem: There is no common key between these tables so we use the 'customer' table because it has a field in 'rental' and address'. Visually connected the three tables is a process called 
 
 
 
