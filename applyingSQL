@@ -75,3 +75,154 @@ Problem: There is no common key between these tables so we use the 'customer' ta
 
 
 
+#7 Which Films are most Rented?
+'films' table has rental duration 
+'rental' table has which customer rented the films
+There is no common id.
+'inventory' table has film_id from 'films' and inventory_id from 'rental'.
+SELECT
+  title,
+  COUNT(title)
+FROM film AS f
+INNER JOIN inventory AS i
+ON f.film_id = i.film_id
+INNER JOIN rental AS r
+ON i.inventory_id = r.inventory_id
+GROUP BY title
+ORDER BY count DESC;
+
+
+
+
+#1 Get the data type of the column 'category'
+SELECT TYPEOF(category) AS data
+FROM sales
+LIMIT 1;
+
+
+
+#2 The 'day' column is currently stored as a string, day-month-year, convert to 
+
+
+
+#3 Change whitespace to underscore
+
+
+
+#4 Filter for customers with 4 or 5 previous transactions
+
+
+
+#5 Datatype
+From varchar  to integer
+
+
+
+#6 Aggregate by Region
+
+
+
+#7 Storage size of Column in bytes
+
+
+
+#8 Num of Unique values 
+
+
+
+#9 extract month
+
+
+
+#10 top 5 books highest price
+
+
+
+#11 sales between dates
+SELECT 
+  customer_id,
+  customer_name,
+  city_id
+FROM customers
+WHERE customer_id IN( SELECT customer_id FROM sales WHERE date BETWEEN '2022-10-05' AND '2022-10-20')
+
+
+
+#12 Replace Missing values
+
+
+
+#13 Mean, sum, count for banks
+SELECT
+  AVG(amount) :: DECIMAL(6,2) AS mean,
+  SUM(amount) AS total,
+  COUNT(amount) AS num_deposits
+FROM deposits;
+
+
+
+#14 Truncate the column 'date_time' to hourly precision
+
+
+
+#15 Truncate the column 'delivery_date' to minute precision
+
+
+
+#16 Which clients have missing date of last holiday
+
+
+
+#17 Identify users whose 'username' begins with apple
+SELECT
+  username, 
+  first_name,
+  last_name,
+FROM users
+WHERE username LIKE 'apple%';
+
+
+
+#18 Player info from certain players
+
+
+
+#19 Subquery in Where clause
+This retrieves the names of bakery products that have been sold. the subquery is needed to see if the bakery product appears in the sales table
+
+
+
+#20 Range of Amount Paid
+MIN/MAX
+
+
+
+#21 Replace missing values
+
+
+
+#22 
+
+
+
+#29 Skewness from avg and median of inventory volume
+
+
+
+#32 correlation between hours_studied and exam_score
+
+
+
+#33 No missing values
+
+
+
+#34 correlation between ratings and price
+
+
+
+Topic
+Data management 
+Theory
+EDA
+32 of 106
