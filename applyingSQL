@@ -93,7 +93,33 @@ ORDER BY count DESC;
 
 
 
+#8 Change Data Type
+Convert to new data type for the duration of the query. This can be done with the casting function of double notation. Converting to integer will results in losing the decimals of each point of data.
+SELECT 
+  CAST(total_column AS integer)
+FROM prices
+SELECT total_column::integer
+FROM prices
 
+
+#9 Data Type
+SELECT
+  revenues_change::integer,
+  COUNT(*)
+FROM fortune500
+GROUP BY revenues_change::integer
+ORDER BY revuenes_change;
+
+
+#10 Count Positive 
+How many of the Fortune 500 companies had revenues increase in 2017
+SELECT 
+  COUNT(*)
+FROM fortune500
+WHERE revenues_change > 0;
+
+
+SQL Test
 #1 Get the data type of the column 'category'
 SELECT TYPEOF(category) AS data
 FROM sales
