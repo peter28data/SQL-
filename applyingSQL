@@ -119,6 +119,125 @@ FROM fortune500
 WHERE revenues_change > 0;
 
 
+
+#11 Validating
+Check 'unanswered_pct' by trying to recreate the data
+SELECT
+  unanswered_count/question_count::numeric AS computed_pct,
+  unanswered_pct
+FROM stackoverflow
+WHERE question_count !=0
+LIMIT 10;
+
+
+
+#12 Truncate and Group
+The query groups values in the 'unanswered_count' column intro three groups based on digits in the tens place of the number, due to the second argument of the truncate function being -1.
+SELECT
+  TRUNC(unanswered_count, -1) AS trunc_ua,
+  COUNT(*)
+FROM stackoverflow
+WHERE tag='amazon-ebs'
+GROUP BY trunc_ua
+ORDER BY trunc_ua
+
+
+
+#13 Correlation
+SELECT 
+  CORR(assets, equity)
+FROM fortune500;
+
+
+
+#14 Percentiles
+Discrete returns a real value, whereas Continuous may not return a real value.
+SELECT
+  PERCENTILE_DISC(.5) WITHIN GROUP(ORDER BY val),
+  PERCENTILE_CONT(.5) WITHIN GROUP(ORDER BY val)
+FROM nums;
+
+
+
+#15 Temporary tables
+CREATE 
+  TEMP TABLE top_companies AS 
+SELECT 
+  rank, 
+  title
+FROM fortune500
+WHERE rank <= 10;
+SELECT column1, column2
+  INTO TEMP TABLE new_tablename
+FROM table;
+
+
+
+#16 Add Data
+This adds all row data from ranking companies 11 through 20
+INSERT INTO top_companies
+SELECT
+  rank, 
+  title
+FROM fortune500
+WHERE rank BETWEEN 11 AND 20;
+
+
+
+#17 Delete Table
+This wont cause an error if the table does not exist.
+DROP TABLE IF EXISTS top_companies;
+
+
+
+#18 Correlation Temp
+CREATE TEMP TABLE correlations AS 
+SELECT
+  'profits';;vvarchar AS measure,
+  corr(profits, profits) AS profits,
+  corr(profits, profits_change) AS profits_change,
+  corr(profits, revenues_change) AS revenues_change
+FROM fortune500;
+
+
+
+#19  Add to Temp
+INSERT INTO correlations
+SELECT
+  'profits_change'::varchar AS measure,
+  corr(profits_change, profits) AS profits,
+  corr(profits_change, profits_change) AS profits_change,
+  corr(profits_change, revenues_change) AS revenues_change
+FROM fortune500;
+INSERT INTO correlations
+SELECT
+  'revenues_change'::varchar AS measure,
+  corr(revenues_change, profits) AS profits,
+  corr(revenues_change, profits_change) AS profits_change,
+  corr(revenues_change, revenues_change) AS revenues_change
+FROM fortune500;
+
+
+
+#20 Rounding
+SELECT measure,
+  round(profits::numeric, 2) AS profits,
+  round(profits_change::numeric, 2) AS profits_change
+  round(revenues_change::numeric, 2) AS revenues_change
+FROM correlations;
+
+
+
+#21 Categorical Unstructured Text
+Cat values examples are responses in a survey question or days of the week whereas unstructured text are summaries for book reviews.
+
+
+
+
+
+
+
+
 SQL Test
 #1 Get the data type of the column 'category'
 SELECT TYPEOF(category) AS data
@@ -220,6 +339,12 @@ This retrieves the names of bakery products that have been sold. the subquery is
 
 #20 Range of Amount Paid
 MIN/MAX
+SELECT 
+  MIN(question_pct)
+FROM stackoverflow;
+SELECT
+  MAX(question_pct)
+FROM stackoverflow;
 
 
 
@@ -227,6 +352,20 @@ MIN/MAX
 
 
 #29 Skewness from avg and median of inventory volume
+SELECT
+  VAR_POP(question_pct)
+FROM stackoverflow
+SELECT
+  VAR_SAMP(question_pct)
+FROM stackoverflow
+SELECT
+  VARIANCE(question_pct)
+FROM stackoverflow
+SELECT
+  STDDEV(question_pct)
+FROM stackoverflow
+
+
 
 
 
