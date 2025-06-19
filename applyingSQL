@@ -233,8 +233,73 @@ Cat values examples are responses in a survey question or days of the week where
 
 
 
+#23 Count
+This is data on help requests submitted to the city of Evanston, IL.
+How many distinct values of zip appear in at least 100 rows?
+SELECT 
+  zip,
+  count(*)
+FROM evanston311
+GROUP BY zip
+HAVING count(*) >=100;
 
 
+
+#24 Most Common
+Find the five most common values of 'street' column and a count of each
+SELECT
+  street,
+  count(*)
+FROM evanston311
+GROUP BY street
+ORDER BY count(*) DESC
+LIMIT 5;
+
+
+
+#25 Potential Problems
+Explore distinct values of 'street' column and count the number of rows. When sorting the results by street it will show similar values near each other. This identifies potential problems such as; The s
+
+
+
+#26 Without whitespace
+The following query will return values of 'apple' but will not return values that have whitespace before or after, and will not return plural versions of 'apple'.
+SELECT *
+FROM fruit_table
+WHERE lower(fruit_column)='apple';
+
+
+
+#27 Case insensitive
+This query will return plural versions of 'apple' and is a scalable version of the 'like' function because it returns values that are upper and lower case whereas the 'like' function only returns lower case as in the query below.
+SELECT *
+FROM fruit_table
+WHERE fruit_column LIKE '%apple%';
+SELECT *
+FROM fruit_table
+WHERE fruit_colulmn ILIKE '%apple%';
+
+
+
+#28 Limits
+This will return values such as pineapple since apple is in the value. Another way to return values without whitespace is to use the trim function. This removes space from left and right side. 'rtrim' and 'ltrim' to specify sides.
+SELECT trim(' abc '):
+
+
+
+#29 Limits
+The previous funcion only removes spaces but not tabs or new lines in the value. Using the second argument we can specify which characters to remove. This would return the value 'o' since all other characters were specified.
+SELECT trim('Wow!', '!wW');
+
+
+
+#30 Combining
+We can execute the lower function to the first argument of the trim function so that we do not have to specify the upper case 'W' in the second argument of the trim function.
+SELECT trim(lower('Wow!'), '!w');
+
+
+
+#31
 
 
 
