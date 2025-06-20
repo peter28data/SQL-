@@ -299,7 +299,25 @@ SELECT trim(lower('Wow!'), '!w');
 
 
 
-#31
+#31 Frequent Categories
+The query goes through inquires from for help. The goal is to see how well the 'category' captures what is in the 'description'. The method is to find inquires that mention trash or garbage in the description without those keywords in the category. What is the most frequent categories for these constraints.
+SELECT
+  category, count(*)
+FROM evanston311
+WHERE (description ILIKE '%trash%'
+OR description ILIKE '%garbage%')
+AND category NOT LIKE '%Trash%'
+AND category NOT LIKE '%Garbage%';
+GROUP BY category
+ORDER BY count DESC
+LIMIT 10;
+
+
+
+#32 Extract Strings
+Specify the number of characters to extract parts of string from the left or right side.
+SELECT
+  left('abcde', 2),r
 
 
 
