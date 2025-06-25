@@ -10,4 +10,59 @@ SAP is a suite of software applications that allow companies to standardize proc
 5. Testing & UAT
 
 ERP - Enterprise Resource Planning
-SAP is a ERP system, connecting different departments such as Finance & Accounting, HR, Sales & Customer Service, Procurement & Inventory, and Supply Chain & Logistics in one unified database to share real-time data. This also allows companies to audit trails to meet strict compliance needs.
+SAP is a ERP system, connecting different departments such as Finance & Accounting, HR, Sales & Customer Service, Procurement & Inventory, and Supply Chain & Logistics in one unified database to share real-time data. This also allows companies to audit trails to meet strict compliance needs. The goal for this program is to be equipped to help businesses streamline their operations, improve customer experiences, and ultimately increase their profitability.
+
+This program for Business Analysts is segmented into four courses.
+1. Foundations of Business Analysis
+  introduction to BA
+  Software development lifecycle
+  agile and hybrid methodlologies
+  BA role in project delivery
+2. Requirements Gathering and Documentation
+3. Business Process Modeling and Analysis
+4. Strategic Analysis and Solution Design
+
+Foundations of Business Analysis highlights a structured approach for analyzing business problems and identifying opportunities. Developing a value proposition statement and success metric to effectively measure the impact of work. Business Analysts work with companies to understand specific business requirements. They analyze the current processes and drill down to find the precise areas that need to be improved. Next, they work with the technical team to design and implement solutions. BAs make sure the solutions from the technical team meet the specific business needs of the company. Therefore, BAs help improve efficiency, increase customer satisfaction, and drive growth for the businesses. 
+
+Example Scenario: You are tasked with analyzing sales data to identify trends and improve sales forecasting. SAP Analytics Cloud can be used to create dashboards to show seasonal patterns, regional differences, and product performance. BAs might recommend to adjust inventory levels, target specific customer groups, or introduce new products. SAP Signavio is used to create flowcharts to display the flow of processes. This can also be used to display the relationship between a customer and a supplier when a customer places an order. Creating a quick model in SAP Signavio begins with defining user activities, populating the swim lanes under each activity, and organizing by the 'who' and linking process tasks in the diagram.
+
+Frameworks such as Business Process Modeling Notation (BPMN) help to map out and visualize how processes work such as order fulfillment, inventory management, and supply chain operations. One major issue could be manual data entry to check stock availability for order fulfillment will slow the process down. Inventory tracking is not in real-time, therefore, some items may appear available when out of stock leading to frustrated customers and missed sales. The solution is to implement barcode scanning, mobile app scanning with SAP S/4HANA to manage inventory in real-time to provide accurate stock information. This improves backend efficiancy but to deliver value to the customer an improvement on delivery and shopping experience are focused. 
+
+Leveraging ChatGPT for SWOT/PESTLE analysis can give a business analyst an edge. To explore options on how to deal with a competitive threat, a prompt can be written as so: "What are the potential competitive advantages and disadvantages of the competitor's solution compared to our proposed SAP S/4HANA implementation?" The answer can go in the "ChaptGPT Insights" section of a Business Case Analysis Report to highlight the role of AI in the analysis process and to demonstrate how to effectively utilize AI to generate insights. The executive summary provides a concise overview of the business case, key findings, and recommendations. 
+
+The most significant contribution of business analysis frameworks in defining effective requirements for an SAP solution is to enable alignment between the SAP solution and business needs. Frameworks ensure the solution solves the right problem by guiding the process of understanding the business context and translating it into actionable requirements. 
+
+Value proposition to implement new Enterprise Resource Planning systems should be different for every stakeholder. The selling point for shop floor workers would be to save energy and time by removing the foot traffic they would need to gain access to essential information such as inventory levels, production levels, and ensuring quality checks. For warehouse staff managing shipments and organizing warehouse space can be automated. For production managers, gaining real-time data to dashboards to track Key Performance Indicators and highlight areas for improvement can enable managers to make faster decisions and allow for more time for consideration. Sales and marketing teams need to respond to customers fast with ERP systems. For IT departments, built-in compliance features and robust security protocols minimizes the risk of breaches to allow IT teams to focus on innovation rather than routine maintenance. Another benefit to employees is making their jobs easier, teaching new skils, or improving career opportunities. A consideration is to be early, upfront, and show concern openly with employees about the challenges a new implementation project can be. 
+
+SAP Extended Warehouse Management (EWM) help to optimize stock levels, reduce downtime, and improve production efficiency. SAP Integrated Business Planning (IBP) is for demand forecasting that can improve decision-making for supply chain optimization. SAP EWM can be used for better inventory control to also improve supply chain. To decide which technology is the better option, a cost-benefit analysis can be broken down into implementation costs, ongoing costs, expected benefits, and risks such as a high learning curve for Warehouse Management could lead to a temporary inefficiency before full adoption. 
+
+Defining measurable outcomes create clear goals to guide work, track progress, and prove impact to stakeholders. A vague statement "We want a better HR system" can be broken down into boosting employee engagement by comparing satisfaction scores through surveys, speed up hiring from 45 days to 30 days with ATS, automated job postings, improve employee retention with better career development programs with course completion rates to reduce turnover by 10%, improve development with training programs increasing participation by 20% and checking if employees are applying the upskilling they have sought. 
+
+Specific, Measureable, Attainable, Relevant, and Timed goals empower ideas to be promoted in a structured and compelling case to executives and managers with a meaningful impact. For example, working with the Accounts Payable Department to reduce late payments and enhance Days Payable Outstanding to 20 days. The current late payment rate is 85% and reducing this by 15% is attainable. 
+
+What is the key contribution of an SAP business analyst in a large-scale SAP implementation for a global company looking to standardize its business processes across all subsidiaries.
+X manage the training implementation, training teams handle this
+Y BA should identify commonalities and differences in processes to harmonize diverse business processes within the SAP system.
+
+What is the first step a BA should take when improving a company's order fulfillment process.
+X document the current order fulfillment process
+Y BA should work with users to capture their needs and perspectives to understand stakeholder wants and needs.
+
+Which approach is the most persuasive in demonstrating the value of the SAP system upgrade to senior management?
+X presenting the benefits through case studies of other companies that benefitted, it will only act as a support to the actual solution
+
+When researching other industries' approaches to value and success measurement a key question to consider is what are the key factors that drive value in their industries and how they relate to the current industry's drivers.
+
+Which skill will help the analyst produce clear and structured documentation?
+X facilitating workshops and stakeholder discussions
+X evaluating system performance and technical feasibility
+Y structuring complex information and defining precise details to set clear, organized, and detailed making it easier for teams to implement effectively
+
+Which structured approach would be most effective in evaluating potential effects when introducing a new product and how it affects various aspects of its operations?
+X Process mapping
+Y Impact analyst helps businesses anticipate and assess the potential effects of a new product launch across different operational areas
+
+Which structured approach would be most effective for prioritizing requirements and making sure that the solution addresses the most essential needs?
+X Process mapping
+X Six thinking hats
+Y MoSCoW method
