@@ -76,3 +76,21 @@ Traditional Waterfall approaches struggle to keep up with the fast paced environ
 Daily Scrum is a 15 minute meeting where the team discusses what they did yesterday, what they plan to do today, and any obstacles they are facing. Sprint Planning is where the product owner presents the product backlog items and the Devlepment Team selects the items they will commit to completing during the sprint. Sprint Review is where the team demonstrates the working product to the stakeholders. Sprint Retrospective is where the team reflects on the sprint. They discuss what went well, what could be improved, how they can work more effectively in the future. 
 
 Kanban and Scrum are agile frameworks however Kanban focuses on visualizing work, limiting work in progress, and maximizing efficiency. By limiting the number of items being worked on for each "production line", the team can identify bottlenecks, reduce waste, and optimize the flow of value. 
+
+Implementing a system for ongoing feedback and collabortive interactions with all stakeholder groups is generally the most effective for managing stakeholder involvement to support the project's success.
+
+A significant challenge when choosing the waterfall method is the difficulty in adapting to evolving requirements, regarding accessbility and user feedback, within the existing system. 
+
+SAP Active's most significant consideration is the methodology's ability to smoothly integrate with and leverage the existing SAP System's functionalilties, adhering to SAP best practices. 
+
+If a key assumption about a company turned out to be incorrect it might lead to reconsidering the methodology choice, as different assumptions could favor a different approach.
+
+Accessibility requirements influence methodology selection as ongoing accessiblity improvements favor a methodology iterative development, testing, and user feedback. 
+
+Using an agile apprach to implement SAP S/4HANA the challenge of changing requirements uses short iterations to develop and test features allowing for adjustments based on feedback and changing needs. The iterative nature of sprints allows for flexibility.
+
+Scrum is more structered than Kanban when roles are defined with fixed-length sprints, whereas Kanban focuses on improving the workflow with visuals, more flexibility, and continuous flow to allow the team to adapt to specific needs. 
+
+Jira, how to create a workflow plan in Jira for project management, an atlassian product. Once in the project, choose create on the right most side of the tabs. A pop-up for "Create" appears and the issue type dropdown will have an epic option. The summary is more of a title, therefore label it Requirements Gathering. Repeat this process for System Configuration, and Testing and Deployment. A seprate issue, Story should have the summary "Conduct Stakeholder Interviews" with the Parent dropdown have the option for Requirements Gathering Epic. Another Story "Document Functional Requirements" also under Requirements Gathering Epic. A third Story, "Document technical requirements" to the same Epic. 
+
+The leftside of the Jira software will have a Pane for Timelines, which include the Epics, and a Pane for Backlog for Stories. In the menu on the right, after clicking the story, select add and then child issue, the subtask field should be filled with "schedule interviews with stakeholders". After selecting create, click the same story and the subtask will appear. Another subtask should be made for "Prepare interview questions" and another for "conduct interviews".
