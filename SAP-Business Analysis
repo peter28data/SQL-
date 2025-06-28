@@ -94,3 +94,42 @@ Scrum is more structered than Kanban when roles are defined with fixed-length sp
 Jira, how to create a workflow plan in Jira for project management, an atlassian product. Once in the project, choose create on the right most side of the tabs. A pop-up for "Create" appears and the issue type dropdown will have an epic option. The summary is more of a title, therefore label it Requirements Gathering. Repeat this process for System Configuration, and Testing and Deployment. A seprate issue, Story should have the summary "Conduct Stakeholder Interviews" with the Parent dropdown have the option for Requirements Gathering Epic. Another Story "Document Functional Requirements" also under Requirements Gathering Epic. A third Story, "Document technical requirements" to the same Epic. 
 
 The leftside of the Jira software will have a Pane for Timelines, which include the Epics, and a Pane for Backlog for Stories. In the menu on the right, after clicking the story, select add and then child issue, the subtask field should be filled with "schedule interviews with stakeholders". After selecting create, click the same story and the subtask will appear. Another subtask should be made for "Prepare interview questions" and another for "conduct interviews".
+
+Imagine you are an SAP business analyst, why is it important to adapt your approach and activities throughout the software development life cycle.
+To make sure that the project solution aligns with the evolving business requirements due to internal and external factors to confirm that the project delivers value.
+X Not to identify and mitigate potential risks as this is a part of every project
+
+You are planning the requirements gathering phase in Jira. which elements should be included in your Jira workflow plan?
+Y A communication plan on how to share information with stakeholders, including the frequency of updates, communication channels, and escalation procedures.
+X Not a clear definition
+X A detailed budget
+Y A risk assessment plan
+
+As an SAP business analyst, you need to document a complex business process and communicate your findings to the project team. 
+X Not Jira as this is useful for managing requirements
+Y SAP Signavio
+
+You are using Jira to manage the requirements gathering phase. What is the first step to set up your workflow plan?
+Y Identify and document the project goals and scope.
+X Not create a new Jira project and define the project's key parameters
+
+DEVELOPING A BA WORKFLOW PLAN IN JIRA
+Which Jira Issue represents the major phases of the "Senior Scam Prevention Workshop" - planning the workshop content?
+Epic
+
+Its important to define epics to establish an overall structure, provide a high-level view of the project's major phases, and key components of the project.
+
+Epic "Logistics and Promotion" for the Project "Senior Scam Prevention Workshop", a Story represents individual actions such as "Secure workshop venue".
+
+Breaking down the Story into subtasks help to clarify the steps needed to complete each story and ensure no critical actions are overlooked.
+
+The Primary purpose of a sprint is to define a timeframe to track and manage all workshop tasks.
+
+The Primary benefit of moving tasks in the Jira board columns is to visually track the progress of each task.
+
+SOFTWARE DEVELOPMENT LIFECYCLE
+
+
+Above has been Module 1, the business analyst role, framework, and value creation and measurement, and module 2 covering SDLC and SAP Activate, Waterfall vs. Agile methodologies, and Jira management and BA role in project delivery. Module 3 is for strategic analysis broken down into ch.1 for business strategy fundamentals, ch.2; requirements to strategy alignment, and ch.3 measuring business value. Module 4 is Stakeholder management broken down into ch.1 for stakeholder identification, ch.2 stakholder communication, ch.3 managing complex stakeholders. The course for Foundations of Business Analysis is complete after Module 4.
+
+The second course for the SAP business analyst professional certificate program is Requirments Gathering and Documentation. Third is Business Process Modeling and Analysis. Fourth is Strategic Analysis and Solution Design. 
