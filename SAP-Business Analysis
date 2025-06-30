@@ -162,3 +162,36 @@ Expected Outcomes & Metrics list key success indicators such as improved process
 EFFECTIVE DOCUMENTATION
 Clarity is essential, ensuring the metrics are measureable, and explaining the rationale for choosing the metric. 
 The most important reason to include explanations for each metric is to demonstrate how the metrics align with project objectives. 
+
+Course: Strategic Analysis, Module 2:Risk Analysis, Ch.1 Enterprise risk management, risk response planning, risk monitoring. 
+
+Committee of Sponsoring Organizations of the Treadway Commission (COSO)
+Enterprise Risk Management (ERM)
+COSO Internal Control Framework focuses on designing, implementing, and evaluating internal controls. This has five componenets such as control environment, risk assessment, control activities, informationa and communication, and monitoring.
+
+Quiz: Assess/mitigate risk with plan
+1. primary business challenge SAP S/4HANA intended for Logistics RNP Crop, 
+Not difficulty forecasting, its internal operations
+2.which module from S/4HANA is implemented for procurement and inventory control,
+Not warehouse management
+3. Data migration complexity and erros is a high priority risk because it has a high likelihood and high potential impact
+4. potential consequency of "Lack of user adoption due to inadequate training" is increased errors in order processing, and reduced accuracy of financial reports.
+5. what is a preventitive mitigation strategy for the risk of "data migration complexity and errors"
+Not establishing a data rollback plan in case of errors bc this is a contingency plan for use after errors occur.
+6. what is a contingency plan to address the risk of "lack of user adoption" due to inadequate training"
+Not developing a detailed user training before go-live
+7. which part should be assigned responsiblity for implementing the mitigation strategy "conduct thorough data profiling and cleansing before migration"
+8. "provide post go live support and refresher training sessions" is a role that can be assigned to the change management tream or training department
+
+Quiz: Enterprise Risk Management
+1. why focus on erp
+Not providingn standradized risk templates
+Not it prioritizes rapid market penetration by focusing on high return high risk
+2. fundamental erp frameworks include focus on potential risks that could impact the achievement of organizational objectives
+3. SAP analytics cloud can be used to simulate environment to model various risk scenarios
+4. escalating geopolitical tensions, how can sap analytics cloud be utilized
+Not automated reports bc they do not allow dynamic analysis needed to devleop effective meitigation strategies
+Y By building a simulation model that allows testing the impact of various mitigation strategies
+5. a large hospital network implements a new patient data security protocol to comply with evovling regulatory requirements and protect sensitive patient information. 
+Not by creating a dashboard that displays
+Not by implementing an alerting system that triggers notification 
