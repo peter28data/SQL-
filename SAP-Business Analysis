@@ -169,19 +169,6 @@ Committee of Sponsoring Organizations of the Treadway Commission (COSO)
 Enterprise Risk Management (ERM)
 COSO Internal Control Framework focuses on designing, implementing, and evaluating internal controls. This has five componenets such as control environment, risk assessment, control activities, informationa and communication, and monitoring.
 
-Quiz: Assess/mitigate risk with plan
-1. primary business challenge SAP S/4HANA intended for Logistics RNP Crop, 
-Not difficulty forecasting, its internal operations
-2.which module from S/4HANA is implemented for procurement and inventory control,
-Not warehouse management
-3. Data migration complexity and erros is a high priority risk because it has a high likelihood and high potential impact
-4. potential consequency of "Lack of user adoption due to inadequate training" is increased errors in order processing, and reduced accuracy of financial reports.
-5. what is a preventitive mitigation strategy for the risk of "data migration complexity and errors"
-Not establishing a data rollback plan in case of errors bc this is a contingency plan for use after errors occur.
-6. what is a contingency plan to address the risk of "lack of user adoption" due to inadequate training"
-Not developing a detailed user training before go-live
-7. which part should be assigned responsiblity for implementing the mitigation strategy "conduct thorough data profiling and cleansing before migration"
-8. "provide post go live support and refresher training sessions" is a role that can be assigned to the change management tream or training department
 
 Quiz: Enterprise Risk Management
 1. why focus on erp
