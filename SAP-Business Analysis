@@ -171,14 +171,32 @@ COSO Internal Control Framework focuses on designing, implementing, and evaluati
 
 
 Quiz: Enterprise Risk Management
-1. why focus on erp
-Not providingn standradized risk templates
-Not it prioritizes rapid market penetration by focusing on high return high risk
-2. fundamental erp frameworks include focus on potential risks that could impact the achievement of organizational objectives
-3. SAP analytics cloud can be used to simulate environment to model various risk scenarios
-4. escalating geopolitical tensions, how can sap analytics cloud be utilized
-Not automated reports bc they do not allow dynamic analysis needed to devleop effective meitigation strategies
-Y By building a simulation model that allows testing the impact of various mitigation strategies
-5. a large hospital network implements a new patient data security protocol to comply with evovling regulatory requirements and protect sensitive patient information. 
-Not by creating a dashboard that displays
-Not by implementing an alerting system that triggers notification 
+
+1. Risk Management helps companies undersstand and navigate diverse risks specific to each market.
+2. Risk Management focuses on potential risks that could impact the achievement of organizational objectives
+3. SAP Analytics Cloud can be used for an e-commerce platform designed to integrate customer loyalty programs with online shopping by creating simulated environments to model various risk scenarios.
+4. SAP Analytics Cloud can be used to identify a significant risk of supply chain operations due to escalating geopolitical tensions in key regions by building a simulation model that allows testing the impact of various mitigation strategies.
+5. SAP Analytics Cloud can be used for a large hospital network looking to monitor a new patient data security protocol to comply with evolving regulatory requirements and to protect sensitive patient information by building real-time dashboard that integrates data from systems and user activity monitoring. 
+
+Quiz: Analyze business process data and create a performance report
+1. identify which vendor might be causing delays
+How long on average it takes for different vendors to deliver goods after an order is placed
+2. The total amount of money that has been paid to each vendor over a period of time
+3. with a moderate average PO processing time. Supplies Company might be acceptable given their total invoice volume, but its worth monitoring for potential improvements
+4. One of the longer average PO processing times.
+Not They consistently submit the highest total invoice amounts
+INTERPRET KPIs
+5. Not They consistently submit the highest total invoice amounts
+5. 
+
+Quiz: Process Performance
+1. A manufacturing company wants to reduce production costs. They are unsure where to focus their improvement efforts. How will understanding process performance help this company make better decisions to reduce costs? Select the best answer.
+-It will pinpoint specific areas
+2. How can SAP Analytics Cloud help the sales team identify the reason for a decline in closed deals in a specific region? Select the best answer.
+X It offers predictive analytics capabilities
+3. Your coworker is new. She hears about SAP Analytics Cloud and is curious. How would you describe it to her? 
+-A cloud-based analytics platform
+4. What is a common next step in SAP Analytics Cloud after connecting to a data source? 
+X Immediately build a dashboard
+5. A logistics company wants to improve its delivery process. How can SAP Analytics Cloud help this company analyze the performance of its delivery process? 
+X it facilitates
