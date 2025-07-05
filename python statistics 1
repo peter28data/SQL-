@@ -41,6 +41,10 @@ sample = np.random.randint(0, 11, 5)
 import numpy as np
 purchases = np.random.choice(chocolate, 3, replace=False)
 print(purchases)
+#13 A bootstrapped sample of mean lap times for Formula 1 race cars, containd in an array "bootstraps". Generate a 95% confidence interval of the boostrapped lap times. 
+import numpy as np
+lower = np.quantile(bootstraps, 0.025)
+upper = np.quantile(bootstraps, 0.975)
 
 # EXPERIMENTS AND SIGNIFICANCE TESTING
 #8 Is there a statistically significant difference in mean calcium intake in patients with normal bone density as compared to patients with osteopenia and osteoporosis?
