@@ -1,0 +1,169 @@
+INTRODUCTION
+The full course is originally from Cousera in collaboration with IBM to make a Beginner course introduction to Data Science and its applications. This course covers statistics, algorithms, data cleaning, and guidance from Data Scientists active in the field. 
+HYPOTHESIS
+Sports teams may use data from overhead cameras to analyze most productive plays. Netflix and other streaming platforms may use machine learning to allocate resources to most watched genres. Lufthansa and other airlines may use data science to improve customer service. 
+
+DATA
+Modules
+Chapters
+
+
+File Types
+Delimiters such as commas
+CSV, TSV, Extensible Markup Language, Javascript Oriented 
+Big Data
+Velocity, Volume, Variety
+Value, Veracity
+Deep Learning
+
+
+
+
+DS Application Domains
+
+
+
+
+
+
+
+
+
+RESULTS
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+Lorem ipsum dolor sit amet
+Consectetuer adipiscing elit
+Sed diam nonummy nibh euismod
+CONCLUSION
+What do Data Scientists do?
+They investigate business problems by manipulating data with statistics and algorithms. For example, A Toronto public transit company tasks a data scientist to understand why half a million of their customers are complaining recently. A hypothesis around domain knowledge of transit service was formulated around weather conditions and more customer complaints. The data scientist confirmed this correlation through investigating the data on unexpected bad weather days. 
+A second example is environmental problem investigation to predict algae blooms to water toxicity. Using neural networks to predict algae blooms, the data scientist was able to support water treatment companies safeguard the water quality. 
+Third, a recommendation system can be made using machine learning algorithms for health care sectors. 
+Fourth, regression analysis is crucial for machine learning applications for Real Estate roles. K Nearest Neighbors is also useful and relatively simple to use. 
+
+
+Extensible Markup Language (XML)
+-Similar to HTML but does not have predefined tags
+-Platform independent
+-Programming language independent
+-Makes it simpler to share data between systems
+
+Portable Document Format (PDF)
+-Platform independent
+-Financial and Legal documents
+
+JavaScript Object Notation (JSON)
+-Language independent
+-Wide range compatibility with browsers
+-Most popular language for APIs
+
+Terms
+Data Sources
+Data Structure
+Data Formats
+
+
+
+
+Structured 
+Test files
+
+
+
+
+
+
+Spreadsheets
+
+
+
+
+
+
+XML
+
+
+Text
+Unstructured
+PDFs
+
+
+Text, Audio, Video
+Unstructured
+JSON
+
+
+
+
+
+Cloud Computing Questions
+Describe cloud computing concepts
+Define cloud deployment models and cloud service models
+Identify the characteristics of cloud computing 
+Delivery
+Cloud computing is the delivery of computing resources such as networks, servers, storage, applications, and services. The three types of deployment models are public, private, and hybrid. The three types of cloud service models are based on three layers in a computing stack such as Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Five essential characteristics of cloud computing are on-demand self-service, broad network access, resource pooling, rapid elasticity, and measured service. Cloud computing supports data scientists because it can allow the computing power necessary to run complex algorithms on Big Data while also being able to store large amounts of data in a reliable public or private network. 
+
+Cloud Characteristics
+On-Demand
+Access to processing, storage, and network
+Network Access
+Resources access via the Internet
+Resource Pooling
+Shared resources dynamically assigned 
+Elasticity
+Automatically scales resource access
+Measured Service
+Only pay for what you use or reserve
+
+
+Big Data Computing Tools
+Apache Hadoop
+Apache Hive
+Apache Spark
+Java-based
+Data Warehouse 
+General purpose data processing engine
+Node is a one computer
+High Latency for queries
+Can run on top of Hadoop
+Cluster is collection of Nodes
+Not suitable for transaction processing 
+Can access data in HDFS and Hive
+Social Media Sentiment, Audio, Video
+Better suited for ETL, reporting, data analysis, SQL
+In-memory processing increases speed of computations
+Hadoop Distributed File System (HDFS)
+-Storage System
+
+
+Process streaming data fast 
+Splits large files across multiple computers allowing parallel access to them 
+
+
+Perform complex analytics in real-time
+
+Hadoop provides distributed storage with HDFS, Hive provides large data set management for queries and ETL, and Spark allows access to data processing engines in real-time. 
+
+Machine Learning
+-A subset of Ai that uses computer algorithms to analyze data and make intelligent decisions based on what it has learned, without being explicitly programmed. 
+Deep Learning
+-A subset of ML that uses layered neural networks to simulate human decision-making. It can label and categorize information and identify patterns. 
+Data Science
+-The process for extracting business intelligence from large volumes of disparate data. It involves statistics, machine learning, and data visualization. Data science is a broad term that covers the entire data processing from hypothesis, data collection, sources, analysis, prediction, and evaluation. 
+
+Generative Ai
+-A subset of Ai that focuses on producing new data rather than processing previous data.
+-Generative Adversarial Networks (GANS)
+-Variational Auto-Encoders (VAEs)
+-Natural Language Processing can be used to provide chatbots for customer service, Healthcare industries uses Gen Ai to produce images of health conditions, Art and Design uses it to generate new images, Gaming industries use it to focus computing power on where the gamer directs their attention and provide a higher level of realism, Fashion uses it by providing new styles, Retail uses it to provide recommendation systems and increase upsells. 
+
+Neural Networks and Deep Learning
+
+Uber
+-Uses real-time user data to discover how many drivers are available, if more are needed, and if they should allow a surge charge to attract more drivers. Uber uses data to put the right number of drivers in the right place at the right time for a price drivers are willing to pay. 
+-Real-time data access allowed the algorithm to identify peak hour clearances and the most congested routes. Monthly hours lost to commuters dropped from 4.7 hours in 2010 to 3 hours in 2014. 
+UPS
+Used data from customers, drivers and vehicles to create a new route guidance system with machine learning. The goal was to save time, money, and fuel. 
+Netflix
+Uses data from which shows people are watching, what time of day, and when they are pausing, rewinding, and fast-forwarding. The search algorithm takes note on which shows, directors, and actors are most searched for. 
+Use Case: Many users streamed the work of Executive Producer David Fincher, Films with Robin Wright consistently did well, and the British version of House of Cards was very successful. Netflix noticed that many people who like Fincher also liked Wright. This suggested that buying the American series would be a good investment for the company. 
