@@ -3,25 +3,6 @@ The full course is originally from Cousera in collaboration with IBM to make a B
 HYPOTHESIS
 Sports teams may use data from overhead cameras to analyze most productive plays. Netflix and other streaming platforms may use machine learning to allocate resources to most watched genres. Lufthansa and other airlines may use data science to improve customer service. 
 
-DATA
-Modules
-Chapters
-
-
-File Types
-Delimiters such as commas
-CSV, TSV, Extensible Markup Language, Javascript Oriented 
-Big Data
-Velocity, Volume, Variety
-Value, Veracity
-Deep Learning
-
-
-
-
-DS Application Domains
-
-
 
 
 
@@ -167,3 +148,38 @@ Used data from customers, drivers and vehicles to create a new route guidance sy
 Netflix
 Uses data from which shows people are watching, what time of day, and when they are pausing, rewinding, and fast-forwarding. The search algorithm takes note on which shows, directors, and actors are most searched for. 
 Use Case: Many users streamed the work of Executive Producer David Fincher, Films with Robin Wright consistently did well, and the British version of House of Cards was very successful. Netflix noticed that many people who like Fincher also liked Wright. This suggested that buying the American series would be a good investment for the company. 
+
+Health Care
+-Uses machine learning to conduct predictive analytics to analyze all known factors such as gene markers, associated conditions, and environment factors. It can recommend appropriate tests, suitable trials, and suggested treatment. 
+Weather Tracking
+The University of Warwick in the UK used social media content such as photos and keywords to track the development of floods, hurricanes and other weather events. When added to information recorded by scientists and weather stations, this type of data can be used to improve the predictions  for localized weather events. (Data Science)
+Careers and Recruiting in DS
+Understanding Inferential Statistics, Distributions in Statistics (R2, Confidence Interval), Relational Database Management, Probabilities.
+Careers for DS come from companies that have a research department such as pharmaceutical or finance.
+Employment Companies such as LinkedIn, Glassdoor, Indeed, Dice.
+What Companies Look For
+Curiosity - Asking the right questions
+Passion - Excitement to work with data in the industry
+Presenting - Telling a Story about the data, Think analytically and Computationally
+Computer programming skills along with a knowledge of machine learning frameworks, mathematics, statistics, a passion for data, understand of domain knowledge for industry, curiosity mindset and skilled storytelling encompasses what a Data Scientist is. 
+Reporting
+What is gained, defined goals, significance, context, practicality and usefulness, future developments. 
+Types of Data
+Semi-Structured - Contains tags and elements, which is used to group data in a hierarchy.
+Emails, XML, TCP/IP packets, Zipped files, Binary executables, JSON. XML files uses tags to identify the type of data in the file. XML is used for bank statements and surveys. 
+ Unstructured - Web pages, social media feeds, PDF files, PowerPoint, Video and Audio files, surveys 
+Web Scraping - APIs and Popular uses
+Providing price comparisons by collecting product details from retailers and eCommerce websites
+Generating sales leads through public data sources
+Extracting data from posts and authors of various forums and communities
+Collecting training and testing datasets for machine learning models
+Retail transaction streams for predicting demand and supply chain management
+Stock and market tickers for financial trading
+Surveillance and video feeds for threat detection
+Web click feeds for monitoring web performance and improving design
+Real-time flight events for rebooking and rescheduling
+Sensor data feeds for monitoring industrial or farming machinery
+Social media feeds for sentiment analysis
+Popular Data Streams
+Apache Kafka, Apache Spark, Apache Storm
+
