@@ -67,7 +67,6 @@ ORDER BY average_length;
 
 
 
-
 #6 Aggregate Film Rentals
 Returning number of rentals in each city to identify business opportunities for the best customer contrasting the potential detractors.
 Join the 'rental' table and 'address' table for city information
