@@ -1,0 +1,294 @@
+DATA SCIENCE REPORT
+Complete IBM Data Science Course
+
+Peter Garay
+07.05.2025
+Data Science
+
+
+
+
+INTRODUCTION
+The full course is originally from Cousera in collaboration with IBM to make a Beginner course introduction to Data Science and its applications. This course covers statistics, algorithms, data cleaning, and guidance from Data Scientists active in the field. 
+HYPOTHESIS
+Sports teams may use data from overhead cameras to analyze most productive plays. Netflix and other streaming platforms may use machine learning to allocate resources to most watched genres. Lufthansa and other airlines may use data science to improve customer service. 
+
+DATA
+Modules
+Chapters
+
+
+File Types
+Delimiters such as commas
+CSV, TSV, Extensible Markup Language, Javascript Oriented 
+Big Data
+Velocity, Volume, Variety
+Value, Veracity
+Deep Learning
+
+
+
+
+DS Application Domains
+
+
+
+
+
+
+
+
+
+RESULTS
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+Lorem ipsum dolor sit amet
+Consectetuer adipiscing elit
+Sed diam nonummy nibh euismod
+CONCLUSION
+What do Data Scientists do?
+They investigate business problems by manipulating data with statistics and algorithms. For example, A Toronto public transit company tasks a data scientist to understand why half a million of their customers are complaining recently. A hypothesis around domain knowledge of transit service was formulated around weather conditions and more customer complaints. The data scientist confirmed this correlation through investigating the data on unexpected bad weather days. 
+A second example is environmental problem investigation to predict algae blooms to water toxicity. Using neural networks to predict algae blooms, the data scientist was able to support water treatment companies safeguard the water quality. 
+Third, a recommendation system can be made using machine learning algorithms for health care sectors. 
+Fourth, regression analysis is crucial for machine learning applications for Real Estate roles. K Nearest Neighbors is also useful and relatively simple to use. 
+
+
+Extensible Markup Language (XML)
+-Similar to HTML but does not have predefined tags
+-Platform independent
+-Programming language independent
+-Makes it simpler to share data between systems
+
+Portable Document Format (PDF)
+-Platform independent
+-Financial and Legal documents
+
+JavaScript Object Notation (JSON)
+-Language independent
+-Wide range compatibility with browsers
+-Most popular language for APIs
+
+Terms
+Data Sources
+Data Structure
+Data Formats
+
+
+
+
+Structured 
+Test files
+
+
+
+
+
+
+Spreadsheets
+
+
+
+
+
+
+XML
+
+
+Text
+Unstructured
+PDFs
+
+
+Text, Audio, Video
+Unstructured
+JSON
+
+
+
+
+
+Cloud Computing Questions
+Describe cloud computing concepts
+Define cloud deployment models and cloud service models
+Identify the characteristics of cloud computing 
+Delivery
+Cloud computing is the delivery of computing resources such as networks, servers, storage, applications, and services. The three types of deployment models are public, private, and hybrid. The three types of cloud service models are based on three layers in a computing stack such as Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Five essential characteristics of cloud computing are on-demand self-service, broad network access, resource pooling, rapid elasticity, and measured service. Cloud computing supports data scientists because it can allow the computing power necessary to run complex algorithms on Big Data while also being able to store large amounts of data in a reliable public or private network. 
+
+Cloud Characteristics
+On-Demand
+Access to processing, storage, and network
+Network Access
+Resources access via the Internet
+Resource Pooling
+Shared resources dynamically assigned 
+Elasticity
+Automatically scales resource access
+Measured Service
+Only pay for what you use or reserve
+
+
+Big Data Computing Tools
+Apache Hadoop
+Apache Hive
+Apache Spark
+Java-based
+Data Warehouse 
+General purpose data processing engine
+Node is a one computer
+High Latency for queries
+Can run on top of Hadoop
+Cluster is collection of Nodes
+Not suitable for transaction processing 
+Can access data in HDFS and Hive
+Social Media Sentiment, Audio, Video
+Better suited for ETL, reporting, data analysis, SQL
+In-memory processing increases speed of computations
+Hadoop Distributed File System (HDFS)
+-Storage System
+
+
+Process streaming data fast 
+Splits large files across multiple computers allowing parallel access to them 
+
+
+Perform complex analytics in real-time
+
+Hadoop provides distributed storage with HDFS, Hive provides large data set management for queries and ETL, and Spark allows access to data processing engines in real-time. 
+
+Machine Learning
+-A subset of Ai that uses computer algorithms to analyze data and make intelligent decisions based on what it has learned, without being explicitly programmed. 
+Deep Learning
+-A subset of ML that uses layered neural networks to simulate human decision-making. It can label and categorize information and identify patterns. 
+Data Science
+-The process for extracting business intelligence from large volumes of disparate data. It involves statistics, machine learning, and data visualization. Data science is a broad term that covers the entire data processing from hypothesis, data collection, sources, analysis, prediction, and evaluation. 
+
+Generative Ai
+-A subset of Ai that focuses on producing new data rather than processing previous data.
+-Generative Adversarial Networks (GANS)
+-Variational Auto-Encoders (VAEs)
+-Natural Language Processing can be used to provide chatbots for customer service, Healthcare industries uses Gen Ai to produce images of health conditions, Art and Design uses it to generate new images, Gaming industries use it to focus computing power on where the gamer directs their attention and provide a higher level of realism, Fashion uses it by providing new styles, Retail uses it to provide recommendation systems and increase upsells. 
+Neural Networks and Deep Learning
+
+
+
+
+Data Science Applications
+Uber
+-Uses real-time user data to discover how many drivers are available, if more are needed, and if they should allow a surge charge to attract more drivers. Uber uses data to put the right number of drivers in the right place at the right time for a price drivers are willing to pay. 
+-Real-time data access allowed the algorithm to identify peak hour clearances and the most congested routes. Monthly hours lost to commuters dropped from 4.7 hours in 2010 to 3 hours in 2014. 
+UPS
+Used data from customers, drivers and vehicles to create a new route guidance system with machine learning. The goal was to save time, money, and fuel. 
+Netflix
+Uses data from which shows people are watching, what time of day, and when they are pausing, rewinding, and fast-forwarding. The search algorithm takes note on which shows, directors, and actors are most searched for. 
+Use Case: Many users streamed the work of Executive Producer David Fincher, Films with Robin Wright consistently did well, and the British version of House of Cards was very successful. Netflix noticed that many people who like Fincher also liked Wright. This suggested that buying the American series would be a good investment for the company. 
+Health Care
+-Uses machine learning to conduct predictive analytics to analyze all known factors such as gene markers, associated conditions, and environment factors. It can recommend appropriate tests, suitable trials, and suggested treatment. 
+Weather Tracking
+The University of Warwick in the UK used social media content such as photos and keywords to track the development of floods, hurricanes and other weather events. When added to information recorded by scientists and weather stations, this type of data can be used to improve the predictions  for localized weather events. (Data Science)
+Careers and Recruiting in DS
+Understanding Inferential Statistics, Distributions in Statistics (R2, Confidence Interval), Relational Database Management, Probabilities.
+Careers for DS come from companies that have a research department such as pharmaceutical or finance.
+Employment Companies such as LinkedIn, Glassdoor, Indeed, Dice.
+What Companies Look For
+Curiosity - Asking the right questions
+Passion - Excitement to work with data in the industry
+Presenting - Telling a Story about the data, Think analytically and Computationally
+Computer programming skills along with a knowledge of machine learning frameworks, mathematics, statistics, a passion for data, understand of domain knowledge for industry, curiosity mindset and skilled storytelling encompasses what a Data Scientist is. 
+Reporting
+What is gained, defined goals, significance, context, practicality and usefulness, future developments. 
+Types of Data
+Semi-Structured - Contains tags and elements, which is used to group data in a hierarchy.
+Emails, XML, TCP/IP packets, Zipped files, Binary executables, JSON. XML files uses tags to identify the type of data in the file. XML is used for bank statements and surveys. 
+ Unstructured - Web pages, social media feeds, PDF files, PowerPoint, Video and Audio files, surveys 
+Web Scraping - APIs and Popular uses
+Providing price comparisons by collecting product details from retailers and eCommerce websites
+Generating sales leads through public data sources
+Extracting data from posts and authors of various forums and communities
+Collecting training and testing datasets for machine learning models
+Retail transaction streams for predicting demand and supply chain management
+Stock and market tickers for financial trading
+Surveillance and video feeds for threat detection
+Web click feeds for monitoring web performance and improving design
+Real-time flight events for rebooking and rescheduling
+Sensor data feeds for monitoring industrial or farming machinery
+Social media feeds for sentiment analysis
+Popular Data Streams
+Apache Kafka, Apache Spark, Apache Storm
+Data Literacy
+Data Repository - A general term referring to data that has been collected, organized, and isolated. Databases, Data Warehouses, Big Data Stores
+Databases - allowing storing data and querying to retrieve data. Relational Databases RDBMS have structured data in flat files. NoSQL are non-relational databases such as social media data built for speed. Querying data gives an advantage because it allows one to retrieve millions or records in seconds. 
+IBM DB2
+Microsoft SQL Server
+MySQL
+Oracle Database
+PostgreSQL
+Data Warehouse - Consolidates data from different sources through the extract, transform, and load process (ETL). 
+Big Data Stores - Allow storage for Big Data
+No-SQL - Not Only SQL data
+Key-value store
+Document based
+MongoDB, DocumentDB, CouchDB, Cloudant are document based databases
+Column based
+Cassandra, Apache HBase
+Graph based
+Neo4J, CosmosDB
+Best for social networks, fraud detection, product recommendations, access management, and network diagrams because it shows graphs interconnected with other similar data. Low cost shema-agnostic, similar design
+Data Warehouse
+A multipurpose enabler of operational and performance analytics. First data comes from the source, the ETL pipeline and then stored in the data warehouse to provide report ready data. 
+Data Mart
+A subsection of a data warehouse for a community of users or particular function. Such as Sales or Finance being given quarterly projections
+Data Lake
+Raw, unprocessed data with metadata and tags 
+Extract, Transform, Load Process
+Cleaning, standardizing and transforming data into usable format.
+Data Pipeline
+The entire journey of moving data from one system to another, including the ETL process. Can be used for both batch and streaming data. Apache Beam is for data pipelines. 
+Data Science Tools
+Data Management Tools -MySQL, PostgreSQL, MongoDB, Apache CouchDB, Apache Cassandra, Hadoop File System, Ceph, and elastic search
+Data Integration and Transformation Tools -Apache Airflow, KubeFlow, Apache Kafka, Apache Nifi, Apache SparkSQL, and NodeRED
+Data Visualization Tools -Pixie Dust, Hue, Kibana, Apache Superset
+Model Deployment Tools -Apache PredictionIO, Seldon, Kubernetes, Redhat, OpenShift, Mleap, TensorFlow, 
+Monitor Monitoring Tools -ModelDB, Prometheus, IBM AI Fairness 360, 
+Code Asset Management -aka version management or version control
+Uses Git to push commits, GitHub to merge branches, and GitLab or Bitbucket
+Data Asset Management -aka Data Governance or Data Lineage
+For enterprise level data science use Apache Atlas, ODPI Egeria, Kylo
+Apache Spark
+A key property is that it provides linear scalability which means the more the number of servers in a cluster the more the performance. Apache Flink came afterwards to process real-time data streams and can process images in a stream as well. 
+Commercial Tools
+Data Management
+Commercial Data Integration and Transformation
+Data Visualization
+Model Tools for Building, Deploying, Monitoring, and Assessment
+Code and Data Asset Management, Development Environment, and fully integrated visual
+
+Oracle Database, Microsoft SQL Server, IBM DB2
+Informatica, Talend, IBM InfoSphere, IBM Watson Studio
+Tableau, PowerBI, Cognos 
+SPSS (available in Watson), SAS
+Data Governance: Informatica
+Languages of Data Science
+Python
+Scala
+Java
+R
+C++
+Julia
+R 
+SQL
+These are the most popular languages for Data Science, however there are unique use cases for the following languages:
+JavaScript, PHP, Go, Ruby, Visual Basic
+R language’s array-oriented syntax makes it easier to translate from math to code for learners with no or minimal programming background. 
+C++
+C++ is a general purpose language that enables system programming to improve processing speed and gives broader control over the application. Applications built with C++ are TensorFlow, a Deep Learning library, MongoDB, a NoSQL database for data management, and Caffe, a deep learning algorithm repository. 
+JavaScript
+General purpose language that extended beyond the browser with Node.js
+Julia
+Designed for high-performance numerical analysis and computational science
+Scala
+Libraries APIs
+REST API - Representational State Transfer Application Programming Interfaces
+Allow you to communicate through the internet. Enable you to use resources like storage, data, and artificially intelligent algorithms. 
+APIs allow communication between two pieces of software. 
+Machine Learning uses algorithms to identify patterns in the data. The process by which the model learns data patterns is called model training. 
+Deep Learning refers to a general set of models and techniques that loosely emulate the way the human brain solves a wide range of problems. 
+
