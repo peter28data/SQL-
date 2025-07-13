@@ -24,26 +24,9 @@ CSV, TSV, Extensible Markup Language, Javascript Oriented
 Big Data
 Velocity, Volume, Variety
 Value, Veracity
-Deep Learning
 
 
 
-
-DS Application Domains
-
-
-
-
-
-
-
-
-
-RESULTS
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
-Lorem ipsum dolor sit amet
-Consectetuer adipiscing elit
-Sed diam nonummy nibh euismod
 CONCLUSION
 What do Data Scientists do?
 They investigate business problems by manipulating data with statistics and algorithms. For example, A Toronto public transit company tasks a data scientist to understand why half a million of their customers are complaining recently. A hypothesis around domain knowledge of transit service was formulated around weather conditions and more customer complaints. The data scientist confirmed this correlation through investigating the data on unexpected bad weather days. 
@@ -66,44 +49,6 @@ JavaScript Object Notation (JSON)
 -Language independent
 -Wide range compatibility with browsers
 -Most popular language for APIs
-
-Terms
-Data Sources
-Data Structure
-Data Formats
-
-
-
-
-Structured 
-Test files
-
-
-
-
-
-
-Spreadsheets
-
-
-
-
-
-
-XML
-
-
-Text
-Unstructured
-PDFs
-
-
-Text, Audio, Video
-Unstructured
-JSON
-
-
-
 
 
 Cloud Computing Questions
@@ -169,8 +114,6 @@ Generative Ai
 Neural Networks and Deep Learning
 
 
-
-
 Data Science Applications
 Uber
 -Uses real-time user data to discover how many drivers are available, if more are needed, and if they should allow a surge charge to attract more drivers. Uber uses data to put the right number of drivers in the right place at the right time for a price drivers are willing to pay. 
@@ -213,6 +156,8 @@ Sensor data feeds for monitoring industrial or farming machinery
 Social media feeds for sentiment analysis
 Popular Data Streams
 Apache Kafka, Apache Spark, Apache Storm
+
+
 Data Literacy
 Data Repository - A general term referring to data that has been collected, organized, and isolated. Databases, Data Warehouses, Big Data Stores
 Databases - allowing storing data and querying to retrieve data. Relational Databases RDBMS have structured data in flat files. NoSQL are non-relational databases such as social media data built for speed. Querying data gives an advantage because it allows one to retrieve millions or records in seconds. 
@@ -266,6 +211,8 @@ Informatica, Talend, IBM InfoSphere, IBM Watson Studio
 Tableau, PowerBI, Cognos 
 SPSS (available in Watson), SAS
 Data Governance: Informatica
+
+
 Languages of Data Science
 Python
 Scala
