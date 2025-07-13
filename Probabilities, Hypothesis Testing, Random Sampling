@@ -3,15 +3,18 @@
 import numpy as np
 sample = np.random.exponential(1/56,100000)
 print(sample)
+
 #3 Draw a sample of 20,000 numbers from a Standard Normal distribution.
 import numpy as np
 from scipy.stats import norm
 sample = norm.rvs(0, 1, size=20000)
 print(sample)
+
 #6 To calculate the cumulative probability of 40 in a Empirical Cumulative distribution function (ECDF), the data sample is in an array named x.
 from statsmodels.distributions.empirical_distribution import ECDF
 ecdf = ECDF(x)
 print(ecdf(40))
+
 #11 Create an array of one million numbers sampled from a normal distribution with a mean equal to 30 and standard deviation of 5. This returns random numbers in the 8th decimal place. 
 import numpy as np
 from scipy.stats import norm
@@ -33,14 +36,17 @@ import numpy as np
 groups = ['A', 'B']
 assignment = np.random.choice(groups, 50)
 print(assignment)
+
 #5 Ensure that the same sample of random numbers are generated each time the code is executed. By setting a random seed and the parameters from 0 to 11, the code will execute 5 variables in a list and although it will be random, the random seed ensures it is replicable. 
 import numpy as np
 np.random.seed(42)
 sample = np.random.randint(0, 11, 5)
+
 #10 Perform a simulation of purchasing three seperate chocolate bars from a local store with results in a list of 3 items 'Lose' or 'Win'.
 import numpy as np
 purchases = np.random.choice(chocolate, 3, replace=False)
 print(purchases)
+
 #13 A bootstrapped sample of mean lap times for Formula 1 race cars, containd in an array "bootstraps". Generate a 95% confidence interval of the boostrapped lap times. 
 import numpy as np
 lower = np.quantile(bootstraps, 0.025)
@@ -52,10 +58,12 @@ from scipy import stats
 results = stats.f_oneway(normal, osteoenia, osteoporosis)
 print("statistic: {}".format(results[0]))
 print("p-value: {}".format(results[1]))
+
 #9 Test the hypothesis that the average spend in the small grocery store is not $8.
 from scipy import stats
 test = stats.ttest_1samp(spend, 8)
 print(test.pvalue.round(3))
+
 #12 Is there a significant difference in cholesterol levels between males and females?
 from scipy import stats
 results = stats.ttest_ind(males, females)
