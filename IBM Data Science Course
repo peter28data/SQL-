@@ -239,3 +239,4 @@ APIs allow communication between two pieces of software.
 Machine Learning uses algorithms to identify patterns in the data. The process by which the model learns data patterns is called model training. 
 Deep Learning refers to a general set of models and techniques that loosely emulate the way the human brain solves a wide range of problems. 
 
+Kubernetes is used to automate the deployment, scaling, and management of these Docker images. Red Hat OpenShift is a popular enterprise-grade Kubernetes platform. 
