@@ -1,4 +1,4 @@
-# PROBABILITY AND RANDOM VARIABLES
+### PROBABILITY AND RANDOM VARIABLES
 #1 Create an array of 100,000 numbers sampled from an Exponential distribution with rate parameter equal to 56.
 import numpy as np
 sample = np.random.exponential(1/56,100000)
@@ -22,7 +22,7 @@ sample = np.random.normal(30, 5, 1000000)
 print(sample)
 
 
-# GRAPHICS FOR STATISTICS
+### GRAPHICS FOR STATISTICS
 #2 Performing exploratory analysis to establish factors that contribute to the value of a second hand car. The pairplot shows a Scatterplot and a Kernel Density Plot to compare each variable with every other variable to display any relationships. 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -30,7 +30,7 @@ sns.pairplot(valuation[['age', 'mpg', 'value']],
              diag_kind = 'kde')
 plt.show()
 
-# RANDOM SAMPLING
+### RANDOM SAMPLING
 #4 For each of the next 50 visitors to your website you want to randomly assign them to either group A or B to establish the goal of customers seeing different versions of the landing page.
 import numpy as np
 groups = ['A', 'B']
@@ -52,7 +52,7 @@ import numpy as np
 lower = np.quantile(bootstraps, 0.025)
 upper = np.quantile(bootstraps, 0.975)
 
-# EXPERIMENTS AND SIGNIFICANCE TESTING
+### EXPERIMENTS AND SIGNIFICANCE TESTING
 #8 Is there a statistically significant difference in mean calcium intake in patients with normal bone density as compared to patients with osteopenia and osteoporosis?
 from scipy import stats
 results = stats.f_oneway(normal, osteoenia, osteoporosis)
