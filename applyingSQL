@@ -482,7 +482,7 @@ WHERE
   AND y.Salary < (SELECT Salary FROM Employee_info WHERE Employee_id=4);
 
 
-### Data Cleanig with SQL
+### Data Cleaning with SQL
 - Handle outliers outside of 3 standard deviations from the average
 SELECT *
 FROM you_table
@@ -492,6 +492,26 @@ FROM your table)
 OR
   column_name < (SELECT AVG(column_name - 3 * STDDEV(column_name)
 FROM your_table
+
+-Correct Data Inconsistencies such as renaming values
+UPDATE your_table
+SET column_name = 'correct_value'
+WHERE column_name = 'incorrect_value';
+
+-Ensure consistency in date formats
+UPDATE your_table
+SET date_column = TO_DATE(date_column, 'YYYY-MM-DD')
+WHERE date_column IS NOT NULL;
+
+-Missing values to replace
+UPDATE your_table
+SET column_name = COALESCE(column_name, 'default_value')
+WHERE column_name IS NULL;
+
+-Find missing values
+SELECT *
+FROM your_table 
+WHERE column_name IS NULL;
 
 
 
