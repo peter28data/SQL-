@@ -461,3 +461,38 @@ FROM stackoverflow
 
 #34 correlation between ratings and price
 
+
+### EXAM DA101
+show employee names of people that have salaries less than the average.
+SELECT
+  x.Employee_name, y.Salary
+FROM 
+  Employee x, Employee_info y
+WHERE 
+  x.Employee_id = y.Employee_id
+  AND y.Salary < (SELECT AVG(Salary) FROM Employee_info);
+
+# show employee salaries and name sof people that earn less than employee with id 4
+SELECT
+  x.Employee_name, y.Salary
+FROM 
+  Employee x, Employee_info y
+WHERE
+  x.Employee_id = y.Employee_id
+  AND y.Salary < (SELECT Salary FROM Employee_info WHERE Employee_id=4);
+
+
+### Data Cleanig with SQL
+- Handle outliers outside of 3 standard deviations from the average
+SELECT *
+FROM you_table
+WHERE
+  column_name > (SELECT AVG(column_name) + 3 * STDDEV(column_name)
+FROM your table)
+OR
+  column_name < (SELECT AVG(column_name - 3 * STDDEV(column_name)
+FROM your_table
+
+
+
+
