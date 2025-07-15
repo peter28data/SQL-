@@ -240,3 +240,14 @@ Machine Learning uses algorithms to identify patterns in the data. The process b
 Deep Learning refers to a general set of models and techniques that loosely emulate the way the human brain solves a wide range of problems. 
 
 Kubernetes is used to automate the deployment, scaling, and management of these Docker images. Red Hat OpenShift is a popular enterprise-grade Kubernetes platform. 
+
+
+RStudio has popular R libraries for Data Science
+dplyr - Data Manipulation
+stringr - String Manipulation
+ggplot - Data Visualization
+caret - Machine Learning
+Plotly - Web-based data visualizations
+Lattice - High-level, complex multi-variable data set visualizations
+Leaflet - Interactive plots
+
