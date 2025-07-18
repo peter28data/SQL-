@@ -252,4 +252,6 @@ Lattice - High-level, complex multi-variable data set visualizations
 Leaflet - Interactive plots
 
 ### GitHub Version Control
-version 1
+-Tracks source code
+-Supports non-linear workflows
+-Created by Linus Torvalds in 2005
