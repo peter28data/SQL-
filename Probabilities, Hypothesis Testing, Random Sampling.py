@@ -202,4 +202,101 @@ print("Bonferroni Corrected P-values:", diff_results[1])
     result = "fail to reject"
 
 result_dict = {"p_val": p_val, "result": result}
+ 
 
+### Data-Driven Decisions with A/B Testing
+# IMPORT PACKAGES
+import pandas as pd
+from scipy.stats import chisquare
+from pingouin import ttest
+from statsmodels.stats.proportion import proportions_ztest
+
+# DEFINE FUNCTIONS
+def estimate_effect_size(df: pd.DataFrame, metric: str) -> float:
+    """
+    Calculate relative effect size
+
+    Parameters:
+    - df (pd.DataFrame): data with experiment_group ('control', 'variant') and metric columns.
+    - metric (str): name of the metric column
+
+    Returns:
+    - effect_size (float): average treatment effect (effect size)
+    """
+    avg_metric_per_group = df.groupby('experiment_group')[metric].mean()
+    effect_size = avg_metric_per_group['variant'] / avg_metric_per_group['control'] - 1
+    return effect_size
+
+# FIXED PARAMETERS
+confidence_level = 0.90  # Set desired confidence level (90%)
+alpha = 1 - confidence_level  # Significance level for hypothesis tests
+
+# LOAD DATA
+users = pd.read_csv('users_data.csv') # Load user and experiment group data
+sessions = pd.read_csv('sessions_data.csv') # Load session/booking data
+
+# JOIN DATA
+# Merge on user ID to enrich sessions with user experiment group
+sessions_x_users = sessions.merge(users, on = 'user_id', how = 'inner')
+
+# COMPUTE PRIMARY METRIC
+# Binary conversion flag: 1 if booking occurred, 0 otherwise
+sessions_x_users['conversion'] = sessions_x_users['booking_timestamp'].notnull().astype(int)
+
+# SAMPLE RATIO MISMATCH TEST
+# Check if the number of users in each experiment group is balanced (a basic A/A sanity check)
+groups_count = sessions_x_users['experiment_group'].value_counts()
+print(groups_count)
+
+n = sessions_x_users.shape[0] # Total sample size
+srm_chi2_stat, srm_chi2_pval = chisquare(f_obs = groups_count, f_exp = (n/2, n/2))
+srm_chi2_pval = round(srm_chi2_pval, 4)
+print(f'\nSRM\np-value: {srm_chi2_pval}') # If p < alpha, there's likely a sampling issue issue
+    
+# EFFECT ANALYSIS - PRIMARY METRIC
+# Compute success counts and sample sizes for each group
+success_counts = sessions_x_users.groupby('experiment_group')['conversion'].sum().loc[['control', 'variant']]
+sample_sizes = sessions_x_users['experiment_group'].value_counts().loc[['control', 'variant']]
+
+# Run Z-test for proportions (binary conversion metric)
+zstat_primary, pval_primary = proportions_ztest(
+    success_counts,
+    sample_sizes,
+    alternative = 'two-sided',
+)
+pval_primary = round(pval_primary, 4)
+
+# Estimate effect size for the conversion metric
+effect_size_primary = estimate_effect_size(sessions_x_users, 'conversion')
+effect_size_primary = round(effect_size_primary, 4)
+print(f'\nPrimary metric\np-value: {pval_primary: .4f} | effect size: {effect_size_primary: .4f}')
+    
+# EFFECT ANALYSIS - GUARDRAIL METRIC
+# T-test on time to booking for control vs variant
+stats_guardrail = ttest(
+    sessions_x_users.loc[(sessions_x_users['experiment_group'] == 'control'), 'time_to_booking'],
+    sessions_x_users.loc[(sessions_x_users['experiment_group'] == 'variant'), 'time_to_booking'],
+    alternative='two-sided',
+)
+pval_guardrail, tstat_guardrail = stats_guardrail['p-val'].values[0], stats_guardrail['T'].values[0]
+pval_guardrail = round(pval_guardrail, 4)
+
+# Estimate effect size for the guardrail metric
+effect_size_guardrail = estimate_effect_size(sessions_x_users, 'time_to_booking')
+effect_size_guardrail = round(effect_size_guardrail, 4)
+print(f'\nGuardrail\np-value: {pval_guardrail} | effect size: {effect_size_guardrail}')
+
+# DECISION
+# Primary metric must be statistically significant and show positive effect (increase)
+criteria_full_on_primary = (pval_primary < alpha) & (effect_size_primary > 0)
+
+# Guardrail must either be statistically insignificant or whow positive effect (decrease)
+criteria_full_on_guardrail = (pval_guardrail > alpha) | (effect_size_guardrail <= 0)
+
+# Final launch decision based on both metrics
+if criteria_full_on_primary and criteria_full_on_guardrail:
+    decision_full_on = 'Yes'
+    print('\nThe experiment results are significantly positive and the guardrail metric was not harmed, we are going full on!')
+else:
+    decision_full_on = 'No'
+    print('\nThe experiment results are inconclusive or the guardrail metric was harmed, we are pulling back!')
