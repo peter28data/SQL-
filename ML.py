@@ -45,3 +45,42 @@ rmse_lr mse_lr**(1/2)
 print('Linear Regression test set RMSE: {:.2f}'.format(rmse_lr))
 print('Regression Tree test set RMSE: {:.2f}'.format(rmse_dt))
 
+# Generalization Error, Bias-Variance Tradeoff
+# Underfitting: not flexivle enough, Overfitting: fits the training set noise too much
+# GE = bias^2 + variance + noise
+from sklearn.model_selection import train_test_split
+SEED = 1 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=SEED)
+dt = DecisionTreeRegressor(max_depth=4, min_samples_leaf=0.26, random_state=SEED)
+MSE_CV_scores = - cross_val_score(dt, X_train, y_train, cv=10, 
+                                  scoring='neg_mean_squared_error',
+                                  n_jobs=-1)
+RMSE_CV = (MSE_CV_scores.mean())**(1/2)
+print('CV RMSE: {:.2f}'.format(RMSE_CV))
+from sklearn.metrics import mean_squared_error as MSE 
+dt.fit(X_train, y_train)
+y_pred_train = dt.predict(X_train)
+RMSE_train = (MSE(y_train, y_pred_train))**(1/2)
+print('Train RMSE: {:.2f}'.format(RMSE_train))
+# Ensemble Learning
+SEED = 1 
+lr = LogisticRegression(random_state=SEED)
+knn = KNN(n_neighbors=27)
+dt = DecisionTreeClassifier(min_samples_leaf=0.13,
+                            random_state=SEED)
+classifiers = [('Logistic Regression', lr),
+               ('K Nearest Neighbours', knn),
+               ('Classification Tree', dt)]
+# Evaluate classifiers
+for clf_name, clf in classifiers:
+  clf.fit(X_train, y_train)
+  y_pred = clf.predict(X_train)
+  accuracy = accuracy_score(y_test, y_pred)
+  print('{:s} : {:.3f}'.format(clf_name, accuracy))
+# Take the outputs of the models and assign labels by majority voting
+from sklearn.ensemble import VotingClassifier
+vc = VotingClassifier(estimators=classifiers)
+vc.fit(X_train, y_train)
+y_pred = vc.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print('Voting Classifier: {:.3f}'.format(accuracy))
