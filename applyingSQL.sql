@@ -72,7 +72,7 @@ ORDER BY average_length;
 #6 Aggregate Film Rentals
 Returning number of rentals in each city to identify business opportunities for the best customer contrasting the potential detractors.
 Join the 'rental' table and 'address' table for city information.
-Problem: There is no common key between these tables so we use the 'customer' table because it has a field in 'rental' and address'. Visually connected the three tables is a process called...
+Problem: There is no common key between these tables so we use the 'customer' table because it has a field in 'rental' and address'. Visually connected the three tables is a process called
 
 
 
