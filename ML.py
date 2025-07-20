@@ -84,3 +84,4 @@ vc.fit(X_train, y_train)
 y_pred = vc.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print('Voting Classifier: {:.3f}'.format(accuracy))
+
