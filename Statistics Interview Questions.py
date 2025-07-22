@@ -59,9 +59,30 @@ print(acc)
 coefs = clf.coef_
 print(coefs)
 
+### Missing Data and Outliers
+df.dropna(inplace=True)   # Drop the whole row
+df.fillna()               # imputation with average, forward fill, etc
+df.isnull()               # T/F if row has any null values
+nulls = laptops[laptops.isnull().any(axis=1)]   # slices DF for entire rows with any null values
+laptops.fillna(0, inplace=True)
+laptops.fillna(laptops.median(), inplace=True)
+laptops.dropna(inplace=True)
 
+mean, std = laptops['Price'].mean(), laptops['Price'].std()
+cut_off = std * 3
+lower, upper = mean - cutoff, mean + cut_off
+print(lower, 'to', upper)    # Interquartile Range
+outliers = laptops[(laptops['Price'] > upper) | (laptops['Price'] < lower)]
+print(outliers)             # Identify entire rows with outliers
+laptops = laptops[(laptops['Price'] <= upper) | (laptops['Price'] >= lower)]
+print(laptops)              # Only data within IQR
 
+plt.scatter(X, y)
+plt.plot(np.sort(X), preds) # Simple Linear Regression line
+plt.plot(np.sort(X), preds2)  # Higher-complexity regression line
+plt.show()
 
+### Ch.1: Conditional Probabilities such as Bayes Theorem, Central Limit Theorem. Ch.2: Desciptive statistics, Visualizing Categorical data and Encoding techniques, Multivariate relationships. Ch.3: Confidence intervals, hypothesis testing, power analysis(sample size), multiple comparisons (adjusted p-value). Ch.4: Linear Regression, Logisitic Regression, Missing data and outliers, Bias-Variance tradeoff. 
 
 
 
