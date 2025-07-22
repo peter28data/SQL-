@@ -14,6 +14,8 @@ logreg = LogisticRegression(random_state=1)
 logreg.fit(X_train, y_train)
 clfs = [logreg, dt]
 plot_labeled_decision_regions(X_test, y_test, clfs)
+
+# ---------------------------------------------------------------------------------------------------
 # Classification Tree Learning
 # Each node the data is split based on maximizing Information Gain. Entropy as a criterion for Breast Cancer classification dataset
 from sklearn.tree import DecisionTreeClassifier
@@ -26,6 +28,7 @@ y_pred = dt_entropy.predict(X_test)
 accuracy_entropy = accuracy_score(y_test, yield)
 print(f'Accuracy achieved by using entropy: {accuracy_entropy:.3f}')
 print(f'Accuracy achieved by using entropy: {accuracy_gini:.3f}')
+
 # Decision Tree Regression
 # To capture non-linear trends from data
 from sklearn.tree import DecisionTreeRegressor
@@ -38,6 +41,7 @@ y_pred = dt.predict(X_train)
 mse_dt = MSE(y_test, y_pred)
 rmse_dt = mse_dt**(1/2)
 print("Test set RMSE of dt: {:.2f}".format(rmse_dt))
+
 # Linear Regression vs Regression Tree on Non-linear Trend
 y_pred_lr = lr.predict(X_test)
 mse_lr = MSE(y_pred_lr, y_test)
@@ -45,6 +49,7 @@ rmse_lr mse_lr**(1/2)
 print('Linear Regression test set RMSE: {:.2f}'.format(rmse_lr))
 print('Regression Tree test set RMSE: {:.2f}'.format(rmse_dt))
 
+# ---------------------------------------------------------------------------------------------------
 # Generalization Error, Bias-Variance Tradeoff
 # Underfitting: not flexivle enough, Overfitting: fits the training set noise too much
 # GE = bias^2 + variance + noise
@@ -62,6 +67,7 @@ dt.fit(X_train, y_train)
 y_pred_train = dt.predict(X_train)
 RMSE_train = (MSE(y_train, y_pred_train))**(1/2)
 print('Train RMSE: {:.2f}'.format(RMSE_train))
+
 # Ensemble Learning
 SEED = 1 
 lr = LogisticRegression(random_state=SEED)
@@ -71,12 +77,14 @@ dt = DecisionTreeClassifier(min_samples_leaf=0.13,
 classifiers = [('Logistic Regression', lr),
                ('K Nearest Neighbours', knn),
                ('Classification Tree', dt)]
+
 # Evaluate classifiers
 for clf_name, clf in classifiers:
   clf.fit(X_train, y_train)
   y_pred = clf.predict(X_train)
   accuracy = accuracy_score(y_test, y_pred)
   print('{:s} : {:.3f}'.format(clf_name, accuracy))
+
 # Take the outputs of the models and assign labels by majority voting
 from sklearn.ensemble import VotingClassifier
 vc = VotingClassifier(estimators=classifiers)
