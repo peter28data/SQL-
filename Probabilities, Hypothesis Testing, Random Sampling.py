@@ -21,7 +21,7 @@ from scipy.stats import norm
 sample = np.random.normal(30, 5, 1000000)
 print(sample)
 
-
+# ---------------------------------------------------------------------------------------------------
 ### GRAPHICS FOR STATISTICS
 #2 Performing exploratory analysis to establish factors that contribute to the value of a second hand car. The pairplot shows a Scatterplot and a Kernel Density Plot to compare each variable with every other variable to display any relationships. 
 import matplotlib.pyplot as plt
@@ -47,6 +47,7 @@ import numpy as np
 purchases = np.random.choice(chocolate, 3, replace=False)
 print(purchases)
 
+# ---------------------------------------------------------------------------------------------------
 #13 A bootstrapped sample of mean lap times for Formula 1 race cars, containd in an array "bootstraps". Generate a 95% confidence interval of the boostrapped lap times. 
 import numpy as np
 lower = np.quantile(bootstraps, 0.025)
