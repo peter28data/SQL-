@@ -1,8 +1,8 @@
 -- The folloing script applies SQL queries for specific business use cases. 
 
---#1 Aggregating Finances: 
+/* #1 Aggregating Finances: 
 Difference of active/Non-active Users
-The following query will return two records grouped by active status, 'false' or 'true'. The selected fields are active status, number of transactions in each active status, the average amount spent in each active status, and the total amount spend by active status.
+The following query will return two records grouped by active status, 'false' or 'true'. The selected fields are active status, number of transactions in each active status, the average amount spent in each active status, and the total amount spend by active status. */
 
 SELECT
   active,
