@@ -212,3 +212,141 @@ FROM user_orders
 GROUP BY orders
 ORDER BY orders ASC; 
 
+-- Histograms Query 2
+WITH user_revenues AS (
+  SELECT
+  user_id,
+  SUM(meal_price * order_quantity) AS revenue
+  FROM meals
+  JOIN orders ON meals.meal_id = orders.meal_id
+  GROUP BY user_id)
+SELECT
+ROUND(revenue :: NUMERIC, -2) AS revenue_100,
+COUNT(DISINCT user_id) AS users
+FROM user_revenues
+GROUP BY revenue_100
+ORDER BY revenue_100 ASC;
+
+/* Bucketing: seperating data into categories such as Low, Medium, or High priced meals with CASE statements. */
+SELECT
+CASE 
+  WHEN meal_price < 4 THEN 'Low-price meal'
+  WHEN meal_price < 6 THEN 'Mid-price meal'
+  ELSE 'High-price meal'
+  END AS price_category,
+COUNT(DISTINCT meal_id)
+FROM meals
+GROUP BY price_category;
+
+/* Percentile: 0th pecentile is represented by the lowest value because 0% of the data is below the 0th percentile. The maximum value is the 99th percentile because 99% of the data is below this number. 
+Example: If the 25th percentile of user orders is 17, this means that 25% of users have ordered less than 17 times. Conversely, 75% of users have ordered at least more than 17 times. 
+Symmetrical Distribution: A normal bell curve dataset will have the median be the same as the mean and the mode. Whereas a Positive skewed dataset will have the mean be larger than the median, and a Negative skew will have the mean be smaller than the median. 
+Quartiles Query: First store each user's count of orders in a CTE. The percentile window function takes a decimal value and returns the percentile value. */
+WITH user_orders AS (
+  SELECT
+  user_id,
+  COUNT(DISTINCT orde_id) AS orders
+  FORM orders
+  GROUP BY user_id)
+SELECT
+ROUND(
+  PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY orders ASC) :: NUMERIC, 2) AS orders_p25,
+ROUND(
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY orders ASC) :: NUMERIC, 2) AS orders_p50,
+ROUND(
+  PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY orders ASC) :: NUMERIC, 2) AS orders_p75,
+ROUND(AVG(orders) :: NUMERIC, 2) AS avg_orders
+FROM user_orders;
+
+
+----------------------------Ch.4: Generating an Executive Report---------------------------------
+/* Survey of Useful Functions
+From DATE_TRUNC() to TO_CHAR(): This will return a readable date format such as 'Friday 13, 2018'
+*/
+TO_CHAR('2018-08-13', 'FMDay DD, FMMonth YYYY')
+TO_CHAR('2018-06-02', 'Dy')      -- 'Sat'    
+TO_CHAR('2018-06-02', 'Dy - DD') -- 'Sat - 02'
+TO_CHAR('2018-06-02', 'Dy, Mon DD, YYYY') -- 'Sat, Jun 02, 2018'
+
+-- Query
+SELECT DISTINCT                            --This will have a column of one day a time
+order_date,
+TO_CHAR(order_date,
+  'FMDay DD, FMMonth YYYY') AS format_1,   --Friday, 01, June 2018
+TO_CHAR(order_date,
+  'Dy DD Mon/YYYY') AS format_2            --Fri 01/Jun 2018
+FROM orders
+ORDER BY order_date ASC                    --this will organize it chronologically
+LIMIT 3;
+
+/* Window Function Revisited
+SUM() OVER() calculates the column's running total. An example would to be keep track of the total registrations to date for a delivery app. 
+LAG() OVER() fetches a preceding row's value which is useful for calculating retention rates to see if last month's previous users are also in this month's active users. RANK() OVER() ranks users, eateries, or months by how much revenue each generated. */
+WITH user_revenues AS (
+  SELECT
+  user_id,
+  SUM(meal_price * order_quanitity) AS revenue
+  FROM meals
+  JOIN orders ON meals.meal_id = orders.meal_id
+  GROUP BY user_id)
+SELECT
+user_id,
+RANK() OVER (ORDER BY revenue DESC) AS revenue_ranking
+FROM user_revenues
+ORDER BY revenue_rank DESC
+LIMIT 3;
+
+-- Pivoting Data is Transposing Data
+-- Pivoting allows one to change the table's shape while perserving its data. Unstacked data read in a wide table is often easier to read than stacked data. 
+CREATE EXTENSION IF NOT EXISTS tablefunc;
+SELECT * FROM CROSSTAB($$
+SELECT
+  meal_id,
+  DATE_TRUNC('month', order_date) :: DATE AS delivr_month,
+  COUNT(DISTINCT order_id) :: INT AS orders
+  FROM orders
+  WHERE meal_id IN (0, 1)
+  AND order_date < '2018-08-01'
+  GROUP BY meal_id, delivr_month
+  ORDER BY meal_id, delivr_month $$)
+AS ct (meal_id INT,
+        "2018-06-01" INT,  --Double quotes bc they are column names now; Unique order totals are
+        "2018'07-01" INT)  --These will should how many of these meals were ordered these months
+ORDER BY meal_id ASC;
+
+/* Producing Executive Reports
+Readability includes TO_CHAR(), ROUND(), and CROSSTAB() to read in wide format. 
+#1 Ranking of Delivr's partner eateries by their order amount for the past quarter.*/
+CREATE EXTENSION IF NOT EXISTS tablefunc;
+SELECT * FROM CROSSTAB($$
+
+  WITH eatery_orders AS (
+  SELECT
+  eatery,
+  TO_CHAR(order_date, 'MM-Mon YYYY') AS delivr_month,
+  COUNT(DISTINCT order_id) AS count_orders
+  FROM meals
+  WHERE order_date >='2018-10-01'
+  JOIN orders ON meals.meal_id = orders.meal_id
+  GROUP BY eatery, delivr_month)
+SELECT
+eatery,
+delivr_month,
+RANK() OVER (PARTITION BY delivr_month
+  ORDER BY count_orders DESC) :: INT AS orders_rank
+FROM eatery_orders
+ORDER BY eatery, delivr_month 
+$$) AS ct (eatery TEXT,
+        "10-Oct 2018" INT,  
+        "11-Nov 2018" INT,
+        "12-Dec 2018" INT)
+ORDER BY eatery ASC;
+
+-------------------------------------Course Recap------------------------------------------------
+/* 
+Ch.1 Revenue, Cost, Proft
+ch.2 User-Center Metrics
+Ch.3 Unit economics and Frequency Table
+Ch.4 Executive Report Functions for Readability
+
+
