@@ -259,3 +259,12 @@ Leaflet - Interactive plots
 # Pull Requests are a way of proposing changes to the main branch
 Once reviewed, it overwrites the file in the main branch. 
 
+---------------------Data Science Methodology: Problem to Approach-------------------------------
+DS combines statistics, technology, and domain expertise to extract insights from vast data.
+Methodology: A system of methods or guideline for decision-making during the scientific process.
+DS Methodology: Guides Data Scientists in solving complex problems with data. 
+-Perform Data Collection Methods such as Database for Speed or Static 
+-Measurement strategies for ETL pipeline from Data Lake to Data Warehouse
+-Comparison of data analysis methods relative to business goals. 
+
+
