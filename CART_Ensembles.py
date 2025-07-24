@@ -5,10 +5,12 @@ dt = DecisionTreeClassifier(max_depth=6, random_state=SEED)
 dt.fit(X_train, y_train)
 y_pred = dt.predict(X_test)
 print(y_pred[0:5])
+
 from sklearn.metrics import accuracy_score
 y_pred = predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 print("Test set accuracy: {:.2f}".format(acc))
+
 from sklearn.linear_model import LogisticRegression
 logreg = LogisticRegression(random_state=1)
 logreg.fit(X_train, y_train)
@@ -23,6 +25,7 @@ dt_entropy = DecisionTreeClassifier(max_depth=8,
                                     criterion='entropy',
                                     random_state=1)
 dt_entropy.fit(X_train, y_train)
+
 from sklearn.metrics import accuracy_score
 y_pred = dt_entropy.predict(X_test)
 accuracy_entropy = accuracy_score(y_test, yield)
@@ -36,6 +39,7 @@ dt = DecisionTreeRegressor(max_depth=8,
                            min_samples_leaf=0.13,
                            random_state=3)
 dt.fit(X_train, y_train)
+
 from sklearn.metrics import mean_squared_error as MSE 
 y_pred = dt.predict(X_train)
 mse_dt = MSE(y_test, y_pred)
@@ -46,6 +50,7 @@ print("Test set RMSE of dt: {:.2f}".format(rmse_dt))
 y_pred_lr = lr.predict(X_test)
 mse_lr = MSE(y_pred_lr, y_test)
 rmse_lr mse_lr**(1/2)
+
 print('Linear Regression test set RMSE: {:.2f}'.format(rmse_lr))
 print('Regression Tree test set RMSE: {:.2f}'.format(rmse_dt))
 
@@ -57,14 +62,17 @@ from sklearn.model_selection import train_test_split
 SEED = 1 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=SEED)
 dt = DecisionTreeRegressor(max_depth=4, min_samples_leaf=0.26, random_state=SEED)
+
 MSE_CV_scores = - cross_val_score(dt, X_train, y_train, cv=10, 
                                   scoring='neg_mean_squared_error',
                                   n_jobs=-1)
 RMSE_CV = (MSE_CV_scores.mean())**(1/2)
 print('CV RMSE: {:.2f}'.format(RMSE_CV))
+
 from sklearn.metrics import mean_squared_error as MSE 
 dt.fit(X_train, y_train)
 y_pred_train = dt.predict(X_train)
+
 RMSE_train = (MSE(y_train, y_pred_train))**(1/2)
 print('Train RMSE: {:.2f}'.format(RMSE_train))
 
@@ -82,6 +90,7 @@ classifiers = [('Logistic Regression', lr),
 for clf_name, clf in classifiers:
   clf.fit(X_train, y_train)
   y_pred = clf.predict(X_train)
+  
   accuracy = accuracy_score(y_test, y_pred)
   print('{:s} : {:.3f}'.format(clf_name, accuracy))
 
@@ -90,6 +99,7 @@ from sklearn.ensemble import VotingClassifier
 vc = VotingClassifier(estimators=classifiers)
 vc.fit(X_train, y_train)
 y_pred = vc.predict(X_test)
+
 accuracy = accuracy_score(y_test, y_pred)
 print('Voting Classifier: {:.3f}'.format(accuracy))
 
