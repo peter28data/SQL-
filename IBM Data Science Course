@@ -267,4 +267,15 @@ DS Methodology: Guides Data Scientists in solving complex problems with data.
 -Measurement strategies for ETL pipeline from Data Lake to Data Warehouse
 -Comparison of data analysis methods relative to business goals. 
 
+1. Business Understanding - What is the problem we are trying to solve?
+2. Analytic Approach - How can we use data to answer the business question?
+3. Data Requirements - What data do you need to answer the question?
+4. Data Collection - Where is the data scourced from, and how will you receive the data?
+5. Data Understanding - Does the data you collected represent the problem to be solved?
+6. Data Preparation - What additional work is required to manipulate and work with the data?
+7. Modeling - When you apply data visualizations, do we see answers that address the business problem?
+8. Evaluation - Does the data model answer the initial business question or what adjustments are needed?
+9. Deployment - Can you put the model into practice?
+10. Feedback - Can you get constructive feedback from the data and the stakeholder to answer the business question?
+
 
