@@ -32,6 +32,7 @@ results.plot_power(dep_var='nobs',
                    effect_size=effect_sizes)
 plt.show()
 
+# -------------------------------------------------------------------------------------------------------------
 ### Multiple Testing
 from statsmodels.sandbox.stats.multicomp import multiplesets
 p_adjusted = multipletests(pvals,
