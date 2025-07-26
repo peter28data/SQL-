@@ -1,3 +1,5 @@
+# 1. Instatiate the model 2. fit the model 3. predict the model 4. accuracy score the model
+
 # Import Decsion Tree Classifier to predict whether a tumor is lamignant or benign based on the mean radius of the tumor and its mean number of concave points
 from sklearn.tree import DecisionTreeClassifier
 SEED = 1
