@@ -1,3 +1,4 @@
+-----------------------------------------Ch.1--------------------------------------------------------------
 /* The Coalesce function takes two or more values or column names as arguments. It returns the First Non-Null value in each row or even a blank value. In this query below, the column 'industry' has some missing values, in which case, the function will look in the 'sector' column as a second option. If both columns has missing values then the third argument specifies to return an 'Unknown' value. The goal of the query is to find the most common industry.  */
 SELECT
 COALESCE(industry, sector, 'Unknown') AS industry2,
