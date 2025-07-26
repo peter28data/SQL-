@@ -17,8 +17,8 @@ GROUP BY active;
 
 
 --#2 Aggregating Strings: 
-Demonstrate family-friendly/multi-lingual films
-The query below will return a column with a list of all the different languages following by a column including all the film titles that are available in that language. This query demonstrates only films released in 2010 with a 'G' rating by combining two tables on the primary key 'language_id'.
+--Demonstrate family-friendly/multi-lingual films
+--The query below will return a column with a list of all the different languages following by a column including all the film titles that are available in that language. This query demonstrates only films released in 2010 with a 'G' rating by combining two tables on the primary key 'language_id'.
 SELECT
   name,
   STRING_AGG(title, ',') AS film_titles
@@ -32,7 +32,7 @@ GROUP BY name;
 
 
 --#3 Navigating Database
-A database can have hundreds of tables and individually selecting all columns from each table would be an inefficient way to scrub through the tables for the right data to answer a business question. An efficient way is to query the list of tables by querying a specific system table such as Postgres or Oracle. This returns schema name, table name, and table owner such as Postgres
+--rA database can have hundreds of tables and individually selecting all columns from each table would be an inefficient way to scrub through the tables for the right data to answer a business question. An efficient way is to query the list of tables by querying a specific system table such as Postgres or Oracle. This returns schema name, table name, and table owner such as Postgres
 SELECT *
 FROM pg_catalog.pg_tables
 WHERE schemaname = 'public';
@@ -58,7 +58,7 @@ FROM table_columns
 
 
 -- #5 Aggregate Film Lenths
-The query returns a report of the average length of films grouped by categories, joined by two tables on a unique identifier for the films.
+--The query returns a report of the average length of films grouped by categories, joined by two tables on a unique identifier for the films.
 SELECT category,
   AVG(length) AS average_length
 FROM film AS f
@@ -475,7 +475,7 @@ WHERE
   x.Employee_id = y.Employee_id
   AND y.Salary < (SELECT AVG(Salary) FROM Employee_info);
 
-# show employee salaries and name sof people that earn less than employee with id 4
+-- show employee salaries and name sof people that earn less than employee with id 4
 SELECT
   x.Employee_name, y.Salary
 FROM 
@@ -493,8 +493,8 @@ WHERE
   column_name > (SELECT AVG(column_name) + 3 * STDDEV(column_name)
 FROM your table)
 OR
-  column_name < (SELECT AVG(column_name - 3 * STDDEV(column_name)
-FROM your_table
+  column_name < (SELECT AVG(column_name) - 3 * STDDEV(column_name)
+FROM your_table);
 
 --Correct Data Inconsistencies such as renaming values
 UPDATE your_table
