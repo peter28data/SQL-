@@ -590,3 +590,71 @@ LIMIT 30;
 
 
 
+-- Case statement to create a crosstab?
+-- The following query compares player attacking rates to their preferred foot used in soccer matches.
+SELECT
+defensive_work_rate,
+COUNT(CASE WHEN preferred_foot = 'left'
+	THEN player_id END) AS left,
+COUNT(CASE WHEN preferred_foot = 'right'
+	THEN player_id END) AS right
+FROM players
+GROUP BY defensive_work_rate;
+
+-------------------------------------------------------------------------------------------------------------
+-- Window Functions: The pupose is to perform calculations based on a results set, or a window of data.
+-- Rank Extreme weather incidents
+SELECT
+date,
+max_wind_mph,
+RANK() OVER(ORDER BY
+	max_wind_mph) as windy_days
+FROM weather
+WHERE max_wind_mph > 0
+LIMIT 5;
+
+
+-- Window Functions
+SELECT
+start_station,
+start_date,
+sub_type,
+duration,
+AVG(duration) OVER(
+	PARTITION BY start_station) AS window
+FROM trips ORDER BY duration
+LIMIT 5;
+
+-- Running Total: Minutes on Bicylce trips per Day
+SELECT
+start_station,
+start_date,
+duration,
+SUM(duration) OVER (
+	ORDER BY start_date
+	ROWS BETWEEN UNBOUNDED PRECEDING
+	AND CURRENT ROW) AS running_total
+FROM trips
+LIMIT 5;
+
+
+-- Running Total: Case statement inside window function to calculate running total of hot days (75F or higher).
+SELECT
+date,
+temp_f,
+COUNT(CASE WHEN temp_f > 75 THEN 1 END) OVER(
+	ORDER BY date
+	ROWS BETWEEN UNBOUNDED PRECEDING
+	AND CURRENT ROW) AS hot_days
+FROM temp
+LIMIT 5;
+
+
+
+
+
+
+
+
+
+
