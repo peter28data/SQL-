@@ -107,6 +107,16 @@ GROUP BY street_name
 ORDER BY COUNT DESC
 LIMIT 20;
 
+-- Shorten Long Strings
+-- Concatenate '...' to the end of any shortened description when the string length is greater than 50. 
+SELECT
+CASE
+WHEN LENGTH(description) > 50 THEN LEFT(description, 50) || '...'
+ELSE description END
+FROM evanston311
+WHERE description LIKE 'I %'
+ORDER BY description;
+
 
 
 
