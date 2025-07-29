@@ -75,10 +75,24 @@ DROP TABLE IF EXISTS top_companies;     -- avoids error message
 
 ----------------------------------Ch.3: Categorical & Unstructured Text-------------------------
 /* 
+*/
+SELECT 
+zip,
+COUNT(*)
+GROUP BY zip            -- How many distinct values of zip?
+HAVING COUNT(*) >= 100; -- In at least 100 rows?
 
 
+SELECT
+street,
+COUNT(*)
+FROM evanston311
+GROUP BY street        -- Group streets to get count of streets
+ORDER BY COUNT(*) DESC -- The 5 most common values of street
+LIMIT 5;
 
 
+-- Concatenate Strings
 
 
 
