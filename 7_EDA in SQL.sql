@@ -99,6 +99,13 @@ LTRIM(CONCAT(house_num, ' ', street)) AS address
 FROM evanston311;
 
 
+-- Split Strings on a delimiter 
+SELECT 
+SPLIT_PART(street, ' ', 1) AS street_name,
+COUNT(*)
+GROUP BY street_name
+ORDER BY COUNT DESC
+LIMIT 20;
 
 
 
