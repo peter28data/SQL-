@@ -93,6 +93,11 @@ LIMIT 5;
 
 
 -- Concatenate Strings
+-- Use an outer l trim function to remove any spaces from the start of the concatenated value.
+SELECT
+LTRIM(CONCAT(house_num, ' ', street)) AS address
+FROM evanston311;
+
 
 
 
