@@ -36,3 +36,45 @@ COUNT(DISTINCT session_id)   -- 2000 is level of granularity
 
 -- Paid social and A/B Testing
 -- 
+
+-------------------------------------Ch.4: LTV / CAC-----------------------------------------------------------
+/*
+Lifetime Value or CLTV (Customer Lifetime Value) is an estimation of how much a customer is worth to a company over the customer's lifetime. 
+-If a customer spends an average of 5 years with our service at $100/year, the LTV is $500.
+-LTV can also equal (Total Revenue/Total # of Customers)/Churn Rate
+
+Customer Acquisition Cost (CAC): The cost of acquireing a customer. 
+CHURN RATE: ~3-8% is the rate at which customers stop purchasing
+COHORT Analysis: Groups of customers with similar behaviors such as a boutique fitness studio
+*/
+  
+-- #0 Student Flag
+(email, '.edu') THEN "Student" ELSE "Non-Student" END
+  
+-- #1 Last Purchase Date
+{FIXED cookie_id: MAX(purchase_date)}
+-- #2 Days Since Purchase
+DATEDIFF('day', last_purchase_date, DATEPARSE("MM-DD-YYYY", "01-31-2023"))
+
+-- #3 Churn Flag
+IF days_since_last_purchase > 90 THEN 1 ELSE 0 END
+
+-- #4 Average Order Size
+-- If the number of customers and frequency of purchasing remains the same, LTV will as the average order size increases. 
+--Tableau: Avg Order Size with purchase value and distinct count of order id
+SUM(purchase_value)/COUNTD(order_id)
+
+-- Tableau: Concatenate purchase id and session id to a string
+STR(purchase_id) + " " + STR(session_id)
+
+------------------------------------------------------------------------------------------------------------
+-- Customer Acquisition Costs (CAC)
+-- E-commerce or B2C (Business to Customer) is about 20-$30.
+-- B2B such as corporate law, commercial real estate can be thousands of dollars 
+
+-- 10% of Revenue on Marketing. Retail, consumer packaged goods and healthcare spend more CAC. <10% of revenue spend on marketing include industries such as education, energy, and transportation
+
+
+
+--IFNULL
+-- To combine these string fields, we use the ifnull function to use one ad group field and switch to the other if the first is null. 
