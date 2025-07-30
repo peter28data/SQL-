@@ -57,7 +57,7 @@ SELECT
 revenue.meal_id,
 revenue,
 cost,
-revenue - cost AS profit
+revenue - cost AS profit    -- This is the Goal of CTEs
 FROM revenue
 JOIN cost ON revenue.meal_id = cost.meal_id
 ORDER BY proft DESC
