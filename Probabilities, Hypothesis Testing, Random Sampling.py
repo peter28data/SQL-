@@ -282,10 +282,12 @@ stats_guardrail = ttest(
 pval_guardrail, tstat_guardrail = stats_guardrail['p-val'].values[0], stats_guardrail['T'].values[0]
 pval_guardrail = round(pval_guardrail, 4)
 
+
 # Estimate effect size for the guardrail metric
 effect_size_guardrail = estimate_effect_size(sessions_x_users, 'time_to_booking')
 effect_size_guardrail = round(effect_size_guardrail, 4)
 print(f'\nGuardrail\np-value: {pval_guardrail} | effect size: {effect_size_guardrail}')
+
 
 # DECISION
 # Primary metric must be statistically significant and show positive effect (increase)
