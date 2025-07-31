@@ -117,9 +117,17 @@ FROM evanston311
 WHERE description LIKE 'I %'
 ORDER BY description;
 
+-------------------------------Ch.4: Date/Time Type and formats--------------------
+-- Postgres write date time in ISO (International Organization for Standards) YYYY-MM-DD HH:MM:SS
+--UTC (Coordinated Universal Time) will add +02 to indicate the timezone
+SELECT
+'2010-01-01':: date + 1;    -- Adding to date will add 1 day
 
+SELECT
+'2018-12-10'::date + '1 year'::interval;  -- Specify the date added to date
 
-
+SELECT
+'2018-12-10'::date + '1 year 2 days 3 minutes'::interval; 
 
 
 
