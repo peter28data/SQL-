@@ -29,7 +29,10 @@ Value, Veracity
 
 CONCLUSION
 What do Data Scientists do?
-They investigate business problems by manipulating data with statistics and algorithms. For example, A Toronto public transit company tasks a data scientist to understand why half a million of their customers are complaining recently. A hypothesis around domain knowledge of transit service was formulated around weather conditions and more customer complaints. The data scientist confirmed this correlation through investigating the data on unexpected bad weather days. 
+They investigate business problems by manipulating data with statistics and algorithms. 
+
+For example, A Toronto public transit company tasks a data scientist to understand why half a million of their customers are complaining recently. A hypothesis around domain knowledge of transit service was formulated around weather conditions and more customer complaints. The data scientist confirmed this correlation through investigating the data on unexpected bad weather days. 
+
 A second example is environmental problem investigation to predict algae blooms to water toxicity. Using neural networks to predict algae blooms, the data scientist was able to support water treatment companies safeguard the water quality. 
 Third, a recommendation system can be made using machine learning algorithms for health care sectors. 
 Fourth, regression analysis is crucial for machine learning applications for Real Estate roles. K Nearest Neighbors is also useful and relatively simple to use. 
@@ -101,6 +104,7 @@ Hadoop provides distributed storage with HDFS, Hive provides large data set mana
 
 Machine Learning
 -A subset of Ai that uses computer algorithms to analyze data and make intelligent decisions based on what it has learned, without being explicitly programmed. 
+
 Deep Learning
 -A subset of ML that uses layered neural networks to simulate human decision-making. It can label and categorize information and identify patterns. 
 Data Science
