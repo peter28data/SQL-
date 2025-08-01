@@ -11,9 +11,9 @@ laptops2 = pd.get_dummies(data=laptops2,
 ### Calculating sample size
 from statsmodels.stats.power import zt_ind_solve_power
 import statsmodels.stats.proportion as prop
-zt_ind_solve_power()
-tt_ind_solve_power()
-proportion_effectsize()
+#zt_ind_solve_power()
+#tt_ind_solve_power()
+#proportion_effectsize()
 std_effect = prop.proportion_effectsize(.20, .25)
 zt_ind_solve_power(effect_size=std_effect,
                    nobs1=None,
@@ -22,6 +22,7 @@ zt_ind_solve_power(effect_size=std_effect,
 # calculating sample size
 from statsmodels.stats.proportion import proportion_effectsize
 std_effect = proportion_effectsize(.20, .25)
+
 # Visualizing sample sizes based on ttests and sample size, on the x-axis, needed for the level of power, on the y-axis
 sample_size = np.array(range(5,100))
 effect_sizes = np.array([0.2, 0.5, 0.8])
