@@ -31,14 +31,14 @@ BETWEEN  /  NOT BETWEEN
 
 
 -------------------------------------------------------------------------------------------------
--- Q1: Identify VIP users for Netflix by identifying 
+-- Q1: Identify VIP users for Netflix 
 -- They are defined as the most active in terms of the number of hours of content they watch. Write a SQL query that will retrieve the top 10 users with the most watched hours in the last month.
 SELECT
 user_id,
 SUM(hours_watched) AS watch_hours
 FROM watching_activity
-WHERE date_time > DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%M-01')
-AND date_time < DATE_FORMAT(CURRENT_DATE, '%Y-%M-01')
+WHERE date_time > DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%M-01')    --The previous month
+AND date_time < DATE_FORMAT(CURRENT_DATE, '%Y-%M-01')                         --The current day, to not return future values most likely
 GROUP BY user_id
 ORDER BY watch_hours DESC
 LIMIT 2;
