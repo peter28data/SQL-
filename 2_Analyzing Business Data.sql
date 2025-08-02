@@ -314,6 +314,8 @@ AS ct (meal_id INT,
         "2018'07-01" INT)  --These will should how many of these meals were ordered these months
 ORDER BY meal_id ASC;
 
+
+
 /* Producing Executive Reports
 Readability includes TO_CHAR(), ROUND(), and CROSSTAB() to read in wide format. 
 #1 Ranking of Delivr's partner eateries by their order amount for the past quarter.*/
