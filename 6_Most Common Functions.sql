@@ -1,6 +1,6 @@
 -- Window Functions
 ROW_NUMBER()
-RANK() OVER(ORDER BY salary DESC) AS row_num
+DENSE RANK() OVER(ORDER BY salary DESC) AS row_num
 LAG(sales_amount, 1) OVER(ORDER BY order_date) AS prev_day_sale
 
 
