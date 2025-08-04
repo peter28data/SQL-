@@ -33,11 +33,11 @@ FROM costs_and_quantities
 ORDER BY cost DESC
 LIMIT 3; 
 
+/*
 -- Key Performance Indicator (KPI)
 -- Profit per user; to identify the best users
 -- Profit per meal; to identify the most profitable meals
 -- Profit per month; to track profit over time
-/*
 The following query will create two CTEs to calculate revenue and cost to identify the KPIs identified above. The third query will return the top 3 meals by profit. 
 */
 WITH revenue AS (
