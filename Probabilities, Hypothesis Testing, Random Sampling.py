@@ -85,7 +85,7 @@ women = pd.read_csv("women_results.csv")
 
 # Filter the data for the time range and tournament
 men["date"] = pd.to_datetime(men["date"])
-men_subset = men[(men["date"] > "2002-01-01") & (men["tournament"].isin(["FIFA World Cup"]))]
+men_subset = men[(men["date"] > "2002-01-01") & (men["tournament"].isin(["FIFA World Cup"]))]      # Meets two conditions? or includes two groups
 women["date"] = pd.to_datetime(women["date"])
 women_subset = women[(women["date"] > "2002-01-01") & (women["tournament"].isin(["FIFA World Cup"]))]
 
