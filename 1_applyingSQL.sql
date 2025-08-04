@@ -1,4 +1,4 @@
--- The folloing script applies SQL queries for specific business use cases. 
+-- The following script applies SQL queries for specific business use cases. 
 
 /* #1 Aggregating Finances: 
 Difference of active/Non-active Users
