@@ -51,8 +51,8 @@ ORDER BY lower;                 -- Groups count of unanswered questions into bin
 
 SELECT corr(assets, equity)
 
-SELECT percentile_disc(0.5) WITHIN GROUP (ORDER BY column_name) -- value that exists
-SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY column_name) -- interpolates between values
+SELECT percentile_disc(0.5) WITHIN GROUP (ORDER BY column_name) -- Median: value that exists
+SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY column_name) -- Average: interpolates between values
 
 
 -- Creating temporary tables
