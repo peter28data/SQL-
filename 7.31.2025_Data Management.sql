@@ -94,3 +94,16 @@ WHERE title LIKE '____';    -- 4 underscores indicate 4 characters
 
 
 
+--------------------------------------------------------------------------------------------
+--15 return number of duplicates records
+SELECT
+name,
+city,
+state,
+COUNT(*) AS duplicates
+FROM vendors
+GROUP BY name, city, state    --by grouping by these and selecting the count it shows dups
+
+
+--
+
