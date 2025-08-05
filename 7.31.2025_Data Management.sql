@@ -105,5 +105,34 @@ FROM vendors
 GROUP BY name, city, state    --by grouping by these and selecting the count it shows dups
 
 
---
+--14 Return vendors from austin city
+SELECT
+vendor_name, 
+vendor_city,
+vendor_state
+FROM vendors
+WHERE vendor_city = 'AUSTIN';
+
+
+--13 Return the number of rows in the 'launch' column where the value is NOT a date OR the value is missing
+SELECT 
+COUNT(*)
+FROM speaker
+WHERE launch = 'Null' OR launch IS NULL;    --Not a date is labeled 'Null'
+
+
+--12 Validate the date and return the rows that the 'installation_date' is not a date in 2013
+SELECT *
+FROM station
+WHERE installation_date NOT BETWEEN '2013-01-01' 
+AND '2013-12-31';
+
+
+--11 Validate the date there should not be any negative values
+SELECT *
+FROM trips
+WHERE duration < 0;
+
+
+
 
