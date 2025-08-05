@@ -152,6 +152,37 @@ INNER JOIN bike as b
 ON t.bike_id = b.bike_id;
 
 
---
+--5 Join the table with itself to return the pairs of the speaker model with the same launch date
+SELECT
+s1.model, 
+s2.model,
+s1.price,
+s2.price
+FROM speaker s1
+INNER JOIN speaker s2
+ON s1.productid <> s2.productid 
+AND s1.launch = s2.launch;
+
+
+--3 Return the day from the column and convert the day to numeric data type
+SELECT
+trip_id,
+EXTRACT(DAY FROM start_time) :: NUMERIC AS start_day
+FROM bike_trips;
+
+
+--2 Return the first five rows that the title DOES NOT contain 'the' no matter the case of the string
+SELECT *
+FROM movie_budget
+WHERE title NOT ILIKE '%the%'
+LIMIT 5;
+
+
+--1 Validate the data by returning the rows that the 'bike_available' column is out of range (each station has at least one bike and at most 10)
+SELECT *
+FROM status
+WHERE bikes_available < 1 
+OR bikes_available > 10;
+
 
 
