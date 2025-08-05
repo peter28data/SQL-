@@ -333,10 +333,10 @@ LIMIT 1;
 
 
 /*
-#2 The 'day' column is currently stored as a string, day-month-year, convert to 
+#2 The 'day' column is currently stored as a string, day-month-year, convert to */
+to_char(to_date(day, 'dd-mm-yyyy') AS day_converted
 
-
-
+/*
 #3 Change whitespace to underscore
 
 
@@ -394,20 +394,26 @@ FROM deposits;
 
 /*
 #14 Truncate the column 'date_time' to hourly precision
-
-
-
-#15 Truncate the column 'delivery_date' to minute precision
-
-
-
-#16 Which clients have missing date of last holiday
-
 */
+SELECT
+	date_trunc('hour', day) AS day_truncated	-- 14:37:52 -> 14:37:00
+
+
+
+--#15 Truncate the column 'delivery_date' to minute precision
+SELECT
+	date_trunc('minute', delivery_date) 
+
+
+--#16 Which clients have missing date of last holiday
+SELECT *
+	FROM clients
+	WHERE date_of_last_holiday IS NULL;
+
 
 --#17 Identify users whose 'username' begins with apple
 SELECT
-  username, 
+  username, R
   first_name,
   last_name,
 FROM users
@@ -436,6 +442,9 @@ FROM stackoverflow;
 
 
 --#21 Replace missing values
+UPDATE clients
+	SET dateoflastholiday = '2000-01-01'	-- replaces with start of year
+	WHERE dateoflastholiday IS NULL OR dateoflastholiday = '';-- in case of empty string
 
 
 --#29 Skewness from avg and median of inventory volume
