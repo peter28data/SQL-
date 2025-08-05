@@ -134,5 +134,24 @@ FROM trips
 WHERE duration < 0;
 
 
+--7 Join the table with another but keep all the records from one table no matter whether they have a match in the other
+SELECT trip_id,
+duration,
+t.bike_id
+FROM bike_trips as t
+LEFT JOIN bike as b
+ON t.bike_id = b.bike_id;
+
+
+--6 Join the tables but keep only the matched records
+SELECT trip_id,
+duration,
+t.bike_id
+FROM bike_trips as t
+INNER JOIN bike as b
+ON t.bike_id = b.bike_id;
+
+
+--
 
 
