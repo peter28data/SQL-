@@ -4,7 +4,7 @@
 -- From each Category
 
 
-----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 -- First SQL cell
 -- top_five_products_each_category
@@ -59,4 +59,25 @@ INNER JOIN unit_prices AS up
 
 
 -- Summary: The sales data is written as 'double precision' data type so it is converted to numeric data type first then divided by the unit price from the final query's Inner Join clause. Even though unit_prices is a CTE, it is given an alias in the final query.
+---------------------------------------------------------------------------------------------
+
+
+-- How it Works: First we find rows with missing quantity and set that aside with a CTE. Then we use a second CTE to calculate the unit price from product id's that are not missing, this way we can calculate the unit price for product id's with quantity data missing. Lastly, in the third query we create a new column 'calculated_quantity' to divide the sales by the unit price and round to the whole number. 
+
+-- Impute the NULL Quanitities
+UPDATE orders
+SET quantity = ROUND(o.sales / up.unit_price)
+FROM (
+	SELECT
+	o1.product_id,
+	ol.discount,
+	AVG(CAST(o1.sales / o1.quantity AS NUMERIC)) AS unit_price
+	FROM orders o1
+	WHERE o1.quantity IS NOT NULL
+	GROUP BY o1.product_id, o1.discount 
+	) AS up
+WHERE orders.quantity IS NULL
+AND orders.product_id = up.product_id
+AND orders.discount = up.discount;
+
 ---------------------------------------------------------------------------------------------
