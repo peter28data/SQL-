@@ -50,10 +50,13 @@ RIGHT JOIN missing AS m
 	AND o.discount = m.discount
 WHERE o.quantity IS NOT NULL)
 
+	
 SELECT DISTINCT m.*,    -- everything from 'missing' CTE
 	ROUND(CAST(m.sales AS NUMERIC) / up.unit_price,0) AS calculated_quantity
 FROM missing AS m
 INNER JOIN unit_prices AS up
 	ON m.product_id = up.product_id;
 
+
+-- Summary: The sales data is written as 'double precision' data type so it is converted to numeric data type first then divided by the unit price from the final query's Inner Join clause. Even though unit_prices is a CTE, it is given an alias in the final query.
 ---------------------------------------------------------------------------------------------
