@@ -26,6 +26,20 @@ SELECT
   substring(code, 3, 4) AS code_part      -- Correct
 
 
+--9 for each order id, calculate the total quantity of all products in the order. 
+SELECT
+  id,
+  product,
+  quantity,
+  SUM(quantity) OVER(PARTITION BY id) AS total
+FROM orders
+ORDER BY id, product
+LIMIT 5;
+
+-- Explanantion: 
+
+
+
 --10 average number of employees
 SELECT AVG(count_employees)
 FROM (
@@ -65,8 +79,65 @@ LIMIT 10;
 
 
 --QUESTIONS to go over
---3,4,5,8
+--3,4,5,8,9,12,13
 
+--3 Create a new categorical variable to group prices into three levels
+SELECT price_item
+  CASE 
+  WHEN price_item <= 50 THEN 'low'
+
+  WHEN price_item > 50 AND price_item <=100 THEN 'medium'
+ 
+  WHEN price_item > 100 THEN 'high'
+  
+  WHEN price_item IS NULL THEN 'undefined'
+  END AS cost_level
+
+
+
+--4 Extract a list of unique artists that start with a vowel letter
+SELECT DISTINCT name
+FROM artists
+
+WHERE left(name, 1) IN ('A','E','I','O','U')    -- Here.
+ORDER BY name
+LIMIT 7;
+
+-- Explanation: In this case, the left function returns the first character of the string because the argument is 1, however, since it is used with the IN() function it creates a filter to return values if the first character of the string in the column 'name' is a vowel letter specified in the list. 
+
+
+--5 Display the previous order's quantity
+LAG(quantity, 1) OVER() AS pre_quantity
+
+
+--6 Change the values of the column 'item' to TITLE CASE
+SELECT
+initcap(item) AS item_title,    -- Capitalizes first letter & lowercase rest
+energy,
+protein
+FROM food
+ORDER BY energy, protein;
+
+-- Explanation: Capitalizes the first letter of each word and converts the rest of the letters to lowercase.
+
+
+--13 The 'pairing' table lists the recommended food items for certain wines. The goal is to return the style and price for all wines that have a pairing.
+SELECT style, price
+FROM wine_region
+  
+WHERE id IN (
+  SELECT wine_id    --therefore, we filter based on the existence from 'pairing' table
+  FROM pairing )
+
+ORDER BY price, style
+LIMIT 5;
+
+
+--15 The purpose of using a subquery in the select clause is to return the average of two values from different tables in the same row. 
+SELECT
+AVG(energy) AS avg_energy                   -- energy is from 'food' table
+(SELECT AVG(price) FROM wine) AS avg_price  --why?, bc price is from the 'wine' table
+FROM food  
 
 
 
