@@ -15,6 +15,7 @@ SELECT products.category,
 	products.product_name,
   	ROUND(SUM(CAST(ord.sales AS NUMERIC)), 2) AS product_total_sales,
 	ROUND(SUM(CAST(ord.profit AS NUMERIC)), 2) AS product_total_profit,
+	
 	RANK() OVER(PARTITION BY products.category ORDER BY SUM(ord.sales) DESC) AS product_rank
 	FROM orders AS ordr
 	INNER JOIN products
