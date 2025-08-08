@@ -22,7 +22,13 @@ Amazon Simple Storage Service
 Handles cloud storage of large amount of unstructured text data
 
 
+#12
 Second Normal Form (2NF)
 Create a separate table for the products and their attributes
 -1NF is no repeating groups, each field contains only atomic values.
 -2NF all non-key attributes must be fully functionally dependent on the entire primary key
+
+
+#15
+Azure Data Factory
+create and manage Data Pipelines
