@@ -19,3 +19,21 @@ FOLLOWING           -- Specify number of rows after input
   
 UNBOUNDED PRECEDING -- Every row since the beginning
 UNBOUNDED FOLLOWING -- Every row to the end
+
+CURRENT ROW         -- Stops the calculation at the Current Row
+
+---------------------------------------------------------------------------------------------
+  
+-- Calculates the sum of goals when Manchester city played as the home team during the 2011/2012 season
+-- Running Total from oldest to Most recent
+SELECT
+date,
+home_goal,
+away_goal,
+SUM(home_goal)
+  OVER(ORDER BY date ROWS BETWEEN
+      UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total
+FROM match
+WHERE hometeam_id = 8456 AND season = '2011/2012';
+
+
