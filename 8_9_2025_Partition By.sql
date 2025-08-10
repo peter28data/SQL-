@@ -10,7 +10,7 @@ FROM countries AS c
 LEFT JOIN match_resulsts AS m
 ON c.id = m.country_id
 
-----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 -- Sliding Windows
 -- Perform calculations relative to the Current Row
 
@@ -23,9 +23,9 @@ UNBOUNDED FOLLOWING -- Every row to the end
 CURRENT ROW         -- Stops the calculation at the Current Row
 
 ---------------------------------------------------------------------------------------------
-  
--- Calculates the sum of goals when Manchester city played as the home team during the 2011/2012 season
+
 -- Running Total from oldest to Most recent
+-- Calculates the sum of goals when Manchester city played as the home team during the 2011/2012 season
 SELECT
 date,
 home_goal,
@@ -33,6 +33,18 @@ away_goal,
 SUM(home_goal)
   OVER(ORDER BY date ROWS BETWEEN
       UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total
+FROM match
+WHERE hometeam_id = 8456 AND season = '2011/2012';
+
+
+-- Running Total for the current and previous match only
+SELECT
+date,
+home_goal,
+away_goal,
+SUM(home_goal)
+  OVER(ORDER BY date ROWS BETWEEN
+      1 PRECEDING AND CURRENT ROW) AS last2_homegoals
 FROM match
 WHERE hometeam_id = 8456 AND season = '2011/2012';
 
