@@ -48,4 +48,32 @@ SUM(home_goal)
 FROM match
 WHERE hometeam_id = 8456 AND season = '2011/2012';
 
+---------------------------------------------------------------------------------------------
 
+-- Case Study
+-- How badly did Manchester United lose in each match?
+
+-- First we will start by filtering the data for the most important part.
+WHERE m.season = '2014/2015'
+  AND ((home.team_long_name = 'Manchester United' AND home.outcome = 'MU Loss')
+  OR (away.team_long_name = 'Manchester United' AND away.outcome = 'MU Loss'));
+
+
+-- Second we decide the outcome of the dataset
+SELECT DISTINCT
+date,
+home.team_long_name AS home_team,
+away.team_long_name AS away_team,
+m.home_goal,
+m.away_goal,
+
+RANK() OVER(ORDER BY ABS(home_goal - away_goal) DESC) AS match_rank
+
+
+-- Third we create JOINS with Common Table Expressions
+FROM match AS m
+LEFT JOIN home ON m.id = home.id
+LEFT JOIN away ON m.id = away.id
+
+
+-- Create the 
