@@ -23,3 +23,8 @@ AND date_created < '2016-03-01';
 
 ---------------------------------------------------------
 
+-- Specify the Upper Bound
+SELECT COUNT(*)
+FROM evanston311
+WHERE date_created >= '2017-03-13'
+AND date_created < '2017-03-13'::DATE + 1;
