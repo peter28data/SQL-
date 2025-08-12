@@ -28,3 +28,8 @@ SELECT COUNT(*)
 FROM evanston311
 WHERE date_created >= '2017-03-13'
 AND date_created < '2017-03-13'::DATE + 1;
+
+-- Explanation: By adding + 1, it sets the upper limit to March 14. The < operator ensures that only requests created before March 14 are included. This way only requests created ON March 13 are counted. 
+
+---------------------------------------------------------
+
