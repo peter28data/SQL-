@@ -283,22 +283,17 @@ SELECT category,
 
 -- Above we have computed the average complettion time per Category excluding the outliers which are the longest 5% of requests. Trash Cart, Sanitation billing questions, and rodents take the longest on average 12 days compared to others taking 2-10 days. 
 
-
-
 SELECT corr(avg_completion, count)
-
   FROM (SELECT date_trunc('month', date_created) AS month, 
               
                avg(EXTRACT(epoch FROM date_completed - date_created)) AS avg_completion, 
             
-               count(*) AS count
-          FROM evanston311
-       
-         WHERE category='Rodents- Rats' 
-       
-         GROUP BY month) 
+        count(*) AS count
+        FROM evanston31
+        WHERE category='Rodents- Rats' 
+        GROUP BY month) 
         
-         AS monthly_avgs;
+        AS monthly_avgs;
 
 -- Above we computed the correlation between average completion time and monthly requests. There is a .23 or 23% correlation so very weak. 
 
@@ -328,4 +323,5 @@ SELECT created.month,
 -- By month, the number of requests created and completed.
 -- Insight: There is a disproportionally large number of requests completed in Nov 2017. 
 
+-------------------------------------------------------------------------------
 
