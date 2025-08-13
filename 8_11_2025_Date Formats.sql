@@ -110,3 +110,47 @@ order by hour;
 -- Does the time required to complete a request vary by the day of the week on which the request was created?
 
 TO_CHAR(date_created, 'day')  -- Name of the Day of Week
+
+-- Problem: The to_char() function converts timestamps to character data and the sorting this data work be alphabetical, not chronological. 
+-- Solution: The extract() with DOW "day of the week" gets the chronological order of days of the week with an integer value for each day.
+
+SELECT
+TO_CHAR(date_created, 'day') AS day,
+AVG(date_completed - date_created) AS duration
+FROM evanston311
+GROUP BY day, EXTRACT(DOW FROM date_created  -- Needs both to work
+ORDER BY EXTRACT(DOW FROM date_created);
+
+-- Explanation: This does order from Sunday to to Saturday since sunday is given the integer value of 0 ascending to saturday as 6.
+
+-- Insight: Requests created at the beginning of the work week such as monday and tuesday are closed sooner than the average time.
+-------------------------------------------------------------
+
+-- Avg Requests per Month
+SELECT
+date_trunct('month', day) AS month,  -- month from subquery
+AVG(count)                  -- count from subquery
+FROM (
+  SELECT
+  date_trunc('day', date_created) AS day,
+  count(*) as count
+  FROM evanston311
+  GROUP BY day) AS daily_count
+
+GROUP BY month
+ORDER BY month;
+
+-- Explanation: The subquery counts the number of requests per day. The group by clause ensures that the count is calculated for each distinct day. 
+
+-- Insight: the main query truncates the month from the day column created in the subquery to allow us to group the daily counts by month. The average function then works as intended to calculate the average number of requests per day for each month. This is done by average the daily counts obtained from the subquery. The group by clause then extends the average function for each distinct month. 
+
+-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
