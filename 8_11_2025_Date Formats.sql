@@ -198,8 +198,134 @@ ORDER BY hours;
 -- The benefit is to see the amount of sales generated in the morning compared to the afternoon.
 
 WITH bins AS (
-  select genereate_series('2018-01-23 09:00:00', '2018-04-23 15:00:00', '3 hours'::INTERVAL) AS lower,
-  generate_series('2018-04-23 12:00:00', '2018-04-23 18:00:00', '3 hours'::INTERVAL) AS upper)
+  select genereate_series('2018-01-23 09:00:00', 
+                          '2018-04-23 15:00:00', 
+                          '3 hours'::INTERVAL) AS lower,
+  generate_series('2018-04-23 12:00:00', 
+                  '2018-04-23 18:00:00', 
+                  '3 hours'::INTERVAL) AS upper)
 
+-- Join Bins to the Sales Data
+SELECT
+lower, 
+upper,
+count(date)
+FROM bins
+LEFT JOIN sales
+  
+ON date >= lower
+AND date < upper
+  
+GROUP BY lower, upper
+ORDER BY lower;
+
+-- Explanation: This will return one column 'lower' with 9am, noon, and 3pm records to display the count of requests during that block of time. 
+
+-------------------------------------------------------------------
+
+-- Average Time between Sales
+-- How do you find out how much time has passed between events when the dates or timestamps are all saved in the same column?
+-- The lead() and lag() functions allow us to offset the orderded values in a column by 1 row by default. 
+
+SELECT 
+AVG(gap)
+FROM (
+  SELECT
+  date - lag(date) OVER (ORDER BY date) AS gap
+  FROM sales) AS gaps;
+
+-- Explanation: This returns the average time between sales is 00:32:15.56 which mean 32 minutes. The subquery is necessary because window functions cannot be used inside of aggregate functions such as AVG().
+
+-------------------------------------------------------------------
+
+-- Longest gap between Requests
+-- Compute the gaps
+WITH request_gaps AS (
+        SELECT date_created,
+               -- lead or lag
+               lag(date_created) OVER (ORDER BY date_created) AS previous,
+               -- compute gap as date_created minus lead or lag
+               date_created - lag(date_created) OVER (ORDER BY date_created) AS gap
+          FROM evanston311)
+-- Select the row with the maximum gap
+SELECT *
+  FROM request_gaps
+-- Subquery to select maximum gap from request_gaps
+ WHERE gap = (SELECT max(gap) 
+                FROM request_gaps);
+
+-------------------------------------------------------------------
+
+-- Investigate Delays
+-- Requests in the category "Rodents-Rats" average over 64 days to resolve. Why?
+SELECT date_trunc('day', date_completed - date_created) AS completion_time,
+       count(*) 
+  FROM evanston311
+ WHERE category = 'Rodents- Rats'
+
+ GROUP BY completion_time
+ ORDER BY completion_time;
+
+-- Checks the distribution of completion times. The above query returns a column of completion times such as 1 day, two days and a count of how many requests were completed in that duration of time. 
+
+SELECT category, 
+
+       avg(date_completed - date_created) AS avg_completion_time
+  FROM evanston311
+
+ WHERE date_completed - date_created < 
+
+         (SELECT percentile_disc(0.95) WITHIN GROUP (ORDER BY date_completed - date_created)
+            FROM evanston311)
+ GROUP BY category
+
+ ORDER BY avg_completion_time DESC;
+
+-- Above we have computed the average complettion time per Category excluding the outliers which are the longest 5% of requests. Trash Cart, Sanitation billing questions, and rodents take the longest on average 12 days compared to others taking 2-10 days. 
+
+
+
+SELECT corr(avg_completion, count)
+
+  FROM (SELECT date_trunc('month', date_created) AS month, 
+              
+               avg(EXTRACT(epoch FROM date_completed - date_created)) AS avg_completion, 
+            
+               count(*) AS count
+          FROM evanston311
+       
+         WHERE category='Rodents- Rats' 
+       
+         GROUP BY month) 
+        
+         AS monthly_avgs;
+
+-- Above we computed the correlation between average completion time and monthly requests. There is a .23 or 23% correlation so very weak. 
+
+
+WITH created AS (
+       SELECT date_trunc('month', date_created) AS month,
+              count(*) AS created_count
+         FROM evanston311
+        WHERE category='Rodents- Rats'
+        GROUP BY month),
+
+      completed AS (
+       SELECT date_trunc('month', date_completed) AS month,
+              count(*) AS completed_count
+         FROM evanston311
+        WHERE category='Rodents- Rats'
+        GROUP BY month)
+
+SELECT created.month, 
+       created_count, 
+       completed_count
+  FROM created
+       INNER JOIN completed
+       ON created.month=completed.month
+ ORDER BY created.month;
+
+-- By month, the number of requests created and completed.
+-- Insight: There is a disproportionally large number of requests completed in Nov 2017. 
 
 
