@@ -146,11 +146,60 @@ ORDER BY month;
 
 -------------------------------------------------------------
 
+-- How do you find periods of time with NO observations?
+-- This is for rows without values.
+
+SELECT
+generate_series(from, to, interval);  -- The framework
+
+-- The query below will generate a series of rows for every 2 days starting with january 1st to january 15.
+SELECT
+generate_series('2018-01-01', '2018-01-15', '2 days'::INTERVAL);
+
+-- 2018-01-01
+-- 2018-01-03
+-- 2018-01-05     and so on...
+
+---------------------------------------------------------------
+
+-- How do we handle months with different amounts of days? 30, 31, 28
+SELECT
+generate_series('2018-02-01', '2019-01-01', '1 month'::INTERVAL) - '1 day'::INTERVAL;
+
+-- Explanation: To correctly generate a series for the last day of each month, start from the beginnning, then subtract 1 day from the result.
+
+-- 2018-01-31     This was feb 1st minus one day
+-- 2018-2-28      This was march 1st minues one day
+
+------------------------------------------------------------------
 
 
+-- generate series to include hours with no sales
+WITH hour_series AS (
+  SELECT generate_series('2018-04-23 09:00:00', '2018-04-23 14:00:00', '1 hour'::INTERVAL) AS hours)
 
+-- Join to sales date ON 
+SELECT
+hours,
+count(date)
+FROM hour_series
+LEFT JOIN sales
+ON hours= date_trunc('hour', date)
+GROUP BY hours
+ORDER BY hours;
 
+-- Explanation: Mathcing the hours from the series TO the sales date truncatd to the hour. Count the date column, instead of counting the rows because we don't want to count null values.
 
+-- Insight: We now can see there were no sales made during the hour of 11am whereas before the data skipped over the 11th hour for lack of data. 
+
+-------------------------------------------------------------------
+
+-- Aggregation with Bins
+-- The benefit is to see the amount of sales generated in the morning compared to the afternoon.
+
+WITH bins AS (
+  select genereate_series('2018-01-23 09:00:00', '2018-04-23 15:00:00', '3 hours'::INTERVAL) AS lower,
+  generate_series('2018-04-23 12:00:00', '2018-04-23 18:00:00', '3 hours'::INTERVAL) AS upper)
 
 
 
