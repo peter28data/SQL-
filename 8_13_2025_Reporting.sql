@@ -36,3 +36,8 @@ HAVING sum(gold) > 2
 ORDER BY gold_medals DESC;
 
 --------------------------------------------------------------------------------
+
+-- List of Events
+SELECT DISTINCT event
+FROM winter_games;
+
