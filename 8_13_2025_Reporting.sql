@@ -28,9 +28,11 @@ GROUP BY sport;
 SELECT
 a.name AS athlet_name,
 SUM(gold) as gold_medals
+
 FROM summer_games as s
 join athletes as a
 on s.athlete_id = a.id
+
 GROUP BY a.name
 HAVING sum(gold) > 2
 ORDER BY gold_medals DESC;
