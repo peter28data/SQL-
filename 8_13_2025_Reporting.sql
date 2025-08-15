@@ -44,7 +44,7 @@ FROM summer_games
 WHERE age > 40
 
 -- Better option
--- Subqueries in the where clause works
+-- Subqueries select ID in the where age > 40 clause works
 
 -- Doesnt work
 -- using the HAVING filter becuase it works after aggreagtions and that filters out entire events instead of individual athletes.
