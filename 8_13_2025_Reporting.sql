@@ -76,6 +76,17 @@ ORDER BY events DESC;
 
 ------------------------------------------------------------------------------
 
+-- CASE WHEN
+-- Categorize players into three segments: tall female, tall male, or other
+SELECT
+  name,
+  CASE
+  WHEN gender = 'F' AND height >= 175 THEN 'Tall Female'
+  WHEN gender = 'M' AND height >= 190 THEN 'Tall Male'
+  ELSE 'Other' END AS segment
+  FROM athletes;
+
+-------------------------------------------------------------
 
 
 
