@@ -37,13 +37,17 @@ ORDER BY gold_medals DESC;
 
 --------------------------------------------------------------------------------
 
--- WHERE vs HAVING
+-- WHERE vs HAVING 
+-- this would work to filter the list for events that have athletes over the age of 40.
 SELECT athletes
 FROM summer_games
 WHERE age > 40
 
 -- Better option
+-- Subqueries in the where clause works
 
+-- Doesnt work
+-- using the HAVING filter becuase it works after aggreagtions and that filters out entire events instead of individual athletes.
   
 
 
