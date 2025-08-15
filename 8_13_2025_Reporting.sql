@@ -49,7 +49,32 @@ WHERE age > 40
 -- Doesnt work
 -- using the HAVING filter becuase it works after aggreagtions and that filters out entire events instead of individual athletes.
   
+-------------------------------------------------------------------------------
 
+-- UNION ALL
+-- The goal is to create a report from summer and winter season events to find the unique number of events. 
+SELECT
+  'summer' as season,
+  country,
+  count(distinct event) as events
+FROM summer_games as s
+JOIN countries as c
+ON s.country_id = c.id
+GROUP BY country          -- column1: season, column2: country, col3: events
+
+UNION ALL
+
+SELECT
+  'winter' as season,
+  country,
+  count(distinct event) as events
+FROM winter_games as w
+JOIN countries as c
+ON w.country_id = c.id
+GROUP BY country
+ORDER BY events DESC;
+
+------------------------------------------------------------------------------
 
 
 
