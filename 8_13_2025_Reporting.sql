@@ -106,9 +106,23 @@ ORDER BY sport, athletes DESC;
 
 ------------------------------------------------------------------------------
 
+-- Labeling Nulls
+SELECT
+  sport,
+  CASE 
+  WHEN 100 * weight/height^2 <.25 THEN '<.25'
+  WHEN 100 * weight/height^2 <=.30 THEN '.25-.30'
+  WHEN 100 * weight/height^2 >.30 THEN '>.30'
+  ELSE 'no weight recorded'                    -- This covers NULL values
+  END AS bmi_bucket,
+  COUNT(DISTINCT athlete_id) AS athletes
+FROM summer_games as s
+JOIN athletes as a
+ON s.athlete_id = a.id
+GROUP BY sport, bmi_bucket
+ORDER BY sport, athletes DESC;
 
-
-
+------------------------------------------------------------------------------
 
 
 
