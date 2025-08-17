@@ -198,8 +198,27 @@ FROM country_stats;
 
 ---------------------------------------------------------------------------------
 
+-- Integer = Character Varying
+SELECT
+  s.country_id,
+  COUNT(DISTINCT s.athlete_id) as summer_athletes
+  COUNT(DISTINCT w.athelte_id) as winter_athletes
+FROM summer_games as s
+JOIN winter_games as w
+ON s.country_id = w.country_id
+GROUP BY s.country_id;
 
+-- Explanation: The query above will not work becase the 'country_id' for the summer_games table is an integer and the 'country_id' for the winter_games is character varying data type. To fix this error we will cast the CHARVAR data type
+SELECT
+  s.country_id,
+  COUNT(DISTINCT s.athlete_id) as summer_athletes
+  COUNT(DISTINCT w.athelte_id) as winter_athletes
+FROM summer_games as s
+JOIN winter_games as w
+ON s.country_id = CAST(w.country_id AS INT)      --- CAST( AS INT) fixed error
+GROUP BY s.country_id;
 
+--------------------------------------------------------------------------------
 
 
 
