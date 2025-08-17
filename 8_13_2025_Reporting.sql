@@ -171,6 +171,17 @@ LIMIT 10;
 -- Explanation: The query combines data from Summer and Winter games and filters for countries with at least one nobel prized winner however this condition can be changed for other business cases with different requirements. The Insight from this query that the top 4 events with the most unique athletes are female dominated ranging from 56-50 women in the swimming women's 4x100 metres Medly Relay at 56. The first male dominated event is the men's 4x200 metres freestyle relay also for swimming. 
 ------------------------------------------------------------------------------
 
+-- Identify Data Types
+-- The goal is to help plan your query for potential issues by identifying the issues with the current state of data types for each column.
+SELECT 
+  column_name,
+  data_type
+FROM information_schema.columms
+WHERE table_name = 'country_stats';
+  
+-- Explanation: A group of tables or schema provides information about the database itself. This is the non-default schema. The first column is the name of each column in the 'country_stats' table and then the data type column.
+
+---------------------------------------------------------------------------------
 
 
 
