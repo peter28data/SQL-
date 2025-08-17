@@ -220,11 +220,39 @@ GROUP BY s.country_id;
 
 --------------------------------------------------------------------------------
 
+-- DATE_PART() & DATE_TRUNC()
+SELECT
+  year,
+  DATE_PART('decade', CAST(year AS date)) AS decade,
+  DATE_TRUNC('decade', CAST(year AS date)) AS decade_truncated,
+  SUM(gdp) AS world_gdp
+FROM country_stats
+GROUP BY year
+ORDER BY year DESC;
 
+-- Explanation: The date_part() function extracts the decade part from the year field. The 'year' field is first cast as a date type to ensure compatibility with the date_part() function. This function turns the year 2016 into 201 and the year 2009 to the value 200 as this represents the decade each year value is in.
 
+-- Explanation: The date_trunc() function turns the value from the year field to the start of the year of the start of the decade. For example, 2016-01-01 is truncated to the value 2010-01-01 00:00:00+01:00.
 
+---------------------------------------------------------------------------------
 
+-- Lowercase Strings
+SELECT
+  country,
+  lower(country) as country_altered
+FROM countries
+GROUP BY country;
 
+-- Proper-Case Strings
+SELECT
+  country,
+  INITCAP(country) as country_altered
+FROM countries
+GROUP BY country;
+
+-- Explanation: The INITCAP() function uppercases the first character of each word and lowercases the rest of the word. For values with multiple words such as 'CAN - Canada' the function returns 'Can - Canada'. Another example is 'T.TO - TRINIDAD and Tobago' is turned into 'T.To - Trinidad And Tobago'. 
+
+---------------------------------------------------------------------------------
 
 
 
