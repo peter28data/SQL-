@@ -168,6 +168,7 @@ GROUP BY event
 ORDER BY athletes DESC          -- Events with the most athletes appear first
 LIMIT 10;
 
+-- Explanation: The query combines data from Summer and Winter games and filters for countries with at least one nobel prized winner however this condition can be changed for other business cases with different requirements. The Insight from this query that the top 4 events with the most unique athletes are female dominated ranging from 56-50 women in the swimming women's 4x100 metres Medly Relay at 56. The first male dominated event is the men's 4x200 metres freestyle relay also for swimming. 
 ------------------------------------------------------------------------------
 
 
