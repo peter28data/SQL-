@@ -124,7 +124,18 @@ ORDER BY sport, athletes DESC;
 
 ------------------------------------------------------------------------------
 
+-- Subquery to filter from Seperate table
+SELECT
+  SUM(bronze) AS bronze_medals,
+  SUM(silver) AS silver_medals,
+  SUM(gold) AS gold_medals
+FROM summer_games
+WHERE athlete_id IN
+  (SELECT id
+  FROM athletes
+  WHERE age <= 16);
 
+-------------------------------------------------------------------------------
 
 
 
