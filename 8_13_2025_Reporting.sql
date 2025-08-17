@@ -183,6 +183,20 @@ WHERE table_name = 'country_stats';
 
 ---------------------------------------------------------------------------------
 
+-- Covert to Float
+-- The first query will produce an error message
+SELECT
+  AVG(population_in_millions) AS avg_population
+FROM country_stats;
+
+-- this second query will work
+SELECT 
+  AVG(CAST(population_in_millions AS float)) AS avg_population
+FROM country_stats;
+
+-- Explanation: The first query attempts to find the average population from a table 'country_stats'. The population column was originally in 'character varying' data type which is unsuitable for an aggregation function such as AVG(). The second query converts this data type to a float before the aggregation function. 
+
+---------------------------------------------------------------------------------
 
 
 
@@ -193,6 +207,18 @@ WHERE table_name = 'country_stats';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
 
 -- List of Events
 SELECT DISTINCT event
