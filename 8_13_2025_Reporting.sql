@@ -144,13 +144,14 @@ SELECT
   WHEN event LIKE '%Women%' THEN 'female'
   ELSE 'male' END AS gender,
   COUNT(DISTINCT athlete_id) AS athletes
-FROM summer_games
-WHERE country_id IN (
+FROM summer_games                    -- Summer Olympic Games
+WHERE country_id IN (                -- Filters for Nobel-Prize Countries
   SELECT
   country_id
   FROM country_stats
   WHERE nobel_prize_winners > 0)
 GROUP BY event
+
 UNION
 SELECT
   event,
@@ -158,13 +159,13 @@ SELECT
   WHEN event LIKE '%Women%' THEN 'female'
   ELSE 'male' END AS gender,
   COUNT(DISTINCT athlete_id) AS athletes
-FROM winter_games
+FROM winter_games                  -- Winter Olympic Games
 WHERE country_id IN (
   SELECT country_id
   FROM country_stats
   WHERE nobel_prize_winners > 0)
 GROUP BY event
-ORDER BY athletes DESC
+ORDER BY athletes DESC          -- Events with the most athletes appear first
 LIMIT 10;
 
 ------------------------------------------------------------------------------
