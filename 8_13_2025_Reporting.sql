@@ -254,16 +254,69 @@ GROUP BY country;
 
 ---------------------------------------------------------------------------------
 
+-- The First 3 Characters
+SELECT
+  country,
+  LEFT(country,3) as country_altered
+FROM countries
+GROUP BY country;
 
+-- Start with 7th Character
+SELECT
+  country,
+  substring(country from 7) as country_altered
+FROM countries
+GROUP BY country;
 
+-- Explanation: The values seem to have the abbreviation in the first three characters so the LEFT() function is ideal to extract the abbreviation for countries. The SUBSTRING() function would be ideal to extract the full name of the country which starts at the 7th character in the strings. 
 
+---------------------------------------------------------------------------------
 
+-- Replace Characters
+SELECT
+  region,
+  replace(region, '.', ' ') AS remove_period
+FROM countries
+WHERE region = 'Latin Amer. & Carib'
+GROUP BY region;
 
+-- Explanation: we replace the period with a space in the string specified in the WHERE clause. Note that if we do not leave an space in between the third argument of the replace function, it will interpret this as removing a space and return the value 'Latin Amer& Carib'.
+SELECT
+  region,
+  REPLACE(replace(region, '.', ' '),'&','and') AS remove_period
+FROM countries
+WHERE region = 'Latin Amer. & Carib'
+GROUP BY region;
 
+-- Explanation: By using a nested replace() function we can remove the period and replace the '&' symbol with 'and'.
 
+--------------------------------------------------------------------------------
 
+-- Clean Event Strings
+-- Pull the number of distinct athletes by event
+SELECT
+  event,              -- leading white space
+  COUNT(DISTINCT athlete_id) as athletes
+FROM summer_games_messydata
+GROUP BY event;      -- 6 rows typed for 2 events
 
+-- Remove Leading/Trailing Spaces
+SELECT
+  trim(event) as event_fixed,           -- Removes Spaces
+  COUNT(DISTINCT athlete_id) as athletes
+FROM summer_games_messydata
+GROUP BY event;
 
+-----------------------------------------------
+
+-- Removes '-' with ''
+SELECT
+    REPLACE(TRIM(event),'-','') AS event_fixed, 
+    COUNT(DISTINCT athlete_id) AS athletes
+FROM summer_games_messy
+GROUP BY event_fixed;
+
+-- Explaination: The nested trim() function removes the leading and trailing whitespace and the outer replace() function removes the dash. An example of this would be '  men's- 200 metres' to 'men's 200 metres'.
 
 ---------------------------------------------------------------------------------
 
