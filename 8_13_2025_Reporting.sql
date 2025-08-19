@@ -357,8 +357,19 @@ FROM summer_game
 GROUP BY athlete_id
 ORDER BY total_events DESC, athlete_id;    -- By default ASC for athlete_id
 
+--------------------------------------------------------------------------------
 
+-- Replace Null for Avg
+SELECT
+	athlete_id
+	AVG(COALESCE(gold,0)) as avg_goals,
+	COUNT(event) as total_events,
+	SUM(gold) as gold_medals
+FROM summer_games
+GROUP BY athlete_id
+ORDER BY total_events DESC, athlete_id;
 
+--------------------------------------------------------------------------------
 
 
 
