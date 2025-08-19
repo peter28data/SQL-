@@ -403,10 +403,58 @@ ORDER BY medals_per_million DESC;
 
 --------------------------------------------------------------------------------
 
+-- Avg GDP for Each Country
+SELECT
+	country_id,
+	year,
+	gdp,
+	avg(gdp) OVER(PARTITION BY country_id) AS country_avg_gdp
+FROM country_stats;
 
+-- Explanation: The country_avg_gdp will be the same for each country id to compare if the year for that country is above or below the average for all years of that country.
+---------------------------------------------------------------------------------
 
+-- Highest GDP value for world
+SELECT
+	country_id,
+	year,
+	gdp,
+	MAX(gdp) OVER() AS global_max_gdp
+	-- Max GDP for Each Country
+	MAX(gdp) OVER (PARTITION BY country_id) AS country_max_gdp
+	-- Assign Regional Rank to Each Athlete
+	ROW_NUMBER() OVER (PARTITION BY region ORDER BY SUM(gold) DESC) AS row_num
+FROM country_stats
+JOIN athletes AS a
+ON a.id = s.athlete_id
+JOIN countries AS c
+ON s.country_id = c.id
+GROUP BY region, athlete_name;
 
+-- Explanation: The highest gdp value for the world, the Max GDP for each country, and a row number assigned to each athlete by the number of medals they won. 
 
+--------------------------------------------------------------------------------
+
+-- Top athlete by Medals Won from each Area
+SELECT
+	region,
+	athlete_name,
+	total_golds
+FROM (
+	SELECT
+	region,
+	name AS athlete_name,
+	SUM(gold) AS total_golds,
+	ROW_NUMBER() OVER (PARTITION BY region ORDER BY SUM(gold) DESC) AS row_num
+	FROM summer_games_clean AS s
+	JOIN athletes AS a
+	ON a.id = s.athlete_id
+	JOIN countries AS c
+	ON s.country_id = c.id
+	GROUP BY region, athlete_name) AS subquery
+WHERE row_num = 1;
+
+---------------------------------------------------------------------------------
 
 
 
