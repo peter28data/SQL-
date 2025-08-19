@@ -320,6 +320,49 @@ GROUP BY event_fixed;
 
 ---------------------------------------------------------------------------------
 
+-- NULL values are first when ORDER BY DESC
+SELECT 
+	country, 
+    SUM(gold) AS gold_medals
+FROM winter_games AS w
+JOIN countries AS c
+ON w.country_id = c.id
+
+WHERE gold IS NOT NULL    -- But can be removed with IS NOT NULL
+GROUP BY country
+
+ORDER BY gold_medals DESC;
+
+--------------------------------------------------------------------------------
+
+-- NULL values can be excluded in HAVING clause as well
+SELECT 
+  country,
+  SUM(gold) as gold_medals
+FROM winter_games as w
+JOIN countries as c
+ON w.country_id = c.id
+GROUP BY country
+HAVING SUM(gold) IS NOT NULL
+ORDER BY gold_medals DESC;
+
+--------------------------------------------------------------------------------
+
+-- Total Events for Summer Olympic Games
+SELECT
+  athlete_id,
+  count(event) as total_events,
+  sum(gold) as gold_medals
+FROM summer_game
+GROUP BY athlete_id
+ORDER BY total_events DESC, athlete_id;    -- By default ASC for athlete_id
+
+
+
+
+
+
+
 -- List of Events
 SELECT DISTINCT event
 FROM winter_games;
