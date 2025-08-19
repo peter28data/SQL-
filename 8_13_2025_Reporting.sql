@@ -387,6 +387,30 @@ ORDER BY medals DESC;
 
 --------------------------------------------------------------------------------
 
+-- Remove Leading Spaces, Convert to UpperCase, Remove '.', Only 3 Charactersr
+SELECT
+	left(replace(upper(trim(c.country)),'.',''),3) AS country_abreviation,
+	pop_in_millions,
+	SUM(COALESCE(bronze,0) + COALESCE(silver,0) + COALESCE(gold,0)) AS medals,
+	SUM(COALESCE(bronze,0) + COALESCE(silver,0) + COALESCE(gold,0)) / CAST(cs.pop_in_millions AS float) AS medals_per_million
+FROM summer_games AS s
+JOIN countries AS c
+ON s.country_id = c.id
+JOIN country_stats AS cs
+ON s.country_id = cs.country_id AND s.year = CAST(cs.year AS date) -- Removes dup
+GROUP BY c.country, pop_in_millions
+ORDER BY medals_per_million DESC;
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 -- List of Events
 SELECT DISTINCT event
