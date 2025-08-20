@@ -456,6 +456,20 @@ WHERE row_num = 1;
 
 ---------------------------------------------------------------------------------
 
+-- GDP per Capita Performance Index
+-- A calculation to compare efficiency metrics across groups. A performance index compares each row to a benchmark.
+SELECT
+	region,
+	country,
+	sum(gdp) / sum(pop_in_millions) as gdp_per_million
+FROM country_stats_clean as c
+JOIN countries as c
+ON cs.country_id = c.id
+WHERE year = '2016-01-01' AND gdp IS NOT NULL
+GROUP BY region, country
+ORDER BY gdp_per_million DESC;
+
+--------------------------------------------------------------------------------
 
 
 
