@@ -461,20 +461,155 @@ WHERE row_num = 1;
 SELECT
 	region,
 	country,
-	sum(gdp) / sum(pop_in_millions) as gdp_per_million
-FROM country_stats_clean as c
+	sum(gdp) / sum(pop_in_millions) as gdp_per_million,
+	
+	-- Total Pop in Millions Across All Countries
+	SUM(SUM(gdp)) OVER() / SUM(SUM(pop_in_millions)) OVER() AS gdp_per_million_total,			  
+	
+	-- Performance Index Below
+	(SUM(gdp) / SUM(pop_in_millions)) / (SUM(SUM(gdp)) OVER() / SUM(SUM(pop_in_millions)) OVER()) AS performance_index
+
+FROM country_stats_clean as cs
 JOIN countries as c
 ON cs.country_id = c.id
 WHERE year = '2016-01-01' AND gdp IS NOT NULL
 GROUP BY region, country
 ORDER BY gdp_per_million DESC;
 
+-- Explanation: Dividing the gdp per million by the gdp per million total. Each country's GDP comparing to the global average. A value greater than 1 indicates a country is performing above the global average. 
+
 --------------------------------------------------------------------------------
 
+-- Month Over Month Comparison
+-- The LAG() function outputs a value from an offset number previous to the current row, and LEAD() outputs the number after the current row.
+SELECT
+date_part('month', date) as month,		-- Returns 1 for Jan, 2 for Feb
+country_id,
+
+-- Views from each Country's Webpage promotion
+sum(views) as month_views,
+LAG(sum(views) OVER(PARTITION BY country_id ORDER BY date_part('month', date)) as previous_month_views,
+
+-- Percent Change
+sum(views) / LAG(sum(views)) OVER(partition by country_id order by date_part('month', date)) - 1 as percent_change
+
+FROM web_data
+WHERE date <= '2018-05-31'
+GROUP BY month, country_id;
+
+--------------------------------------------------------------------------------
+
+-- Week Over Week Comparison
+-- This requires looking back the past 7 days or forward 7 days
+SELECT
+date,
+sum(views) as daily_views,
+
+avg(sum(views)) OVER(order by date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) as weekly_avg
+
+FROM web_data
+GROUP BY date;
+	
+---------------------------------------------------------------------------------
+
+-- Weekly average from last week
+-- Calculate the current 7 day rolling average and the 7 day rolling average from a week prior.
+SELECT
+date,
+weekly_avg,
+	
+LAG(weekly_avg,7) OVER(order by date) as weekly_avg_previous
+
+FROM (
+	SELECT
+	date,
+	sum(views) as daily_views,
+	avg(sum(views)) OVER(order by date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) as weekly_avg
+	FROM web_data
+	GROUP BY date) as subquery
+ORDER BY date desc;
+
+---------------------------------------------------------------------------------
+
+-- Percent Change
+-- By calculating for the previous row, the previous 6 days for a 7 day total average, we can now find the percent change week over week for a quick analysis of performance. 
+SELECT
+date,
+weekly_avg,
+
+LAG(weekly_avg,7) OVER(order by date) as weekly_avg_previous,
+
+weekly_avg / LAG(weekly_avg,7) OVER(order by date) - 1 as percent_change
+
+FROM (
+	SELECT
+	date,
+	sum(views) as daily_views,
+	avg(sum(views)) OVER(order by date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) as weekly_avg
+	FROM web_data
+	GROUP BY date) as subquery
+ORDER BY date desc;
+
+--------------------------------------------------------------------------------
+
+-- Tallest Athletes and % GDP by Region
+-- The tallest athletes within their regions and the percentage of the worlds GDP attributed to their region. First we prepare the the row number to partition by country IDs and order by tallest athletes descending.
+SELECT
+country_id,
+height,
+
+ROW_NUMBER() OVER(partition by country_id order by height desc) as row_num
+
+FROM winter_games as w
+JOIN athletes as a
+ON w.athlete_id = a.id
+GROUP BY country_id, height
+ORDER BY country_id, height desc;
+
+---------------------------------------------------------------------------------
+
+-- Tallest Athletes and % GDP by Region
+-- The tallest athletes within their regions and the percentage of the worlds GDP attributed to their region.
+SELECT
+region,
+round(avg(height),2) as avg_tallest,
+
+round(sum(gdp)/sum(sum(gdp)) OVER(),3) as percent_world_gdp
+
+FROM countries as c
+JOIN (
+	SELECT
+	country_id,
+	height,
+	ROW_NUMBER() OVER(partition by country_id order by height desc) as row_num
+	FROM winter_games as w
+	JOIN athletes as a ON w.athlete_id = a.id
+	GROUP BY country_id, height
+	ORDER BY country_id, height desc) as subquery
+ON c.id = subquery.country_id
+JOIN country_stats as cs
+ON cs.country_id = c.id
+WHERE row_num = 1 
+GROUP BY region;
+
+---------------------------------------------------------------------------------
 
 
 
--- List of Events
-SELECT DISTINCT event
-FROM winter_games;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
