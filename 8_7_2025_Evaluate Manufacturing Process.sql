@@ -67,3 +67,5 @@ AVG(discount) over (partition by product_id) as avg_discount,
 
 
 
+
+
