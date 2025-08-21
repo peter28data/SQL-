@@ -34,3 +34,34 @@ FROM (
 	) AS a
 	WHERE a.row_number >= 5
 ) AS b;
+
+----------------------------------------------------------------------------------
+
+-- Window Functions
+-- MIN/MAX can are available as window functions. In the case of retail, creating a new column with the minimum and maximum discount for different product IDs can be helpful for at-a-glance analysis.
+SELECT
+order_id,
+product_id,
+discount,
+MIN(discount) over (partition by product_id) as min_discount,
+MAX(discount) over (partition by product_id) as max_discount,
+AVG(discount) over (partition by product_id) as avg_discount,
+
+-- Returns the nth value in an ordered set of values
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
