@@ -47,11 +47,45 @@ MIN(discount) over (partition by product_id) as min_discount,
 MAX(discount) over (partition by product_id) as max_discount,
 AVG(discount) over (partition by product_id) as avg_discount,
 
--- Returns the nth value in an ordered set of values
+---------------------------------------------------------------------------------------
+	
+-- PARTITION BY
+-- What if we want to compare each product's price with the average of that year? to do that we use the avg() window function and partition by the model year as such
+SELECT
+	model_year,
+	product_name,
+	list_price,
+	AVG(list_price) OVER (partition by model_year) as avg_price
+FROM products_table
 
+-- Explanation: Notice how the avg_price of 2018 is exactly the same whether we use the partition by clause or the group by clause. Both of these queries return the same results but the Window functions free up the GROUP BY clause for other uses.
+SELECT
+	model_year,
+	product_name,
+	list_price,
+	AVG(list_price) as avg_price
+FROM products_table
+GROUP BY model_year
 
+	
+-----------------------------------------------------------------------------------------
 
+-- WINDOW Keyword
+-- To reuse the same window with several window functions, defining a named window using the WINDOW keyword will appear after the HAVING section and before the ORDER BY section.
+   SELECT
+    window_function() OVER(window_name)
+    FROM table_name
 
+    WINDOW window_name AS (
+         PARTITION BY partition_expression
+         ORDER BY order_expression
+         window_frame_extent
+    )
+  
+
+---------------------------------------------------------------------------------------
+
+-- WINDOW keyword
 
 
 
