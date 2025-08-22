@@ -48,6 +48,15 @@ MAX(discount) over (partition by product_id) as max_discount,
 AVG(discount) over (partition by product_id) as avg_discount,
 
 ---------------------------------------------------------------------------------------
+
+-- ORDER BY
+SELECT
+	product_name,
+	list_price,
+	RANK() OVER ( order by list_price desc) as rank
+FROM products
+	
+---------------------------------------------------------------------------------------
 	
 -- PARTITION BY
 -- What if we want to compare each product's price with the average of that year? to do that we use the avg() window function and partition by the model year as such
