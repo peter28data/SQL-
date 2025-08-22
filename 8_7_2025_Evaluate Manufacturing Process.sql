@@ -48,23 +48,6 @@ MAX(discount) over (partition by product_id) as max_discount,
 AVG(discount) over (partition by product_id) as avg_discount,
 
 ---------------------------------------------------------------------------------------
-
--- ORDER BY
-SELECT
-	product_name,
-	list_price,
-	ROW_NUMBER() over (order by list_price) as row_num,
-	
-	DENSE_RANK() over (order by list_price) as dense_rank,
-	RANK() over ( order by list_price desc) as rank,
-	PERCENT_RANK() over (order by list_price) as pct_rank,
-	
-	NTILE(75) over (order by list_price) as ntile,
-	CUME_DIST() over (order by list_price) as cume_dist
-	
-FROM products
-	
----------------------------------------------------------------------------------------
 	
 -- PARTITION BY
 -- What if we want to compare each product's price with the average of that year? to do that we use the avg() window function and partition by the model year as such
@@ -87,6 +70,41 @@ GROUP BY model_year
 	
 -----------------------------------------------------------------------------------------
 
+-- ORDER BY
+SELECT
+	product_name,
+	list_price,
+	ROW_NUMBER() over (order by list_price) as row_num,
+	
+	DENSE_RANK() over (order by list_price) as dense_rank,
+	RANK() over (order by list_price desc) as rank,
+	PERCENT_RANK() over (order by list_price) as pct_rank,
+	
+	NTILE(75) over (order by list_price) as ntile,
+	CUME_DIST() over (order by list_price) as cume_dist
+	
+FROM products
+
+---------------------------------------------------------------------------------------
+
+-- Value Window Functions
+SELECT
+	product_name,
+	list_price,
+	FIRST_VALUE(list_price) over (order by list_price ROWS BETWEEN UNBOUNDED PRECEDING 
+		AND UNBOUNDED FOLLOWING) as cheapest_price,
+
+	LAST_VALUE(list_price) over (order by list_price ROWS BETWEEN UNBOUNDED PRECEDING
+		AND UNBOUNDED FOLLOWING) as highest_price,
+
+	NTH_VALUE(list_price,4) over (order by list_price ROWS BETWEEN UNBOUNDED PRECEDING
+		AND UNBOUNDED FOLLOWING) as 4th_cheapest
+FROM products
+
+	
+
+---------------------------------------------------------------------------------------
+	
 -- WINDOW Keyword
 -- To reuse the same window with several window functions, defining a named window using the WINDOW keyword will appear after the HAVING section and before the ORDER BY section.
    SELECT
