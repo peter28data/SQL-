@@ -53,7 +53,15 @@ AVG(discount) over (partition by product_id) as avg_discount,
 SELECT
 	product_name,
 	list_price,
-	RANK() OVER ( order by list_price desc) as rank
+	ROW_NUMBER() over (order by list_price) as row_num,
+	
+	DENSE_RANK() over (order by list_price) as dense_rank,
+	RANK() over ( order by list_price desc) as rank,
+	PERCENT_RANK() over (order by list_price) as pct_rank,
+	
+	NTILE(75) over (order by list_price) as ntile,
+	CUME_DIST() over (order by list_price) as cume_dist
+	
 FROM products
 	
 ---------------------------------------------------------------------------------------
