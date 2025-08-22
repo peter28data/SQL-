@@ -13,26 +13,27 @@ SELECT
 		THEN TRUE
 		ELSE FALSE
 	END as alert
+-- Main Query: Has only SELECT above and FROM below:
 FROM (
-	SELECT
+	select
 		a.*, 
 		a.avg_height + 3*a.stddev_height/SQRT(5) AS ucl, 
 		a.avg_height - 3*a.stddev_height/SQRT(5) AS lcl  
-	FROM (
-		SELECT 
+	from (
+		select 
 			operator,
 			ROW_NUMBER() OVER w AS row_number, 
 			height, 
 			AVG(height) OVER w AS avg_height, 
 			STDDEV(height) OVER w AS stddev_height
-		FROM manufacturing_parts 
+		from manufacturing_parts 
 		WINDOW w AS (
 			PARTITION BY operator 
 			ORDER BY item_no 
 			ROWS BETWEEN 4 PRECEDING AND CURRENT ROW
 		)
 	) AS a
-	WHERE a.row_number >= 5
+	where a.row_number >= 5
 ) AS b;
 
 ----------------------------------------------------------------------------------
