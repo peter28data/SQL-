@@ -24,7 +24,7 @@ SELECT products.category,
 ) AS tmp
 WHERE product_rank < 6;
 
-
+-- Explanation: By casting the sales column as numeric
 
 ---------------------------------------------------------------------------------------------
 
