@@ -73,6 +73,8 @@ SELECT rank, title
 DROP TABLE top_companies;
 DROP TABLE IF EXISTS top_companies;     -- avoids error message
 
+-- Explanation: This is helpful is we want to save calculations without changing the original data.
+
 ----------------------------------Ch.3: Categorical & Unstructured Text-------------------------
 /* 
 */
