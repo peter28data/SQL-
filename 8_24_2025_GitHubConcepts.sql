@@ -11,3 +11,9 @@ commit changes.
 
 -----------------------------------------------------------------
 
+Your Goal: Create a New Branch
+1. click the branch icon
+2. click the new branch icon
+fill out the branch name section to name the branch
+choose the branch source
+ clicke th create brnch button
