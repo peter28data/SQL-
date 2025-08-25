@@ -30,3 +30,13 @@ click create fork
 
 -------------------------------------
 
+Create and Close and Issue
+1. navigate to the repo that you want to create an issue for
+click on the issues tab
+click on new issue
+write the issue and assign it to a teammate
+submit the issue
+provide feedback through comments and close the issue
+
+-------------------------------------
+
