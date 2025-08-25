@@ -17,3 +17,16 @@ Your Goal: Create a New Branch
 fill out the branch name section to name the branch
 choose the branch source
  clicke th create brnch button
+
+-------------------------------------
+
+Forking a Public Repo
+1. navigate to the fork button
+select create a new fork from the dropdown
+select the owner
+add a name to the forked repo
+select the branch to fork
+click create fork
+
+-------------------------------------
+
