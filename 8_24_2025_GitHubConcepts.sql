@@ -40,3 +40,36 @@ provide feedback through comments and close the issue
 
 -------------------------------------
 
+Create a Pull Request
+1. navigate to the pull requests tab and click on new pull request
+select the borrect base and compare branches
+check for and resolve any conflicts
+click on create pull request
+add a title and description for the pr
+click on create pull request again
+
+-------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
