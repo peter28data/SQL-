@@ -49,6 +49,15 @@ add a title and description for the pr
 click on create pull request again
 
 -------------------------------------
+*/
+
+
+count(case when temp_f >75 then 1 end)
+over(order by dsate
+ rows between unbounded preceding and current row) hot_days
+
+
+sum(docks) over() as total_docks
 
 
 
