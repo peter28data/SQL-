@@ -11,6 +11,25 @@ Explanation: The libraries and version of each are required in this file.
 
 -------------------------------------
 
+.devcontainer/
+Explanation: Defines a development container used with GitHub Codespace or VS Code Remote Containers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
+
 To Create a New Directory 
 -This makes a new folder in the main branch.
 
