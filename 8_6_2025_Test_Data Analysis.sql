@@ -11,6 +11,10 @@ SELECT
   SPLIT_PART(genre,',',1) AS main_genre  -- Wrong
   genre[1] AS main_genre                 -- Correct
 
+
+----------------------------------------------------------------------------------------------
+  
+  
 --7 determine the highest count of bottles amongst all types with CTE
 WITH type_count as (
   SELECT type, count(id) as bottle_count
@@ -52,6 +56,10 @@ FROM (
 --12 Cast 2 weeks as a Time interval
 SELECT CAST('2 weeks' AS INTERVAL); -- wrong ->INTERVAL 2 WEEK AS interval_value;    -- Returns 14 days 0:00:00
 -- This statement converts the string '2 weeks' into an INTERVAL type. 
+
+
+
+----------------------------------------------------------------------------------------------------
 
 --14 Use a CTE to aggregate the date from current date to have a column for days overdue
 -- Then filter that CTE with the final query in the where clause for 60+ days overdue
