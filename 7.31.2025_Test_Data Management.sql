@@ -17,16 +17,6 @@ having avg(price) 2
 
 
 
---4 Join table but keep all the records no mater whether they a match
-SELECT
-  trip_id,
-  duration,
-  bike_id
-  FROM bike_trips as t
-  FULL JOIN bike as b
-  on t.bike_id = b.bike_id
-
-  
 
 --6 return rows where the title contains 'k' or 'm' only in lowercase
 WHERE title SIMILAR TO '%(k|m)%';    -- LIKE can be used for lowercase specific character
@@ -36,6 +26,11 @@ WHERE title SIMILAR TO '%(k|m)%';    -- LIKE can be used for lowercase specific 
 --7 the title does Not only contain word characters(letters, numbers or underscores)
 WHERE title NOT SIMILAR TO '\w*';
 
+
+
+--15 return the movie titles which only includes four letters
+-- Wrong--WHERE title LIKE length(title) =4;
+WHERE title LIKE '____';    -- 4 underscores indicate 4 characters
 
 
 --8 Pattern Matching is to prepare and clean a table, for this query, the goal is to retrieve the orders from Canada from the 'id' column. 
@@ -73,7 +68,7 @@ EXTRACT(month FROM date::DATE) AS month,
 MAX(price) - MIN(price) AS difference
 
 
-
+---------------------------------------------------------------
   
 --14 bike_stations contains newly built bike locations. bike_trips contains bike trips on new locations or previously existing ones. return each bike trip only started in newly built bike stations.
 SELECT
@@ -87,12 +82,16 @@ on t.stating_station = s.station_id;
 -- The explanation is because a left join will return NULL for columns where there is no match with the right side. An inner join will return only matched records. 
 
 
+--4 Join table but keep all the records no mater whether they a match
+SELECT
+  trip_id,
+  duration,
+  bike_id
+  FROM bike_trips as t
+  FULL JOIN bike as b
+  on t.bike_id = b.bike_id
 
---15 return the movie titles which only includes four letters
--- Wrong--WHERE title LIKE length(title) =4;
-WHERE title LIKE '____';    -- 4 underscores indicate 4 characters
-
-
+  
 
 --------------------------------------------------------------------------------------------
 --15 return number of duplicates records
