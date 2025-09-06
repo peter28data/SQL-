@@ -184,4 +184,38 @@ WHERE bikes_available < 1
 OR bikes_available > 10;
 
 
+-----------------------------------------------------------------------------
+
+
+-- combine 2 columns with a comma and space into the new column
+SELECT vendor_name,
+CONCAT(vendor_city,', ',vendor_state) AS location
+FROM vendors
+LIMIT 3;
+
+
+-- split the title into 2 parts
+SELECT year,
+SPLIT_YEAR(title,':',1) AS name,
+
+SPLIT_YEAR(title,':',1) AS series
+FROM movie_budget;
+
+
+---------------------------------------------------------------------------
+
+
+-- The movie with the longest title
+SELECT year, title, budget,
+LENGTH(title) AS title_len
+FROM movie_budget
+ORDER BY title_len DESC      -- This will ensure the longest title is returned
+LIMIT 1;
+
+---------------------------------------------------------------------------
+
+-- Validate the date by Returning the rows that the installation_date is not a date in 2013
+SELECT * 
+FROM station
+WHERE installation_date NOT BETWEEN '2013-01-01' AND '2013-12-31';
 
