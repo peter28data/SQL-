@@ -49,9 +49,21 @@ df.info()
 
 # This occurred due to the Removing Outliers < 0. Null values are seen as less than zero, therefore we removed the null values before being able to replace them.
 
+df = df[df['clicks']>=0]
 
+# Note: This function will have removed rows that had null values only for the 'clicks' column. Therefore, our Replacing function did replace null values for the '
 
+-------------------------------------
 
+# Change Data Type
+# The 'cost' column is an object datatype which may cause a problem when computing graphs or statistics. First we will convert it to a string type, remove the '$' sign with ''empty space
+df['cost'] = df['cost'].astype(str).str.replace('$','',regex=False).astype(float)
+
+# Note: The last part of the code turns the 'cost' column to a float datatype. Initially it was converted to a string to be able to use a string function to remove the '$' sign.
+
+# The regex=False tells the function to treat the pattern as a literal string rather than a regular expression pattern.
+
+-------------------------------------
 
 
 
