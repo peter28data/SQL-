@@ -17,12 +17,12 @@ df['clicks'].describe()
 # We find that there is a minimum value of -100 for number of clicks column, therefore we must investigate the problem.
 
 
-# Investigate
+# Investigate Outliers
 negative_clicks = df[df['clicks']<0]
 len(negative_clicks)
 # Here we can use the length function to see how many rows have a negative value in the 'clicks' column. In this case it is two rows with negative values.
 
-# Remove
+# Remove Outliers
 # By assigning the dataframe variable to only values greater than or equal to 0, we can remove the rows with negative values
 df = df[df['clicks']>=0]
 check_if_any_negatives = df[df['clicks']<0]
@@ -43,4 +43,31 @@ for col in cols_missing_values:
 -------------------------------------
 
 
-#
+# Validate Missing Values were Replaced
+df.info()
+# We begain with 1000 entries and 899 non-null values for clicks and impression. However, after Validating our work we can only see 895 entries for ALL columns.
+
+# This occurred due to the Removing Outliers < 0. Null values are seen as less than zero, therefore we removed the null values before being able to replace them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
