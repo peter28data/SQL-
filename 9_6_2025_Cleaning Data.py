@@ -30,4 +30,17 @@ check_if_any_negatives
 
 ---------------------------------------------------------------------------
 
+# Replace Missing Values
+# By using the fillna() function we can replace the missing values with the mean value. First we create a variable to define a list of the column names. Next we use a for loop to find the mean for the first item in the list and the second step of the for loop will be to replace all missing values with the mean found from the first step.
 
+cols_missing_values = ['clicks', 'impression']
+for col in cols_missing_values:
+  mean_value = df[col].mean()
+  df[col].fillna(mean_value,inplace=True)
+
+# This replaces all missing values for the clicks column and then all the missing values in the impression column.
+
+-------------------------------------
+
+
+#
