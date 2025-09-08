@@ -24,4 +24,4 @@ WHERE gender NOT IN ('Male', 'Female');
 SELECT DISTINCT product_name
 FROM your_table
 WHERE LOWER(product_name) = product_name OR
-UPPER
+UPPER(product_name) = product_name;
