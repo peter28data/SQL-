@@ -39,7 +39,16 @@ WHERE product_review IS NULL;
 
 -- Create new Column
 -- An empty "last_purchase_date" can be translated to a "purchased_recently" column, with values 0 for "no" and 1 for "yes".
-ALTER TABLE                                                                                                                                                                  
+ALTER TABLE your_table
+ADD purchased_recently INT;
+
+UPDATE your_table
+SET purchased_recently = CASE WHEN last_purchase_date IS NULL THEN 0
+ELSE 1
+END;
+
+
+--
 
 
 
