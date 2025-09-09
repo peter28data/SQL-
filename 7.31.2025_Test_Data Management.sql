@@ -219,3 +219,56 @@ SELECT *
 FROM station
 WHERE installation_date NOT BETWEEN '2013-01-01' AND '2013-12-31';
 
+-------------------------------------
+
+
+SELECT 
+start_station,
+subscription_type,
+count(start_date) as trips,
+(select count(start_date)
+  from trip as t1
+  where t.start_station = t1.start_station) as station_total
+from trip as t
+group by start_station, subscription_type
+order by start_station
+limit 3;
+
+
+
+with s as (
+  select
+  start_station,
+  count(start_date) as starts
+  from trip 
+  group by start_station)
+select
+t.end_station as station,
+count(t.end_datae) as ends,
+s.starts
+from trip as t
+inner join s
+ on t.end_station = s.start_station
+group by station, starts
+limit 3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
