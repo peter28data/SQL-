@@ -48,6 +48,18 @@ ELSE 1
 END;
 
 
+-- Estimate Values with Rolling Averages or Forward Fils
+
+-- Fill with Average
+UPDATE your_table
+SET temperature = (
+  SELECT AVG(temperature)
+  FROM your_table
+  WHERE temperature IS NOT NULL
+)
+WHERE temperature IS NULL;
+
+
 --
 
 
