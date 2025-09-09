@@ -59,6 +59,10 @@ SET temperature = (
 WHERE temperature IS NULL;
 
 
+
+--------------------------------------------------------------------------
+
+
 -- Outliers
 -- Use Case: We detect grocery shoppers spending $0.05 annually which is unusually low and may affect the majority of the data when calculated averages.
 
@@ -92,18 +96,34 @@ FROM (
   ) AS trimmed_data;
 
 
---
+--------------------------------------------------------------------------
 
 
 
 
 
 
+-- Contaminated Data
+-- Refers to the inclusion of incorrect, irrelevant, or outdated information that can distort results, leading to misleaing insights. 
+
+-- Use Case: For a Retail business selling fine jewelry, we can spot that a gold necklace was sold for $12 which requires domain knowledge to spot the irregularly low price of fine jewelry.
 
 
 
+-- Inconsistent Data
+-- Different date formats are a common source for inconsistent data. When different departments from different managers merge their data together inconsistencies are inevitable. 
+
+-- Use Case: A company's sales data from various branches across the world show a European date format "DD/MM/YYYY", the American branches use "MM/DD/YYYY".
 
 
+
+-- Duplicate Data
+-- 2.7 Identify and Retain only one 
+SELECT DISTINCT *
+FROM your_table
+
+
+-- 
 
 
 
