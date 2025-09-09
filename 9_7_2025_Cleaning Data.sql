@@ -1,3 +1,4 @@
+--------------------Step 1: Identify the Leak -----------------
 -- 1.1 Identify the Data Leak
 -- Check if th3ere are any rows or entire columns with no data.
 SELECT * FROM your_table WHERE product_name IS NULL;
@@ -25,3 +26,39 @@ SELECT DISTINCT product_name
 FROM your_table
 WHERE LOWER(product_name) = product_name OR
 UPPER(product_name) = product_name;
+
+
+--------------------Step 2: Fix the Leak -----------------
+
+-- 2.1 Missing Data
+-- It can present itself as 0, "0", blank fields, "Not Specified", "N/A", "#N/A", None, NaN, NULL, or Infinity.
+
+-- Drop Rows where Null
+DELETE FROM your_table
+WHERE product_review IS NULL;
+
+-- Create new Column
+-- An empty "last_purchase_date" can be translated to a "purchased_recently" column, with values 0 for "no" and 1 for "yes".
+ALTER TABLE                                                                                                                                                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
