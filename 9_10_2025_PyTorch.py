@@ -35,4 +35,34 @@ linear_layer = nn.Linear(
                           out_features=2
 )
 
-# 
+# Pass Input through the Linear Layer to get an two Output Neurons
+output = linear_layer(input_tensor)
+print(output)
+# Returns: tensor([[-0.2415, -0.1604]], grad_fn=<AddmmBackward0>)
+
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
