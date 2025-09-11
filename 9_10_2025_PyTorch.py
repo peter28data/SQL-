@@ -40,10 +40,15 @@ output = linear_layer(input_tensor)
 print(output)
 # Returns: tensor([[-0.2415, -0.1604]], grad_fn=<AddmmBackward0>)
 
-#
 
+# Weights and Biases
+print(linear_layer.weight)
+# Returns: Parameter containing: tensor([[-0.4799, 0.4996, 0.1123], [-0.0365, -0.1855, 0.0432]], requires_grad=True)
+print(linear_layer.bias)
+# Returns: Parameter containing: tensor([0.0310, 0.1537], requires_grad=True)
 
-
+# The Weights reflect the importance of different features
+# the Bias is independent of the weight that provides the neuron with a baseline output
 
 
 
