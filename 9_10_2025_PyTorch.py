@@ -20,3 +20,19 @@ print(a @ b)
 
 
 # --------------------------------------------------------------------------
+
+# Neural Networks
+# Made up of Input Layer, Hidden Layer, and Output Layer
+import torch.nn as nn
+
+# The Input Neurons are Features, Here we create three Features. Note: Ouput Neurons are Classes
+input_tensor = torch.tensor(
+  [[0.3471, 0.4547, -0.2356]])
+
+# We define our Linear Layer which connects the Input Neurons to the Hidden Layer
+linear_layer = nn.Linear(
+                          in_features=3,
+                          out_features=2
+)
+
+# 
