@@ -77,6 +77,12 @@ order by year;
 ---------------------------------------------------------------------------------------------------------------
   
 
+-- 2 TYPES of Functions
+SELECT 
+  DATE_PART('hour', date_created) AS hour,
+  EXTRACT(month FROM date_created) AS month
+FROM orders
+
 
 
 
