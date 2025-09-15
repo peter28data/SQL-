@@ -30,7 +30,7 @@ FROM customer;
 SELECT
   username, first_name, last_name
 FROM users
-WHERE username ~ '[0-9]*';     --??
+WHERE username ~ '[0-9]$';     --??
 
 --------------------------------------------------------------------------
 
