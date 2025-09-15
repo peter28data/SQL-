@@ -25,6 +25,7 @@ SELECT
 FROM users
 WHERE username ~ '[0-9]$';     -- john9x would not work bc it ends with x, the '$'  matches the end
 
+
 --------------------------------------------------------------------------
 
 
@@ -33,6 +34,7 @@ SELECT
   pg_typeof(amount_paid) AS "Data Type"    -- Double quotes perserves the space and proper case
 FROM customers
 
+  
 --------------------------------------------------------------------------
 
 
@@ -41,19 +43,37 @@ FROM customers
 ALTER TABLE employee
 ALTER COLUMN employee_name TYPE VARCHAR
 
+  
 --------------------------------------------------------------------------
 
+-- Combine Tables
+-- Union ALL allows for two select statements and allows for duplicates which is important to count whether each song appears once or twice in two tables of popular tracks in Europe and North America.
+SELECT name, COUNT(*) FROM
+  (SELECT name FROM top_eu_tracks
+  UNION ALL 
+  SELECT song_name FROM top_na_tracks
+  ORDER BY name DESC) AS all_tracks
 
--- Online Gaming service
--- information about each usernames remaining credits and account creation, write a query to view the average amount of credits for users whose accounts were created in each year
-SELECT 
-  TO_CHAR(created, 'YYYY') AS year,
-  credits::DECIMAL (4,2) AS mean_credit
-from accounts
-group by year    -- Can only group by year since it is a text data type
-order by year;
+GROUP BY name
+ORDER BY all_tracks, name
+LIMIT 5;
 
----------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------
+
+
+-- First Letter
+-- Extract the name of artists that start with a vowel
+SELECT DISTINCT name
+FROM artists
+WHERE LEFT(name, 1) IN ('A', 'E', 'I', 'O', 'U')
+
+ORDER BY name
+LIMIT 7;
+
+
+--------------------------------------------------------------------------------------------------------------
+
   
 -- 2 TYPES of Functions
 SELECT 
@@ -65,8 +85,20 @@ SELECT
   EXTRACT(month FROM date_created) AS month
   -- Extract Title: Can be done by splitting the string
   SPLIT_PART(title,':',1) AS name,    -- variable, delimiter, before or after
+  -- Combine Strings
+  CONCAT(vendor_city,', ',vendor_state) AS location
+  -- Number of Characters
+  LENGTH(title) AS title_length
+  -- Second Genre
+  genre[2] as second_genre,
+  -- 4 numbers total, 2 decimals
+  credits::DECIMAL (4,2) AS mean_credit
   
 FROM orders
+WHERE vendor_city IN ('SEATTLE', 'AUSTIN') 
+  OR installation_date NOT BETWEEN '2013-01-01' AND '2013-12-31'
+  OR 'Reggaeton' = ANY(genre)    -- 'Reggaeton' appears in Any Element of the genre array
+ORDER BY title_length DESC
 
 --------------------------------------------------------------------------
 
