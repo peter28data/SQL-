@@ -103,7 +103,10 @@ ORDER BY title_length DESC
 --------------------------------------------------------------------------
 
 
+-- Visualization Choice
+-- is a scatterplot, pivot table, or line graph best visualization to create an aggregation of numeric values across two categorical dimensions?
 
+-- Pivot Table: One numeric measure such as sales, count, or profit, aggregated by SUM, AVG, COUNT, and broken down by two categorical dimensions such as Region and Product Type.
 
 
 
