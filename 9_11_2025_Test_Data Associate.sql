@@ -25,6 +25,26 @@ SELECT
 FROM users
 WHERE username ~ '[0-9]$';     -- john9x would not work bc it ends with x, the '$'  matches the end
 
+UPDATE accounts
+  SET user_name = REGEXP_REPLACE(username, '[0-9]', '', 'g');   -- 'g' is a global flag that ensures all digits are removed, not just the first. 
+
+
+-- Replace with Average
+SELECT
+  COALESCE(audience_score, (SELECT AVG(audience_score) FROM movies)) AS audience_score
+FROM movies
+
+
+-- Contains Underscore
+SELECT 
+  first_name, last_name
+FROM users
+WHERE username LIKE '%!_%' ESCAPE '!';
+
+-- % Matches any number of characters
+-- !_ Escapes the underscore to match a literal underscore
+-- ESCAPE '!' Tells SQL that ! is the escape character
+
 
 --------------------------------------------------------------------------
 
@@ -50,7 +70,9 @@ ALTER COLUMN employee_name TYPE VARCHAR
 -- Union ALL allows for two select statements and allows for duplicates which is important to count whether each song appears once or twice in two tables of popular tracks in Europe and North America.
 SELECT name, COUNT(*) FROM
   (SELECT name FROM top_eu_tracks
+  
   UNION ALL 
+  
   SELECT song_name FROM top_na_tracks
   ORDER BY name DESC) AS all_tracks
 
@@ -102,24 +124,79 @@ ORDER BY title_length DESC
 
 --------------------------------------------------------------------------
 
-
 -- Visualization Choice
--- is a scatterplot, pivot table, or line graph best visualization to create an aggregation of numeric values across two categorical dimensions?
+
+-- Is a scatterplot, pivot table, or line graph best visualization to create an aggregation of numeric values across two categorical dimensions?
 
 -- Pivot Table: One numeric measure such as sales, count, or profit, aggregated by SUM, AVG, COUNT, and broken down by two categorical dimensions such as Region and Product Type.
 
+-- Bar Chart: Compares categories such as Region and Product Type
+
+-- Histogram: Show the distribution of a numeric variable such as age, groups data into bins, and shows the frequency within each bin. By overlaying two histograms you can compare two populations or use Density Plots.
 
 
+--------------------------------------------------------------------------
+
+-- 9/16/2025
+
+-- Analyze Customer Feedback
+SELECT
+  ROUND(AVG(rating),2) AS average_rating,
+  ROUND(STDDEV(rating),2) AS standard_deviation
+FROM customer_reviews;
 
 
+--------------------------------------------------------------------------
+
+-- Caloric Intake
+SELECT
+  ROUND(AVG(caloric_intake),2) AS average_caloric_intake,
+  ROUND(STDDEV(rating),2) AS caloric_sd
+FROM nutritional_study;
 
 
+--------------------------------------------------------------------------
+
+-- Education Analyst
+-- To understand the overall variance var_pop is used, and var_samp can be used if you are analyzing for example, 50 randome selected students out of 100. A Low Variance means scores are clustered closely and show more consistent grading.
+SELECT
+  VAR_POP(score),
+  VAR_SAMP(score
+FROM exam_results;
 
 
+--------------------------------------------------------------------------
 
+-- Revies after End_date
+-- This is to find rows where the condition is violated for validation or cleanup
+SELECT project_id, review_date, end_date
+FROM employee_projects AS ep
+WHERE review_date <= (
+  SELECT MAX(end_date)
+  FROM employee_projects
+  WHERE project_id = ep.project_id);
 
+-- This table tracks the projects assigned to employees in a company. The query is to ensure that for each project id, the review date is always After the end date of the Latest end date for that project ID. 
+--------------------------------------------------------------------------
 
+-- Two Tables
 
+WITH subquery AS (
+  SELECT 
+    movie_id,
+    SUM(total_views) all_views,
+    SUM(total_minutes) all_minutes
+  FROM viewings
+  GROUP BY movie_id
+  WHERE ____) 
+
+SELECT 
+  a.movie_name,
+  FLOOR(b.all_minutes / a.movie_length) AS full_views
+FROM movies AS a
+JOIN movie_views AS b
+ON a.movie_id = b.movie_id
+WHERE FLOOR(b.all_minutes / a.movie_length) < 600;
 
 
 
