@@ -62,13 +62,13 @@ WHERE temperature IS NULL;
 
 --------------------------------------------------------------------------
 
-
 -- Outliers
+
 -- Use Case: We detect grocery shoppers spending $0.05 annually which is unusually low and may affect the majority of the data when calculated averages.
 
--- 2.4 Remove Rows where purchase_amount is in the bottom 1% such as 5 cents or top 1% for extreme shoppers.
+-- 2.4 Remove Rows where purchase_amount is in the top 1% for extreme shoppers or bottom 1% such as 5 cents.
 DELETE FROM your_table
-WHERE purchase_amount > PERCENTILE_CONT(0.99)
+WHERE purchase_amount > PERCENTILE_CONT(0.99)  --Top 1%, there is no 100th percentile
 
 WITHIN GROUP (ORDER BY purchase_amount) OR
 
@@ -77,7 +77,8 @@ WITHIN GROUP (ORDER BY purchase_amount);
 
 
 -- 2.5 Parition The Data
--- Segregate the standard entries from the outliers by creating a new column
+-- Segregate the standard entries from the outliers by creating a new column. 
+-- This will create a new column that will label itself outlier fi the 'purchase_amount' column is greater than a threshold.
 ALTER TABLE your_table ADD segment VARCHAR(50);
 UPDATE your_table SET segment = CASE
 WHEN purchase_amount > SOME_THRESHOLD THEN 'Outlier'
