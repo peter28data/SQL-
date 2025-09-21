@@ -4,7 +4,7 @@
 UPDATE accounts
   SET user_name = REGEXP_REPLACE(username, '[dog, cat, fish]', '***', 'g');
 
--- Goal: Create a query to identify and replace any vulgar language before it is published in team chat to promote a friendlier user experience. 
+-- Goal: Replace any vulgar language before it is published in team chat to promote a friendlier user experience. 
 
 
 --------------------------------------------------------------------------
@@ -26,3 +26,62 @@ WHERE name ~ '^[A-Z]{3}[0-9]{2}$'
 -- Case-Insensitive needs ~*
 WHERE name ~* '^[a-z]+son$'
 
+
+--------------------------------------------------------------------------
+
+-- Titles only 4 letters
+
+-- Ensure only letters ("Gone", not "A1B2") use regex
+SELECT title,
+FROM movies
+WHERE title ~ '^[A-Za-z]{4}$'
+
+-- Underscore matches one wildcard characters so 4 underscores in the WHERE clause
+SELECT title,
+FROM movies
+WHERE title LIKE '____'
+
+
+  
+--------------------------------------------------------------------------
+
+-- Number of rows 'launch' column where the value is not a date OR missing value
+
+-- Assuming 'launch' is stored as TEXT OR VARCHAR
+SELECT COUNT(*)
+FROM bike_stations
+WHERE launch IS NULL
+  OR launch = ''
+  OR TRY_CAST(launch AS DATE) IS NULL;
+
+-- NULL, Empty, or not in date format
+SELECT COUNT(*)
+FROM bike_stations
+WHERE launch IS NULL
+  OR launch = ''
+  OR launch !~ '^d{4}-\d{2}-\{2}$' -- not in date format
+
+
+
+
+  
+--------------------------------------------------------------------------
+
+
+ORDER BY price DESC
+LIMIT 3 OFFSET 1
+
+-- Explain: The DESC will order prices from highest to lowest, the LIMIT will allow only 3 records to be returned, and the offset will skip the first value, altogther returns the 2nd to 4th highest prices.
+
+--------------------------------------------------------------------------
+
+-- Return records not in 2013
+SELECT *
+FROM bike_stations
+WHERE EXTRACT(YEAR FROM installation_date) != 2013
+
+-- Without function, Not in 2013
+SELECT *
+FROM bike_stations
+WHERE installation_date < '2013-01-01'
+  OR installation_date >= '2014-01-01'
