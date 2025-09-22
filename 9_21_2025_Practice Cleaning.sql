@@ -62,7 +62,30 @@ WHERE launch IS NULL
   OR launch !~ '^d{4}-\d{2}-\{2}$' -- not in date format
 
 
+--------------------------------------------------------------------------
 
+-- How many Duplicates
+-- it is (dup_count-1) because if A appears three times, then it is two duplicates
+SELECT SUM(dup_count - 1) AS total_duplicates   -- Total number of duplicates rows
+FROM (
+  SELECT COUNT(*) AS dup_count
+  FROM your_table
+  WHERE duplicates IS NOT NULL
+  GROUP BY duplicates
+  HAVING COUNT(*) > 1
+) AS dup_counts;
+
+-- Unique values are duplicated
+SELECT COUNT(*) AS duplicated_values
+FROM (
+  SELECT duplicates
+  FROM your_table
+  WHERE duplicates IS NOT NULL
+  GROUP BY duplicates
+  HAVING COUNT(*) > 1
+) AS dup_list;
+
+-- Count Total D
 
   
 --------------------------------------------------------------------------
