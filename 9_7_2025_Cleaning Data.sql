@@ -100,15 +100,10 @@ FROM (
 --------------------------------------------------------------------------
 
 
-
-
-
-
 -- Contaminated Data
 -- Refers to the inclusion of incorrect, irrelevant, or outdated information that can distort results, leading to misleaing insights. 
 
 -- Use Case: For a Retail business selling fine jewelry, we can spot that a gold necklace was sold for $12 which requires domain knowledge to spot the irregularly low price of fine jewelry.
-
 
 
 -- Inconsistent Data
@@ -117,14 +112,13 @@ FROM (
 -- Use Case: A company's sales data from various branches across the world show a European date format "DD/MM/YYYY", the American branches use "MM/DD/YYYY".
 
 
-
 -- Duplicate Data
 -- 2.7 Identify and Retain only one 
 SELECT DISTINCT *
 FROM your_table
 
 
--- 
+--------------------------------------------------------------------------
 
 
 
