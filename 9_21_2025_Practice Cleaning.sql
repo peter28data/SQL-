@@ -98,6 +98,19 @@ LIMIT 3 OFFSET 1
 
 --------------------------------------------------------------------------
 
+-- Extract code from column
+SELECT 
+  code,
+  SUBSTRING(code, FROM 3 FOR 4) AS code_part
+FROM accounts;
+  
+--------------------------------------------------------------------------
+
+-- Cast 2
+
+
+--------------------------------------------------------------------------
+
 -- Return records not in 2013
 SELECT *
 FROM bike_stations
