@@ -61,7 +61,27 @@ WHERE launch IS NULL
   OR launch = ''
   OR launch !~ '^d{4}-\d{2}-\{2}$' -- not in date format
 
+--------------------------------------------------------------------------
 
+-- Regex Functions
+-- Regular Expressions refers to a method of searching and manipulating text using patterns instead of exact characters
+
+-- ~ Means case sensitive
+-- ~* Means case insensitive
+-- !~ Means does Not match case sensitive
+-- !~* Means does Not match case insensitive
+
+-- $ Means end of string
+-- ^ Means start of string
+
+-- gmail\.com$ Means must end with gmail.com
+
+SELECT product_name
+FROM products
+WHERE product_name !~ '^[A-Z]'
+-- A case sensitive operator is important here due to our investigation focused on product names that do Not start with a capital letter
+
+  
 --------------------------------------------------------------------------
 
 -- How many Duplicates
@@ -106,7 +126,12 @@ FROM accounts;
   
 --------------------------------------------------------------------------
 
--- Cast 2
+-- Add Two weeks
+SELECT NOW() + INTERVAL '2 weeks' AS interval_value
+
+-- INTERSECT vs. INNER JOIN
+-- Intersect only returns rows that are exactly the same. Inner join matches rows based on a column. 
+-- Takeaway: If a name is changed, INTERSECT would not include that changed row but inner join would if joined on a primary key such as customer_id. 
 
 
 
