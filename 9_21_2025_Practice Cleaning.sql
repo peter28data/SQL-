@@ -43,6 +43,7 @@ WHERE name !~* '^[a-z]{3,6}'
 SELECT title,
 FROM movies
 WHERE title ~ '^[A-Za-z]{4}$'
+-- Ensures the whole string is only 4 letters, upper or lowercase
 
 -- Underscore matches one wildcard characters so 4 underscores in the WHERE clause
 SELECT title,
