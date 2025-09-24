@@ -26,6 +26,14 @@ WHERE name ~ '^[A-Z]{3}[0-9]{2}$'
 -- Case-Insensitive needs ~*
 WHERE name ~* '^[a-z]+son$'
 
+-- {3} This is exactly 3 repetitions
+-- {3,6} This is a range between 3 and 6 repetitions
+WHERE name !~* '^[a-z]{3,6}' 
+-- This query would filter usernames that do Not start with upper or lower case letters through a-z between 3 to 6 times
+
+-- Example: tennis413
+-- This would not be returned because there Are 6 letters and we are searching for usernames that do Not start with 3 to 6 letters. Therefore, tennisBall413 Would be returned because it begins with 10 letters. Note: becuase we used a '*' after the '~', we made the search case insensitive so the uppercase B in tennisBall413 would not affect the search match even though we did not specify it in the query with '[a-z]'.
+
 
 --------------------------------------------------------------------------
 
