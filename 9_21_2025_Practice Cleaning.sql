@@ -59,7 +59,7 @@ SELECT COUNT(*)
 FROM bike_stations
 WHERE launch IS NULL
   OR launch = ''
-  OR launch !~ '^d{4}-\d{2}-\{2}$' -- not in date format
+  OR launch !~ '^\d{4}-\d{2}-\d{2}$' -- not in date format
 
 --------------------------------------------------------------------------
 
