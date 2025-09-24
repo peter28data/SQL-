@@ -66,13 +66,13 @@ WHERE launch IS NULL
 -- Regex Functions
 -- Regular Expressions refers to a method of searching and manipulating text using patterns instead of exact characters
 
--- ~ Means case sensitive
--- ~* Means case insensitive
--- !~ Means does Not match case sensitive
--- !~* Means does Not match case insensitive
+-- ~   case sensitive
+-- ~*  case insensitive
+-- !~  does Not match case sensitive
+-- !~* does Not match case insensitive
 
--- $ Means end of string
--- ^ Means start of string
+-- $  end of string
+-- ^  start of string
 
 -- gmail\.com$ Means must end with gmail.com
 
