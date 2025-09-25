@@ -25,6 +25,7 @@ OR word SIMILAR TO '%(ing|ed)'
 WHERE name ~ '^[A-Z]{3}[0-9]{2}$'
 -- Case-Insensitive needs ~*
 WHERE name ~* '^[a-z]+son$'
+-- Returns: Jackson, Anderson, but Not SON because the '+' operator means at least one letter character must come before the son at the end of the string.
 
 -- {3} This is exactly 3 repetitions
 -- {3,6} This is a range between 3 and 6 repetitions
