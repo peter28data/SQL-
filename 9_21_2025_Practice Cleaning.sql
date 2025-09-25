@@ -144,6 +144,7 @@ SELECT NOW() + INTERVAL '2 weeks' AS interval_value
 -- Takeaway: If a name is changed, INTERSECT would not include that changed row but inner join would if joined on a primary key such as customer_id. 
 
 
+  
 
 --------------------------------------------------------------------------
 
