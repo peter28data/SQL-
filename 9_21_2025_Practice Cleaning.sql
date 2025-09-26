@@ -177,6 +177,10 @@ WHERE nationality IS NULL
 WHERE followers > 500000
 
 -- USING keeps one foreign key ON keeps both
+FROM tracks
+INNER JOIN artist_names
+  USING(artist_id)
+
 
 
 
