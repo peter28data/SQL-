@@ -181,6 +181,11 @@ FROM tracks
 INNER JOIN artist_names
   USING(artist_id)
 
+-- Order of Multiplication, object then multiplier
+SELECT name,
+  (revenue * 0.7) AS correct_revenue
+
+
 
 
 
