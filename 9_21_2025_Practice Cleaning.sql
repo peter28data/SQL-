@@ -6,6 +6,10 @@ UPDATE accounts
 
 -- Goal: Replace any vulgar language before it is published in team chat to promote a friendlier user experience. 
 
+-- Remove all digits
+UPDATE
+  SET user__name
+
 
 --------------------------------------------------------------------------
 
@@ -15,7 +19,7 @@ SELECT usernames,
 FROM accounts
 WHERE name SIMILAR TO 'A[0-9]%'
 -- Match strings Ending in 'ing' or 'ed'
-OR word SIMILAR TO '%(ing|ed)'
+OR word SIMILAR TO '%(ing|ed)'r
 
 -- Goal: To investigate a username that is only known to start with A followed by a digit we can use 'A[0-9]%'. If we also know that this name ends in a certain pattern we can use '%(ing|ed)'. 
 
@@ -158,5 +162,21 @@ SELECT *
 FROM bike_stations
 WHERE installation_date < '2013-01-01'
   OR installation_date >= '2014-01-01'
+
+--------------------------- Test Review   ------------------------------------
+
+-- why answers were wrong
+
+-- forgot parenthesis
+ON (t.id = f.song_id) AND (t.dance = f.dance_level)
+
+-- misread which column to look for missing values
+WHERE nationality IS NULL
+
+-- HAVING is for aggregations (AVG, SUMS), not (>,<)
+WHERE followers > 500000
+
+-- USING keeps one foreign key ON keeps both
+
 
 
