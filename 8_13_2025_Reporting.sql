@@ -1,54 +1,3 @@
----------------------------------------------------------------------------------
-
--- Summer Olympic Games
--- #1 Number of athletes by Sport
-SELECT
-sport,
-COUNT(DISTINCT athlete_id) AS athletes
-FROM summer_games
-GROUP BY sport
-ORDER BY athletes DESC
-LIMIT 3;
-
---------------------------------------------------------------------------------
-
--- Athletes (x) vs Events (y) Visual by Sport
-SELECT
-sport,
-COUNT(DISTINCT event) AS events,
-COUNT(DISTINCT athlete_id) AS athletes
-FROM summer_games
-GROUP BY sport;
-
--- Explanation: This query returns a column of sports then events and then athletes so we can create a visualization from the default dataset. 
-
---------------------------------------------------------------------------------
-
--- Most Gold Medals
-SELECT
-a.name AS athlet_name,
-SUM(gold) as gold_medals
-FROM summer_games as s
-join athletes as a
-on s.athlete_id = a.id
-GROUP BY a.name
-HAVING sum(gold) > 2
-ORDER BY gold_medals DESC;
-
---------------------------------------------------------------------------------
-
--- WHERE vs HAVING 
--- this would work to filter the list for events that have athletes over the age of 40.
-SELECT athletes
-FROM summer_games
-WHERE age > 40
-
--- Better option
--- Subqueries select ID in the where age > 40 clause works
-
--- Doesnt work
--- using the HAVING filter becuase it works after aggreagtions and that filters out entire events instead of individual athletes.
-  
 -------------------------------------------------------------------------------
 
 -- UNION ALL
@@ -320,21 +269,6 @@ GROUP BY event_fixed;
 
 ---------------------------------------------------------------------------------
 
--- NULL values are first when ORDER BY DESC
-SELECT 
-	country, 
-    SUM(gold) AS gold_medals
-FROM winter_games AS w
-JOIN countries AS c
-ON w.country_id = c.id
-
-WHERE gold IS NOT NULL    -- But can be removed with IS NOT NULL
-GROUP BY country
-
-ORDER BY gold_medals DESC;
-
---------------------------------------------------------------------------------
-
 -- NULL values can be excluded in HAVING clause as well
 SELECT 
   country,
@@ -346,32 +280,11 @@ GROUP BY country
 HAVING SUM(gold) IS NOT NULL
 ORDER BY gold_medals DESC;
 
---------------------------------------------------------------------------------
-
--- Total Events for Summer Olympic Games
-SELECT
-  athlete_id,
-  count(event) as total_events,
-  sum(gold) as gold_medals
-FROM summer_game
-GROUP BY athlete_id
-ORDER BY total_events DESC, athlete_id;    -- By default ASC for athlete_id
 
 --------------------------------------------------------------------------------
 
--- Replace Null for Avg
-SELECT
-	athlete_id
-	AVG(COALESCE(gold,0)) as avg_goals,
-	COUNT(event) as total_events,
-	SUM(gold) as gold_medals
-FROM summer_games
-GROUP BY athlete_id
-ORDER BY total_events DESC, athlete_id;
-
---------------------------------------------------------------------------------
-
---  Total Medals by Population in Millions
+-- Total Medals by Population in Millions
+-- Replace Null for SUM function
 SELECT
 	c.country,
 	pop_in_millions,
@@ -402,17 +315,6 @@ GROUP BY c.country, pop_in_millions
 ORDER BY medals_per_million DESC;
 
 --------------------------------------------------------------------------------
-
--- Avg GDP for Each Country
-SELECT
-	country_id,
-	year,
-	gdp,
-	avg(gdp) OVER(PARTITION BY country_id) AS country_avg_gdp
-FROM country_stats;
-
--- Explanation: The country_avg_gdp will be the same for each country id to compare if the year for that country is above or below the average for all years of that country.
----------------------------------------------------------------------------------
 
 -- Highest GDP value for world
 SELECT
