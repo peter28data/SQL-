@@ -228,7 +228,7 @@ GROUP BY date;
 	
 ---------------------------------------------------------------------------------
 
--- Weekly average from last week
+-- Weekly Average from Previuos Week
 -- Calculate the current 7 day rolling average and the 7 day rolling average from a week prior.
 SELECT
 date,
