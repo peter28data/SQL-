@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 
 -- UNION ALL
--- The goal is to create a report from summer and winter season events to find the unique number of events. 
+-- The goal is to create a report from Summer Olympic and Winter Olympic season events, then find the unique number of events. 
 SELECT
   'summer' as season,
   country,
@@ -9,7 +9,7 @@ SELECT
 FROM summer_games as s
 JOIN countries as c
 ON s.country_id = c.id
-GROUP BY country          -- column1: season, column2: country, col3: events
+GROUP BY country          
 
 UNION ALL
 
@@ -26,36 +26,9 @@ ORDER BY events DESC;
 ------------------------------------------------------------------------------
 
 -- CASE WHEN
--- Categorize players into three segments: tall female, tall male, or other
-SELECT
-  name,
-  CASE
-  WHEN gender = 'F' AND height >= 175 THEN 'Tall Female'
-  WHEN gender = 'M' AND height >= 190 THEN 'Tall Male'
-  ELSE 'Other' END AS segment
-  FROM athletes;
-
--------------------------------------------------------------
-
--- CASE WHEN
 -- BMI buckets
-SELECT
-  sport,
-  CASE 
-  WHEN 100 * weight/height^2 <.25 THEN '<.25'
-  WHEN 100 * weight/height^2 <=.30 THEN '.25-.30'
-  WHEN 100 * weight/height^2 >.30 THEN '>.30'
-  END AS bmi_bucket,
-  COUNT(DISTINCT athlete_id) AS athletes
-FROM summer_games as s
-JOIN athletes as a
-ON s.athlete_id = a.id
-GROUP BY sport, bmi_bucket
-ORDER BY sport, athletes DESC;
+-- & Labeling Nulls
 
-------------------------------------------------------------------------------
-
--- Labeling Nulls
 SELECT
   sport,
   CASE 
@@ -73,7 +46,7 @@ ORDER BY sport, athletes DESC;
 
 ------------------------------------------------------------------------------
 
--- Subquery to filter from Seperate table
+-- Subquery to filter from young athletes
 SELECT
   SUM(bronze) AS bronze_medals,
   SUM(silver) AS silver_medals,
