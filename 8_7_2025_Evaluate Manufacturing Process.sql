@@ -5,6 +5,7 @@ This approach uses statistics to determine the quality of a process. Processes a
 Create an alert column to be a boolean flag if the height of a product is outside 3 standard deviations. Use a window function to calculate the positive and negative standard deviations otherwise known as upper and lower control limits. */
 
 -- Flag whether the height of a product is within the control limits
+
 SELECT
 	b.*,
 	CASE
