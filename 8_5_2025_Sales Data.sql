@@ -28,6 +28,7 @@ WHERE product_rank < 6;
 
 ---------------------------------------------------------------------------------------------
 
+
 -- Second SQL cell
 -- impute_missing_values
 -- Calculate the Quantity for orders with Missing values
