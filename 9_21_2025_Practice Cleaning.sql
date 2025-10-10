@@ -56,6 +56,15 @@ FROM movies
 WHERE title LIKE '____'
 
 
+-- Zipcodes NOT 5 digits
+WHERE LENGTH(zipcode) != 5;
+
+-- Or, using ReGex
+WHERE zip_code !~ '^[0-9]{5}$';
+
+-- Phone Numbers other than 10 digits
+WHERE phone !~ '[0-9]{10}';
+
   
 --------------------------------------------------------------------------
 
