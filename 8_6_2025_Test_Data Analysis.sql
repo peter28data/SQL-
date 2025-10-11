@@ -63,7 +63,7 @@ SELECT CAST('2 weeks' AS INTERVAL); -- wrong ->INTERVAL 2 WEEK AS interval_value
 
 --14 Use a CTE to aggregate the date from current date to have a column for days overdue
 -- Then filter that CTE with the final query in the where clause for 60+ days overdue
-WITH ovedue AS (
+WITH overdue AS (
   SELECT
   reference,
   date('2020-04-01') - due_date AS days_overdue
@@ -129,7 +129,13 @@ ORDER BY energy, protein;
 -- Explanation: Capitalizes the first letter of each word and converts the rest of the letters to lowercase.
 
 
+
+
+
+--------------------------------------------------------------------------
+
 --13 The 'pairing' table lists the recommended food items for certain wines. The goal is to return the style and price for all wines that have a pairing.
+
 SELECT style, price
 FROM wine_region
   
@@ -140,6 +146,11 @@ WHERE id IN (
 ORDER BY price, style
 LIMIT 5;
 
+
+
+
+
+--------------------------------------------------------------------------
 
 --15 The purpose of using a subquery in the select clause is to return the average of two values from different tables in the same row. 
 SELECT
