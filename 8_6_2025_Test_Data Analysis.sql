@@ -150,4 +150,24 @@ FROM food
 
 
 
+  
+-- Same Results
+SELECT item, energy AS calories,
+(AVG(energy) OVER() )::int AS avg_calories
+FROM food
+ORDER BY calories DESC, item
+LIMIT 5
+
+
+
+
+
+--------------------------------------------------------------------------
+
+-- Running Total for Shipping and Processing Transport
+SELECT product_code,
+quantity_ordered,
+SUM(quantity_ordered
+
+
 
