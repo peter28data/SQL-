@@ -37,4 +37,22 @@ SET year_only = REGEXP_REPLACE(order_date::text, '(\d{4})-\d{2}-\d{2}', '\1')
 
 
 
+-------------------------- Task 4: Examples with Flags -----------------------------------------------
+
+-- Case-Insensitive, Global Replacement (meaning not just the first instance, but all)
+UPDATE docs
+SET body = regexp_replace(body, 'sql', 'SQL', 'gi')
+
+-- "sql, Sql, sQL" -> "SQL, SQL, SQL"
+
+
+
+
+
+--------------------------------------------------------------------------
+
+
+
+
+
 --------------------------------------------------------------------------
