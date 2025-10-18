@@ -5,13 +5,19 @@
 duplicate_rows = df[df.duplicated()]
 
 
+
 # Remove
 # Inplace=True modifies the original dataframe whereas False would create a new dataframe.
 df.drop_duplicates(inplace=True)
 
+
+
+
 # Validate 
 # Running the same variable will return 0 rows because there are now no duplicates 
 duplicate_rows = df[df.duplicated()]
+
+
 
 
 # ---------------------------------------------------------------------------------------
