@@ -56,8 +56,10 @@ for col in cols_missing_values:
 # This replaces all missing values for the clicks column and then all the missing values in the impression column.
 
 
-# --------------------------------------------------------------------------
 
+
+
+# --------------------------------------------------------------------------
 
 # Validate Missing Values were Replaced
 df.info()
