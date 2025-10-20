@@ -173,3 +173,4 @@ GROUP BY priority;
 -- Explanation: since email was turned to integers 0 or 1, we can use the sum() function and divide by the count of all rows. By casting this as a numeric we can see a percentage. Grouping by priority will give us the insight that medium complaints have 2% of email and 1.8% phone numbers as contact information. High priority has 1.1% for emails and 2.3% for phone numbers. 
 
 -- Insight: Medium and High priority requests do contain contact information more frequently, hovering about 2% of the time, whereas Low priority requests have email 0.6% and phone numbers 0.2%. In other words 6 or 2 times out of 1000 requests compared to higher priority calls that have it about 20 out of 1000 requests. 
+
