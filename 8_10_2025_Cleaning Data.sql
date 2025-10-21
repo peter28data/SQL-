@@ -175,3 +175,4 @@ GROUP BY priority;
 -- Insight: Medium and High priority requests do contain contact information more frequently, hovering about 2% of the time, whereas Low priority requests have email 0.6% and phone numbers 0.2%. In other words 6 or 2 times out of 1000 requests compared to higher priority calls that have it about 20 out of 1000 requests. 
 
 
+
