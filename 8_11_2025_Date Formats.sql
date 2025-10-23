@@ -4,8 +4,12 @@ SELECT COUNT(*)
 FROM evanston311
 WHERE date_created = '2018-01-01';
 
--- The query above will not return anything. Howevery when we convert the query to a timestamp it will return 49 requests.
+
+-- The query above will not return anything. However, when we convert the query to a timestamp it will return 49 requests.
 SELECT '2018-01-02'::timestamp;
+
+
+
 
 ----------------------------------------------------------
 
@@ -41,6 +45,7 @@ now() - '2015-01-01';    -- Returns: 1439 days 21:32:22
 SELECT
 '2018-12-10'::DATE + '1 year'::INTERVAL,  -- Adds One Year
 '2018-12-10'::DATE + '1 year 2 days 3 minutes'::INTERVAL;
+
 
 -- Explanation: To create filters for date ranges we need to be able to add date intervals to dates.
 
