@@ -13,3 +13,4 @@
 -- 'Course', 'Snowflake', 'User'
 -- All accessed through a User Interface (UI) Tool, Snowsight, to interact with Snowflake.
 
+
