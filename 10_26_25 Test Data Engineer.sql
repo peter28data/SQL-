@@ -103,12 +103,104 @@ WHERE customer_code <> 'CDX1';
 
 -----------------------------------------------------------------
 
+-- PART 2 DATA ENGINEER EXAM
+
+
+
+-----------------------------------------------------------------
+
+-- Check for Non-Integer Values
+-- The user_id column cannot have missing values so we must check for missing values and any duplicates
+
+-- If user_id is stored as a text or varchar, regular expression can be used to find non-integer entries
+SELECT user_id
+FROM user
+WHERE user_id !~ '^[0-9]+$'
+
+-- To find user_id that are Duplicates
+SELECT user_id,
+COUNT(*) AS occurences
+FROM users
+GROUP BY user_id
+HAVING COUNT(*) > 1
+
+-- If user_id is an INT data type and need to check for missing values
+SELECT * 
+FROM users
+WHERE user_id IS NULL
+
+
+-----------------------------------------------------------------
+
+-- Task 1: Replace Missing Values
+-- The following query is to update an exisiting table, however the second query cleans the data without modifying the table
+UPDATE users
+SET age = (
+  SELECT ROUND(AVG(age))
+  FROM users
+  WHERE age IS NOT NULL
+)
+WHERE age IS NULL
+
+-- Without modifying Table
+SELECT
+  COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
+  COALESCE(registration_date, DATE '2024-01-01') AS registration_date_filled,
+  COALESCE(email, 'Unknown') AS email_filled,
+  COALESCE(workout_frequency, 'flexible') AS workout_frequency_filled,
+FROM users
+
+
+
+  
+  
+-- If you'll reuse this 'cleaned' version, creating a view 
+CREATE VIEW users_cleaned AS
+SELECT
+  COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
+  COALESCE(registration_date, DATE '2024-01-01') AS registration_date_filled,
+  COALESCE(email, 'Unknown') AS email_filled,
+  COALESCE(workout_frequency, 'flexible') AS workout_frequency_filled,
+FROM users
 
 
 
 
+-----------------------------------------------------------------
+
+-- Replace missing values before year 2021 with game_id for running
+-- Conditional Logic, Type Casting, String Handling
+
+-- Challenge: event_time is stored as Text, not timestamp so we use LEFT() to extract the number from a string then use CAST() to convert to Integer to compare to the year 2021, then use CASE WHEN to replace the game_id with 4 when the year is before 2021 with the COALESCE().
+SELECT
+    COALESCE(
+        game_id,
+        CASE
+            WHEN CAST(LEFT(event_time, 4) AS INTEGER) < 2021 THEN 4
+            ELSE game_id
+        END
+    ) AS game_id_filled,
+    *
+FROM events;
 
 
 
 
+-----------------------------------------------------------------
 
+--
+SELECT 
+    u.user_id,
+    e.event_time
+FROM users AS u
+JOIN events AS e
+    ON u.user_id = e.user_id
+JOIN games AS g
+    ON e.game_id = g.game_id
+WHERE g.game_type = 'biking';
+
+
+-----------------------------------------------------------------
+
+-- lowercase and replace missing values
+COALESCE(LOWER(workout_frequency),'flexible') AS workout_frequency_filled
