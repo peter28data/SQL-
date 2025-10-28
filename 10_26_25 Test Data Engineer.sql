@@ -133,6 +133,9 @@ WHERE user_id IS NULL
 -----------------------------------------------------------------
 
 -- Task 1: Replace Missing Values
+-- Convert Values Between Data Types
+-- Clean Categorical and Text Data by Manipulating Strings
+  
 -- The following query is to update an exisiting table, however the second query cleans the data without modifying the table
 UPDATE users
 SET age = (
@@ -142,12 +145,13 @@ SET age = (
 )
 WHERE age IS NULL
 
+  
 -- Without modifying Table
 SELECT
   COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
-  COALESCE(registration_date, DATE '2024-01-01') AS registration_date_filled,
+  COALESCE(CAST(registration_date AS DATE), '2024-01-01') AS registration_date_filled,
   COALESCE(email, 'Unknown') AS email_filled,
-  COALESCE(workout_frequency, 'flexible') AS workout_frequency_filled,
+  COALESCE(LOWER(workout_frequency), 'flexible') AS workout_frequency_filled,
 FROM users
 
 
@@ -168,7 +172,7 @@ FROM users
 
 -----------------------------------------------------------------
 
--- Replace missing values before year 2021 with game_id for running
+-- Task 2: Replace missing values before year 2021 with game_id for running
 -- Conditional Logic, Type Casting, String Handling
 
 -- Challenge: event_time is stored as Text, not timestamp so we use LEFT() to extract the number from a string then use CAST() to convert to Integer to compare to the year 2021, then use CASE WHEN to replace the game_id with 4 when the year is before 2021 with the COALESCE().
