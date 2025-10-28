@@ -130,6 +130,8 @@ FROM users
 WHERE user_id IS NULL
 
 
+
+  
 -----------------------------------------------------------------
 
 -- Task 1: Replace Missing Values
@@ -149,7 +151,7 @@ WHERE age IS NULL
 -- Without modifying Table
 SELECT
   COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
-  COALESCE(CAST(registration_date AS DATE), '2024-01-01') AS registration_date_filled,
+  COALESCE(CAST(registration_date AS DATE), '2024-01-01'::DATE) AS registration_date_filled,
   COALESCE(email, 'Unknown') AS email_filled,
   COALESCE(LOWER(workout_frequency), 'flexible') AS workout_frequency_filled,
 FROM users
@@ -168,7 +170,52 @@ SELECT
 FROM users
 
 
+-- Wrong: Mismatch Error, Requires all arguments to be of the same data type
 
+-- Safer Way to Cast if registration_date is stored as text
+SELECT
+  COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
+  COALESCE(TO_DATE(registration_date, 'YYYY-MM-DD'), DATE '2024-01-01') AS registration_date_filled,
+  COALESCE(email, 'Unknown') AS email_filled,
+  COALESCE(LOWER(workout_frequency), 'flexible') AS workout_frequency_filled
+FROM users;
+
+
+
+-- IF empty strings 
+SELECT
+  COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
+  COALESCE(TO_DATE(registration_date, 'YYYY-MM-DD'), '2024-01-01'::DATE) AS registration_date_filled,
+  COALESCE(email, 'Unknown') AS email_filled,
+  COALESCE(LOWER(NULLIF(TRIM(workout_frequency), '')), 'flexible') AS workout_frequency_filled
+FROM users
+
+
+
+
+-- STILL WRONG
+-- Clean Categorical and Text Data by Manipulating Strings
+
+-- There may be spelling mistakes for the workout_frequency column
+SELECT
+  COALESCE(age, ROUND(AVG(age) OVER ())::INT) AS age_filled,
+  COALESCE(TO_TIMESTAMP(NULLIF(TRIM(registration_date), ''), 'YYYY-MM-DD"T"HH24:MI:SS.MS'), '2024-01-01 00:00:00'::TIMESTAMP) AS registration_date_filled,
+  COALESCE(LOWER(NULLIF(TRIM(email), '')), 'Unknown') AS email_filled,
+  COALESCE(LOWER(NULLIF(TRIM(workout_frequency), '')), 'flexible') AS workout_frequency_filled,
+	*
+FROM users
+
+
+
+-- CASE WHEN inside of COALESCE may fix issue
+COALESCE(
+  CASE 
+    WHEN LOWER(TRIM(workout_frequency)) IN ('flexible', 'maximal', 'minimal')
+      THEN LOWER(TRIM(workout_frequency))
+    ELSE 'flexible'
+  END,
+  'flexible'
+) AS workout_frequency_filled
 
 -----------------------------------------------------------------
 
@@ -188,11 +235,63 @@ SELECT
 FROM events;
 
 
+-- Problem: Missing values may be a dash (-), "missing", or others
+SELECT
+  CASE
+  WHEN (
+  game_id IS NULL
+  OR TRIM(game_id) IN ('', '-', 'missing')
+  OR NOT (game_id ~ '^[0-9]+$')
+  )
+  AND event_time < TO_DATE('2021-01-01', 'YYYY-MM-DD')
+  THEN 4
+  ELSE game_id::INTEGER
+  END AS cleaned_game_id,
+  *
+  FROM events
+  
+
+
+-- Another way to filter for missing values before year 2021
+AND TO_TIMESTAMP(event_time, 'YYYY-MM-DD-SSSS') < '2021-01-01'::DATE
+THEN 4
+ELSE game_id::INTEGER
+END AS cleaned_game_id
+
+
+-- To extract only the date and not seconds part
+AND TO_DATE(SUBSTRING(event_time FROM 1 FOR 10), 'YYYY-MM-DD') <'2021-01-01'::DATE
+
+
+-- This query is still wrong because the datapoints for event_time are 2020-10-24T14:59:44.000
+SELECT
+  CASE
+  WHEN (
+  game_id IS NULL
+  )
+  AND TO_TIMESTAMP(NULLIF(TRIM(event_time, ''), 'YYYY-MM-DD HH24:MI:SS') < '2021-01-01 00:00:00'::TIMESTAMP
+	THEN 4
+	ELSE game_id::INTEGER
+	END AS events_with_game_id,
+	*
+FROM events
+
+
+-- To fix this we use 
+ AND TO_TIMESTAMP(NULLIF(TRIM(event_time), ''), 'YYYY-MM-DD"T"HH24:MI:SS.MS') < '2021-01-01 00:00:00'::TIMESTAMP
+
 
 
 -----------------------------------------------------------------
 
---
+--GOOD
+-- Multi-Table Join with Foreign Key Relationships
+
+-- users.user_id -> Primary Key
+-- events.user_id -> Foreign Key to users.user_id
+-- events.game_id -> Foreign Key to games.game_id
+-- games.game_type -> Describes the type of game ("biking")
+
 SELECT 
     u.user_id,
     e.event_time
@@ -206,5 +305,16 @@ WHERE g.game_type = 'biking';
 
 -----------------------------------------------------------------
 
--- lowercase and replace missing values
-COALESCE(LOWER(workout_frequency),'flexible') AS workout_frequency_filled
+-- GOOD
+-- Aggregation with Filtering and Grouping
+
+SELECT
+    g.game_type,
+    e.game_id,
+    COUNT(DISTINCT e.user_id) AS user_count
+FROM events AS e
+JOIN games AS g
+    ON e.game_id = g.game_id
+WHERE g.game_type IS NOT NULL
+GROUP BY g.game_type, e.game_id
+ORDER BY g.game_type, e.game_id;
