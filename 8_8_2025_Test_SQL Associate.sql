@@ -22,6 +22,11 @@ ALTER TABLE employee
 ALTER COLUMN employee_name TYPE VARCHAR
 
 
+-- Amount column may contain decimal values but you want to round them
+ALTER TABLE sales
+ALTER COLUMN amount TYPE INTEGER
+USING ROUND(amount);
+
 
 --9 write a sql query to ensure that for each project_id, the review_date is always after the end_date of the lastest end_date for that project_id. the query should have a subquery in the WHERE clause.
 -- Query to validate that review_date is after the latest end_date for each project_id
