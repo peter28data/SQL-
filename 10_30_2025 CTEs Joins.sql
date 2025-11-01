@@ -41,11 +41,47 @@ LIMIT 3;
 
 
 
+-----------------------------------------------------------------
+
+-- CASE Statement inside a Window Function
+-- Calcualte Running Total of Hot Days (75F+)
+
+SELECT
 
 
 
 
+-----------------------------------------------------------------
 
+-- How many columns in the Outer Query were referenced in the Correlated Subquery?
+
+
+
+
+-----------------------------------------------------------------
+
+-- Nested Subquery
+-- Total trips Lower than the Average 
+
+SELECT
+start_station,
+COUNT(*) AS trips
+FROM trip
+GROUP BY start_station
+HAVING COUNT(*) <
+  (SELECT AVG(tr)
+  FROM (
+    SELECT start_station,
+    COUNT(*) AS tr
+    FROM trip
+    GROUP BY start_station
+    ) AS subquery)
+LIMIT 5;
+
+
+
+
+-----------------------------------------------------------------
 
 
 
