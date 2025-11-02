@@ -218,6 +218,9 @@ COALESCE(
   'flexible'
 ) AS workout_frequency_filled
 
+
+
+	
 -----------------------------------------------------------------
 
 -- Task 2: Replace missing values before year 2021 with game_id for running
