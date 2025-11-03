@@ -324,3 +324,4 @@ GROUP BY g.game_type, e.game_id
 ORDER BY g.game_type, e.game_id;
 
 
+
