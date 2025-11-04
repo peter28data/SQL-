@@ -27,11 +27,14 @@ g.map(plt.scatter,
       'SAT_AVG_ALL')
 
 
+
 # Catplot is a shortcut to not define facets
 sns.catplot(x="Tuition",
             data=df,
             col="HIGHDEG",
             kind="box")
+
+
 
 # LMplot is a shortcut to not define facets and defaults to regression line
 sns.lmplot(x="Tuition",
@@ -45,7 +48,25 @@ sns.lmplot(x="Tuition",
 
 
 
+# -----------------------------------------------------------------
 
+# Relplot
+sns.replot(x="age",
+           y="rating",
+           data=fifa_subset,
+           kind="line")
+plt.show()
+
+
+
+
+# Boxplot in Catplot
+sns.catplot(x="club",
+            y="rating",
+            data=fifa_subset,
+            kind="box",
+            order="Atletico Madrid", "Chelsea", "Napoli"])
+plt.show()
 
 
 
