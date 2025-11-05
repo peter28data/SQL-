@@ -68,3 +68,19 @@ FROM (
 JOIN athletes AS a
 ON g.athlete_id = a.id;
 
+
+
+
+
+-----------------------------------------------------------------
+
+-- Data Scientist
+-- A small independent restaurant has been collecting data from their customers such as name, date, items orders, city of residence, total amount spent, and feedback for their meals through ratings.
+-- A Data Scientist would be expected to build a model to **predict the rating** for new meals added to the menu
+-- A Data Analyst would be tasked with building a dashboard to present historical findings. 
+-- A Data Engineer would be overseeing the collection of data by assigning databases based on size and speed of data collected. 
+
+
+
+
+-----------------------------------------------------------------
