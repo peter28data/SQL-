@@ -63,7 +63,7 @@ SET username = REGEXP_REPLACE(username, '[0-9]', '', 'g');
 
 -----------------------------------------------------------------
 
---you want to identify columns that are not following a specific regex pattern for the date. how would you first ensure the column is Cast into a text type?
+-- To identify columns that are not following a specific regex pattern for the date. how would you first ensure the column is Cast into a text type?
 SELECT *
 FROM employees
 WHERE hire_date::TEXT !~ '^\d{4}-\d{2}-\d{2}$'
