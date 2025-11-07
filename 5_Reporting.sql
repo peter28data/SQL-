@@ -84,3 +84,7 @@ ON g.athlete_id = a.id;
 
 
 -----------------------------------------------------------------
+
+-- FULL JOIN vs. UNION
+-- Combines Horizontally by matching on key, creating null values for missing matched rows
+-- UNION combines Vertically by stacking, no matching of keys but removes duplicates compared to UNION ALL
