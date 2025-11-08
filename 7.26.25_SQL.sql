@@ -4,6 +4,7 @@ SELECT *
 FROM pg_catalog.pg.tables
 WHERE schemaname = 'public';
 
+
 -- VIEW columns from tables
 CREATE VIEW table_columns AS 
 SELECT
@@ -15,6 +16,7 @@ GROUP BY table_name;
 SELECT *
 FROM table_columns
 
+  
 -- #2 Query for Student Performance
 -- Group students by ranges of hours studied and calculate the average exam score for each group.
 SELECT
@@ -53,6 +55,7 @@ WHERE hours_studied > 10
 AND extracurricular_activites = 'Yes'
 GROUP BY hours_studied
 ORDER BY hours_studied DESC;
+
 
 
 
