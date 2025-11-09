@@ -99,3 +99,4 @@ sns.barplot(company_count.index, company_count.values)
 # A visual to see the price distribution for 3 different companies
 df.boxplot('Price', 'Company', rot=30, figsize=(12,8), vert=False)
 
+
