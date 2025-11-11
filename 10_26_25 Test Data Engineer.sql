@@ -14,6 +14,7 @@
 
 
 
+
 -----------------------------------------------------------------
 
 --which google cloud platform is most suitable to migrate a relational database stored in house to a system that is able to hangle millions of reads and writes while keeping the relational model they had? Google Cloud Spanner
