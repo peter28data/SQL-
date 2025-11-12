@@ -69,6 +69,8 @@ GROUP BY u.user_id
 HAVING COUNT(DISTINCT vh.episode_id) > 10; 
 
 
+
+
 -- Q4: Filter and Match Customer's Viewing Records
 -- You are tasked with analyzing the customer's viewing records. You have gathered requirments related to your task and confirmed that management is interested in customers who have viewed more than five 'Documentary' movies within the last month. Taking into account that 'Documentary' could be a part of a broader genre category in the genre field (for example: 'Documentary, History'). Therefore the matching pattern could occur anywhere within the string. 
 SELECT
