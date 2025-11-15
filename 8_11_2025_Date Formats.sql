@@ -18,6 +18,7 @@ SELECT count(*)
 FROM evanston311
 WHERE date_created::DATE = '2017-01-31';
 
+
 -- Number of Requests
 -- Greater than or equal to Feb 29 but less than March 1st queries 
 SELECT count(*)
