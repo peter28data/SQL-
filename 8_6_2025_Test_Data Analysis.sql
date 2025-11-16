@@ -1,5 +1,6 @@
 --1&2 join the tables find the pairing that goes with each wine and the price of wine
 
+
 --3 the first and last names of directors are stored in separate tables. to create an invitation list for a marketing event, combine the two tables. 
 
 --4 return month from the timestamp '2005-01-24'
