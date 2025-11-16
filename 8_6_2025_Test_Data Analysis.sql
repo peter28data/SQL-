@@ -3,6 +3,7 @@
 
 --3 the first and last names of directors are stored in separate tables. to create an invitation list for a marketing event, combine the two tables. 
 
+
 --4 return month from the timestamp '2005-01-24'
 SELECT
 EXTRACT(month FROM timestamp '2005-01-24') AS month
