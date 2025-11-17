@@ -6,7 +6,7 @@ WHERE date_created = '2018-01-01';
 
 
 -- The query above will not return anything. However, when we convert the query to a timestamp it will return 49 requests.
-SELECT '2018-01-02'::timestamp;
+WHERE date_created = '2018-01-02'::timestamp;
 
 
 
