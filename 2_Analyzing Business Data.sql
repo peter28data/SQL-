@@ -2,10 +2,14 @@
 -- Calculating Profit
 SELECT
   order_id,
-  SUM(meal_price * order_quantity) AS revenue   -- Multiply each meal's price by ordered quantity
+  -- Multiply each meal's price by ordered quantity
+  SUM(meal_price * order_quantity) AS revenue   
+  
 FROM meals
 JOIN orders ON meals.meal_id = orders.meal_id
 GROUP BY order_id;
+
+
 
 -- Working with dates
 DATE_TRUNC('week', '2018-06-12') :: DATE     -- Changes date to start of week '2018-06-11'
@@ -13,6 +17,8 @@ DATE_TRUNC('month', '2018-06-12') :: DATE    -- Changes date to start of month '
 DATE_TRUNC('quarter', '2018-06-12') :: DATE  -- Changes date to start of quarter '2018-04-11'
 DATE_TRUNC('year', '2018-06-12') :: DATE     -- Changes date to start of year '2018-01-01'
 
+
+  
 -- Common Table Expressions (CTEs) and Cost
 WITH costs_and_quanitities AS (
   SELECT
