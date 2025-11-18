@@ -40,8 +40,10 @@ AND date_created < '2017-03-13'::DATE + 1;  -- Adds One Day
 ---------------------------------------------------------
 
 -- Date Subtraction
+-- Returns: 1439 days 21:32:22, Find Current Time Since Date
+
 SELECT
-now() - '2015-01-01';    -- Returns: 1439 days 21:32:22
+now() - '2015-01-01';    
 
 -- Date Addition
 SELECT
