@@ -4,6 +4,7 @@ FROM sales
 WHERE customer NOT LIKE '^CDX[0-9]+';  -- or '<>' instead of not like, or NOT SIMILAR TO?
 
 
+
 --2 Find all of the credit lines with promo codes that start with a number
 WHERE promoCode ~ '^[0-9]';
 
