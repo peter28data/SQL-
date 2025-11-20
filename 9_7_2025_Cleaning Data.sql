@@ -1,5 +1,6 @@
 --------------------Step 1: Identify the Leak -----------------
 -- 1.1 Identify the Data Leak
+
 -- Check if th3ere are any rows or entire columns with no data.
 SELECT * FROM your_table WHERE product_name IS NULL;
 
