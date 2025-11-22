@@ -39,6 +39,7 @@ LIMIT 3;
 --10 for each vendor_name: ->combine the vendor_city and vendor_state
 SELECT
 vendor_name,
+  
 CONCAT(vendor_city,', ', vendor_state) AS location
 FROM vendors
 LIMIT 3;
