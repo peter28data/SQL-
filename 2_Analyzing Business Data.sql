@@ -11,6 +11,7 @@ GROUP BY order_id;
 
 
 
+
 -- Working with dates
 DATE_TRUNC('week', '2018-06-12') :: DATE     -- Changes date to start of week '2018-06-11'
 DATE_TRUNC('month', '2018-06-12') :: DATE    -- Changes date to start of month '2018-06-01'
