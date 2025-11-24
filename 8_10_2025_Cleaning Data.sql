@@ -16,6 +16,7 @@ SELECT category, count(*)
   FROM evanston311 
  WHERE (description ILIKE '%trash%'
     OR description ILIKE '%garbage%') 
+  
    AND category NOT LIKE '%Trash%'
    AND category NOT LIKE '%Garbage%'
  -- What are you counting?
