@@ -43,6 +43,7 @@ LIMIT 3;
 /*
 -- Key Performance Indicator (KPI)
 -- Profit per user; to identify the best users
+
 -- Profit per meal; to identify the most profitable meals
 -- Profit per month; to track profit over time
 The following query will create two CTEs to calculate revenue and cost to identify the KPIs identified above. The third query will return the top 3 meals by profit. 
@@ -51,12 +52,14 @@ WITH revenue AS (
   SELECT
   meals.meal_id,
   SUM(meal_price * meal_quantity) AS revenue
+  
   FROM meals
   JOIN orders ON meals.meal_id = orders.meals_id
   GROUP BY meals.meal_id),
 cost AS (
   meals.meal_id,
   SUM(meal_cost * stocked_quantity) AS cost
+  
   FROM meals
   JOIN stock ON meals.meal_id = stock.meal_id
   GROUP BY meals.meal_id)
