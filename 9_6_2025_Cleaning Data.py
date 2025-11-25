@@ -50,6 +50,7 @@ check_if_any_negatives
 
 cols_missing_values = ['clicks', 'impression']
 for col in cols_missing_values:
+  
   mean_value = df[col].mean()
   df[col].fillna(mean_value,inplace=True)
 
