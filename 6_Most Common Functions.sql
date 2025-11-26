@@ -37,7 +37,8 @@ SELECT
 user_id,
 SUM(hours_watched) AS watch_hours
 FROM watching_activity
-WHERE date_time > DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%M-01')    --The previous month
+WHERE date_time > DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%M-01') --The previous month
+  
 AND date_time < DATE_FORMAT(CURRENT_DATE, '%Y-%M-01')                         --The current day, to not return future values most likely
 GROUP BY user_id
 ORDER BY watch_hours DESC
