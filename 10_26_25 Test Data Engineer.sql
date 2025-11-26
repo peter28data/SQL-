@@ -201,8 +201,11 @@ FROM users
 -- There may be spelling mistakes for the workout_frequency column
 SELECT
   COALESCE(age, ROUND(AVG(age) OVER ())::INT) AS age_filled,
+	
   COALESCE(TO_TIMESTAMP(NULLIF(TRIM(registration_date), ''), 'YYYY-MM-DD"T"HH24:MI:SS.MS'), '2024-01-01 00:00:00'::TIMESTAMP) AS registration_date_filled,
+	
   COALESCE(LOWER(NULLIF(TRIM(email), '')), 'Unknown') AS email_filled,
+	
   COALESCE(LOWER(NULLIF(TRIM(workout_frequency), '')), 'flexible') AS workout_frequency_filled,
 	*
 FROM users
