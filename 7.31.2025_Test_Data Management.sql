@@ -166,6 +166,7 @@ FROM bike_trips;
 --2 Return the first five rows that the title DOES NOT contain 'the' no matter the case of the string
 SELECT *
 FROM movie_budget
+  
 WHERE title NOT ILIKE '%the%'
 LIMIT 5;
 
