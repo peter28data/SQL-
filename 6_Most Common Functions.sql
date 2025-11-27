@@ -63,6 +63,7 @@ u.user_id,
 FROM users AS u
 JOIN viewing_history AS vh 
 ON u.user_id = vh.user_id
+  
 WHERE u.active = TRUE
 AND s.show_name = 'Stranger Things'
 AND vh.watch_date > CURDATE() - INTERVAL 30 DAY      -- The last 30 days
