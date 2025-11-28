@@ -29,6 +29,7 @@ UPDATE accounts
   SET user_name = REGEXP_REPLACE(username, '[0-9]', '', 'g');   -- 'g' is a global flag that ensures all digits are removed, not just the first. 
 
 
+
 -- Replace with Average
 SELECT
   COALESCE(audience_score, (SELECT AVG(audience_score) FROM movies)) AS audience_score
