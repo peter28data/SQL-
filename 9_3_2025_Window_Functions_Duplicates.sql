@@ -11,6 +11,8 @@ ROW_NUMBER() OVER (
   ) AS row_number    -- "rank"
 FROM product_inventory_table
 
+
+  
 --------------------------------------------
 
 -- Use Above as Subquery in FROM clause
