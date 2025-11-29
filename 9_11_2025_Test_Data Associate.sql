@@ -13,6 +13,7 @@ WITH sub_table AS (
 
 SELECT
   (3 * (mean - median))/std_dev AS Pearson_Coefficient
+  
 FROM sub_table;
 
 --------------------------------------------------------------------------
