@@ -117,6 +117,7 @@ WHERE launch = 'Null' OR launch IS NULL;    --Not a date is labeled 'Null'
 SELECT *
 FROM station
 WHERE installation_date NOT BETWEEN '2013-01-01' 
+  
 AND '2013-12-31';
 
 
