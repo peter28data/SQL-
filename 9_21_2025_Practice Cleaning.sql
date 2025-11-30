@@ -18,6 +18,7 @@ UPDATE
 SELECT usernames,
 FROM accounts
 WHERE name SIMILAR TO 'A[0-9]%'
+  
 -- Match strings Ending in 'ing' or 'ed'
 OR word SIMILAR TO '%(ing|ed)'r
 
