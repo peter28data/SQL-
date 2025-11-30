@@ -65,6 +65,7 @@ SELECT
   CASE
   WHEN event LIKE '%Women%' THEN 'female'
   ELSE 'male' END AS gender,
+	
   COUNT(DISTINCT athlete_id) AS athletes
 FROM summer_games                    -- Summer Olympic Games
 WHERE country_id IN (                -- Filters for Nobel-Prize Countries
