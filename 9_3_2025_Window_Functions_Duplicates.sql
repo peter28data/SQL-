@@ -96,6 +96,8 @@ deduplicated_data AS (
   FROM cleaned_data
 ),
 
+
+  
 final_table AS (
 SELECT *
 FROM deduplicated_data
@@ -103,6 +105,8 @@ WHERE row_number = 1
 )
 
 SELECT * FROM final_table
+
+
 
 -------------------------------------
 
