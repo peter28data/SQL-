@@ -60,6 +60,7 @@ ORDER BY hours_studied DESC;
 
 
 --------------------------------------------------------------------------------------------------
+
 -- Q5: Aggregating Salary Range
 -- Show employee names of people that have salaries less than the average.
 SELECT
