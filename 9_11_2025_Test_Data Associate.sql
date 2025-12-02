@@ -31,6 +31,7 @@ UPDATE accounts
 
 
 
+
 -- Replace with Average
 SELECT
   COALESCE(audience_score, (SELECT AVG(audience_score) FROM movies)) AS audience_score
