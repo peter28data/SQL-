@@ -52,6 +52,10 @@ TO_CHAR(day, 'DD-MM-YYYY') AS incident_date
 
 -- Explain: Confusing becased the function says day-month-year but the output is year-month-day
 
+-- stored as string, convert to year-month-day
+SELECT 
+	TO_CHAR(day, 'YYYY-MM-DD') AS incident_date
+FROM dates
 
 
 -----------------------------------------------------------------
