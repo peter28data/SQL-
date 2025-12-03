@@ -91,8 +91,10 @@ WHERE customer_code NOT SIMILAR TO 'CDX[0-9]+';
 -- NOT LIKE only supports wildcards (% and _) not full regex so it will return any string starting with CDX even if no digits follow
 WHERE customer_code NOT LIKE 'CDX%';
 
+
 -- NOT IN checks membership in a list of specific values not patterns
 WHERE customer_code NOT IN ('CDX1','CDX2','CDX3');
+
 
 -- <> compares exact values not patterns, filtering out a single value
 WHERE customer_code <> 'CDX1';
