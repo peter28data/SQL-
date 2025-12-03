@@ -35,6 +35,7 @@ SELECT *
 FROM projects p1
 WHERE p1.review_date > (
     SELECT MAX(p2.end_date)
+  
     FROM projects p2
     WHERE p2.project_id = p1.project_id
 );
