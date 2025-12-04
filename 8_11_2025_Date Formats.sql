@@ -233,6 +233,8 @@ ORDER BY lower;
 
 -- Explanation: This will return one column 'lower' with 9am, noon, and 3pm records to display the count of requests during that block of time. 
 
+
+
 -------------------------------------------------------------------
 
 -- Average Time between Sales
