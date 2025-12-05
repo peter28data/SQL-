@@ -160,7 +160,9 @@ WHERE age IS NULL
 SELECT
   COALESCE(age, ROUND(AVG(age) OVER ())) AS age_filled,
   COALESCE(CAST(registration_date AS DATE), '2024-01-01'::DATE) AS registration_date_filled,
+	
   COALESCE(email, 'Unknown') AS email_filled,
+	
   COALESCE(LOWER(workout_frequency), 'flexible') AS workout_frequency_filled,
 FROM users
 
