@@ -91,6 +91,7 @@ WITH reg_dates AS (
   GROUP BY user_id)
 SELECT
 DATE_TRUNC('month', reg_date) :: DATE aS delivr_month
+  
 COUNT(DISTINCT user_id) AS regs
 FROM reg_dates
 GROUP BY delivr_month
