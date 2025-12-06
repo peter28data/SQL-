@@ -12,7 +12,9 @@ having avg(price) > 3
 
 --6 return rows where the title contains 'k' or 'm' only in lowercase
 WHERE title SIMILAR TO '%(k|m)%';    -- LIKE can be used for lowercase specific character
+
 -- the LIKE operator does not support Regular expressions or pattern alternation using Parentheses and the pipe symbol ( (k|m) ).
+
 
 
 --7 the title does Not only contain word characters(letters, numbers or underscores)
