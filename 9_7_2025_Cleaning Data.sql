@@ -22,6 +22,7 @@ WHERE gender NOT IN ('Male', 'Female');
 
 
 
+
 -- 1.4 Check for Uniformity
 -- One value make be upper case and in another lowercase. To check the data for inconsistent casing we use this function
 SELECT DISTINCT product_name
