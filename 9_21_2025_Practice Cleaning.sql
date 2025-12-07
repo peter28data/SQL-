@@ -14,7 +14,9 @@ UPDATE
 --------------------------------------------------------------------------
 
 -- Filtering, No changes to table
--- Match any string that starts with 'A' followed by a digit. Example A28
+
+-- By filtering the database search to return usernames that match the string that starts with an 'A' followed by a digit such as 'A28' we use similar to because the LIKE will only work once. 
+  
 SELECT usernames,
 FROM accounts
 WHERE name SIMILAR TO 'A[0-9]%'
