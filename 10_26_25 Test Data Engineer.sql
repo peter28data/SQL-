@@ -24,6 +24,7 @@
 -----------------------------------------------------------------
 
 --what is an example of cloud-based real time data pipeline service offered by aws
+
 -- Kinesis, it allows to collect streaming data in real time and designed to handle large scale continuous data.
 
 
