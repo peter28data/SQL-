@@ -117,8 +117,10 @@ FROM (
   SELECT COUNT(*) AS dup_count
   FROM your_table
   WHERE duplicates IS NOT NULL
+  
   GROUP BY duplicates
   HAVING COUNT(*) > 1
+  
 ) AS dup_counts;
 
 -- Unique values are duplicated
