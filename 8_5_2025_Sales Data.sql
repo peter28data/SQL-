@@ -46,6 +46,7 @@ WITH missing AS (
 
 unit_prices AS (SELECT o.product_id,
 	CAST(o.sales / o.quantity AS NUMERIC) AS unit_price
+	
 FROM orders o
 RIGHT JOIN missing AS m 
 	ON o.product_id = m.product_id
