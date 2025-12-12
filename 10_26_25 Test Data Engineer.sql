@@ -259,6 +259,7 @@ SELECT
   WHEN (
   game_id IS NULL
   OR TRIM(game_id) IN ('', '-', 'missing')
+	
   OR NOT (game_id ~ '^[0-9]+$')
   )
   AND event_time < TO_DATE('2021-01-01', 'YYYY-MM-DD')
