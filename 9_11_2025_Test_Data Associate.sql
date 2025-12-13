@@ -42,6 +42,7 @@ FROM movies
 SELECT 
   first_name, last_name
 FROM users
+  
 WHERE username LIKE '%!_%' ESCAPE '!';
 
 -- % Matches any number of characters
