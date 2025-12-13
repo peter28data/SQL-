@@ -127,11 +127,14 @@ SELECT user_id
 FROM user
 WHERE user_id !~ '^[0-9]+$'
 
+	
 -- To find user_id that are Duplicates
 SELECT user_id,
 COUNT(*) AS occurences
+	
 FROM users
 GROUP BY user_id
+	
 HAVING COUNT(*) > 1
 
 -- If user_id is an INT data type and need to check for missing values
