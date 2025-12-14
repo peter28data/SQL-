@@ -27,7 +27,8 @@ SELECT category, count(*)
 -------------------------------------------------------------------------
 
 -- Combine Strings
--- The goal is to combine the house number in one column and the street name that is in a seperate column.
+-- Goal: Combine the house number and the street name that are in a seperate column.
+-- Use Case #1: Adresses, Cities, Countries
 SELECT
 ltrim(concat(house_num, ' ', street)) AS address 
 FROM evanston311
@@ -37,7 +38,8 @@ FROM evanston311
 -------------------------------------------------------------------------
 
 -- Split Strings
--- The goal is to extract the first word of the street names to find the most common streets regardless of the suffix such as 'Avenue', 'Road', or 'Street'.
+-- Goal: Extract the first word of the street names to find the most common streets regardless of the suffix afterwards such as 'Avenue', 'Road', or 'Street'.
+-- Use Case #1: Emails Brand Counts, City/Country Counts
 select
 SPLIT_PART(street, ' ', 1) as street_name,
 count(*)
