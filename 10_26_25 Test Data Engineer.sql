@@ -246,6 +246,7 @@ COALESCE(
 -- Conditional Logic, Type Casting, String Handling
 
 -- Challenge: event_time is stored as Text, not timestamp so we use LEFT() to extract the number from a string then use CAST() to convert to Integer to compare to the year 2021, then use CASE WHEN to replace the game_id with 4 when the year is before 2021 with the COALESCE().
+	
 SELECT
     COALESCE(
         game_id,
@@ -286,23 +287,23 @@ END AS cleaned_game_id
 -- To extract only the date and not seconds part
 AND TO_DATE(SUBSTRING(event_time FROM 1 FOR 10), 'YYYY-MM-DD') <'2021-01-01'::DATE
 
+	
+-- Task 2: Replace missing values before year 2021 with game_id for running
+-- Conditional Logic, Type Casting, String Handling
 
--- This query is still wrong because the datapoints for event_time are 2020-10-24T14:59:44.000
+-- Challenge: event_time is stored as Text, not timestamp so we use CASE WHEN to replace the game_id with 4 when the year is before 2021.
+-- Final Query
 SELECT
   CASE
   WHEN (
   game_id IS NULL
   )
-  AND TO_TIMESTAMP(NULLIF(TRIM(event_time, ''), 'YYYY-MM-DD HH24:MI:SS') < '2021-01-01 00:00:00'::TIMESTAMP
+   AND TO_TIMESTAMP(NULLIF(TRIM(event_time), ''), 'YYYY-MM-DD"T"HH24:MI:SS.MS') < '2021-01-01 00:00:00'::TIMESTAMP
 	THEN 4
 	ELSE game_id::INTEGER
 	END AS events_with_game_id,
 	*
 FROM events
-
-
--- To fix this we use 
- AND TO_TIMESTAMP(NULLIF(TRIM(event_time), ''), 'YYYY-MM-DD"T"HH24:MI:SS.MS') < '2021-01-01 00:00:00'::TIMESTAMP
 
 
 
