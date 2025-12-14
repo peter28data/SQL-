@@ -211,6 +211,8 @@ FROM users
 -- STILL WRONG
 -- Clean Categorical and Text Data by Manipulating Strings
 
+
+	
 -- There may be spelling mistakes for the workout_frequency column
 SELECT
   COALESCE(age, ROUND(AVG(age) OVER ())::INT) AS age_filled,
