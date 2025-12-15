@@ -7,35 +7,38 @@ trim(street, '0123456789 #/.') AS cleaned_streetname
 FROM evanston311
 ORDER BY street;
 
---------------------------------------------------------------------------
+---------------------------------------------
 
--- Unstructured Text
--- The goal is to find the total sum of inquires that mention trash or garbarge in the description WITHOUT the context of trash/garbage being in the category.
+-- City Response Database
+-- Goal: Find the total sum of inquires related to trash or garbarge in the description. 
+
+-- Limitation: WITHOUT the context of trash/garbage being in the category title.
 
 SELECT category, count(*)
-  FROM evanston311 
- WHERE (description ILIKE '%trash%'
-    OR description ILIKE '%garbage%') 
-  
-   AND category NOT LIKE '%Trash%'
-   AND category NOT LIKE '%Garbage%'
- -- What are you counting?
- GROUP BY category
- ORDER BY count DESC
- LIMIT 10;
+FROM evanston311 
+WHERE (description ILIKE '%trash%'
+  OR description ILIKE '%garbage%') 
+-- Below is the Limitation
+  AND category NOT LIKE '%Trash%'
+  AND category NOT LIKE '%Garbage%'
+-- Below Counts by Category
+GROUP BY category
+ORDER BY count DESC
+LIMIT 10;
 
--------------------------------------------------------------------------
+---------------------------------------------
 
 -- Combine Strings
 -- Goal: Combine the house number and the street name that are in a seperate column.
 -- Use Case #1: Adresses, Cities, Countries
+
 SELECT
 ltrim(concat(house_num, ' ', street)) AS address 
 FROM evanston311
 
 -- Explanation: the LTRIM function will remove any spaces from the start of the concatenated value. 
 
--------------------------------------------------------------------------
+-------------------------------------------------------------------
 
 -- Split Strings
 -- Goal: Extract the first word of the street names to find the most common streets regardless of the suffix afterwards such as 'Avenue', 'Road', or 'Street'.
