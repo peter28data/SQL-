@@ -1,26 +1,19 @@
--- Trimming
--- The goal here is to return the street name without any numbers, #, /, ., and spaces from the beginning and end of street.
-
-SELECT DISTINCT
-street,
-trim(street, '0123456789 #/.') AS cleaned_streetname
-FROM evanston311
-ORDER BY street;
-
 ---------------------------------------------
 
 -- City Response Database
--- Goal: Find the total sum of inquires related to trash or garbarge in the description. 
+-- Goal: Find the total sum of inquires related to noise complaints in the description. 
 
--- Limitation: WITHOUT the context of trash/garbage being in the category title.
+-- Limitation: WITHOUT the context of Noise/Loud being in the category title.
 
 SELECT category, count(*)
 FROM evanston311 
-WHERE (description ILIKE '%trash%'
-  OR description ILIKE '%garbage%') 
+WHERE (description ILIKE '%noise%'
+  OR description ILIKE '%loud%')
+  
 -- Below is the Limitation
-  AND category NOT LIKE '%Trash%'
-  AND category NOT LIKE '%Garbage%'
+  AND category NOT LIKE '%Noise%'
+  AND category NOT LIKE '%Loud%'
+  
 -- Below Counts by Category
 GROUP BY category
 ORDER BY count DESC
@@ -28,39 +21,57 @@ LIMIT 10;
 
 ---------------------------------------------
 
+-- Standardize Values
+-- Goal: Remove unwanted characters such as #, /, ., spaces, or any numbers to return the street name.
+
+SELECT DISTINCT
+street,
+TRIM(street, '0123456789 #/.') AS cleaned_streetname
+  
+FROM evanston311
+ORDER BY street;
+
 -- Combine Strings
--- Goal: Combine the house number and the street name that are in a seperate column.
--- Use Case #1: Adresses, Cities, Countries
+-- Goal: Combine the first name and last name in a seperate column.
+
+-- Use Case #1: House number + Street, Cities + Countries
 
 SELECT
-ltrim(concat(house_num, ' ', street)) AS address 
+LTRIM( CONCAT(first_name, ' ', last_name)) AS full_name 
 FROM evanston311
 
--- Explanation: the LTRIM function will remove any spaces from the start of the concatenated value. 
+-- Explanation: The LTRIM function will remove any spaces from the left side of the value, Concat will combine strings.
 
 -------------------------------------------------------------------
 
 -- Split Strings
 -- Goal: Extract the first word of the street names to find the most common streets regardless of the suffix afterwards such as 'Avenue', 'Road', or 'Street'.
+  
 -- Use Case #1: Emails Brand Counts, City/Country Counts
-select
+  
+SELECT
 SPLIT_PART(street, ' ', 1) as street_name,
-count(*)
-from evanston311
-group by street_name
-order by count DESC
-limit 20;
+  
+COUNT(*)
+FROM evanston311
+GROUP BY street_name
+  
+ORDER BY COUNT DESC
+LIMIT 20;
 
 -- Explanation: The SPLIT_PART function will need a delimiter, in this case an empty space, and the first or second part of the argrument based on the delimiter. 
 
 ------------------------------------------------------------------------
 
+-- Database Management
 -- Shorten Strings to 50 Characters
--- The goal is to to edit the description column so that only 50 characters are displayed for each record to quickly scan the column.
+
+-- Goal: Limit the description column to 50 characters displayed to improve scanability.
 
 SELECT
 CASE
 WHEN length(description) > 50 THEN left(description, 50) || '...'
+
 ELSE description
 END
 FROM evanston311
@@ -70,34 +81,34 @@ ORDER BY description;
 -------------------------------------------------------------------------
 
 -- Recode Values
--- The goal is to get a sense of what requests are common, to do this we can aggregate by the main category. 
+-- Goal: Which category of City Requests are most common?
+
+-- Explanation: Start by clearing the database cache for any temporary table, then creating a temporary table to aggregate by the main category. 
 
 DROP TABLE IF EXISTS recode;
 
 CREATE TEMP TABLE recode AS 
   SELECT DISTINCT
   category,
+
+  -- Below code splits values before '-'
   RTRIM(SPLIT_PART(category, '-', 1)) AS standardized
   FROM evanston311;
 
 SELECT DISTINCT
 standardized
 FROM recode
-WHERE standardized LIKE 'Trash%Cart'
+
+-- Below filters values in category
+WHERE standardized LIKE 'Noise%Complaint%'
 OR standardized LIKE 'Snow%Removal%';
 
--- Explanation: The SPLIT_PART() function separates what is in the category column with the delimiter '-'. For example, 'Trash Cart,Recycling Cart - Missing' would return 'Trash Cart,Recycling Cart' since it is before the delimiter.
-
--- Explanation: The LTRIM() function will remove white spaces from the right side
+-- Explanation: The SPLIT_PART() function separates what is in the category column with the delimiter '-'. For example, 'Noise Complaint,Loud Neighbors - Resolved' would return 'Noise Complaint,Loud Neighbors'.
 
 ---------------------------------------------------------
 
 -- Update Values
--- The goal is to further the standardization of category values. In the previous exercise we removed everything after the '-' delimiter such as 'Trash Cart - Missing' and removed the white spaces on the right side. 
-
--- Now we are left with some values such as 'Trash Cart, Recylcing Cart' and 'Snow Removal/Concerns'. 
-WHERE standardized LIKE 'Snow%Removal'
--- This line of code would not affect the 'Concerns' part of the string 'Snow Removal/Concerns'. For that, we need to add another delimiter after removal to ensure any strings that have values after Snow Removal are also changed to a standardized value 'Snow Removal' as below.
+-- Goal: After creating a temporary table we can safely change the selected values. 
 
 UPDATE recode
 SET standardized = 'Snow Removal'
@@ -106,15 +117,15 @@ WHERE standardized LIKE 'Snow%Removal%';
 -- Now we update the records for for Trash Cart categories to standardize those values as well.
 
 UPDATE recode
-SET standardized = 'Trash Cart'
-WHERE standardized LIKE 'Trash%Cart%';
+SET standardized = 'Noise Complaint'
+WHERE standardized LIKE 'Noise%Complaint%';
 
 -- Validate Data
 -- Check to make sure there are only two values 
 SELECT DISTINCT
 standardized
 FROM recode
-WHERE standardized LIKE 'Trash%Cart%'
+WHERE standardized LIKE 'Noise%Complaint%'
 OR standardized LIKE 'Snow%Removal%';
 
 --------------------------------------------------------
