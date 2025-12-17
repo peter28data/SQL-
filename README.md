@@ -19,3 +19,70 @@
 
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=peter28data&" alt="peter28data" /></p>
+
+
+----
+
+
+# 📊 Database Management Portfolio — SQL
+
+## Executive Summary
+
+This project demonstrates database management and analytical skills using SQL to clean, standardize, and analyze city service request data. The goal is to transform inconsistent raw records into reliable, query-ready tables that support accurate reporting and decision-making.
+
+☆ Standardized inconsistent category and location fields for analysis  
+☆ Built aggregation queries to count requests by city and category  
+☆ Produced clean, validated outputs suitable for dashboards and reporting  
+
+
+---
+
+
+![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
+
+
+## Business Problem
+
+City service request data is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. These issues make it difficult to accurately count and compare service request categories across cities.
+
+This project focuses on:
+- **Standardizing category and city values** to ensure consistency  
+- **Aggregating service requests** by city and request category  
+- **Improving data reliability** for downstream reporting and analysis  
+
+The final output enables stakeholders to clearly understand which request categories are most common in each city and where operational resources may be required.
+
+![split strings](https://github.com/peter28data/SQL-/blob/main/split_strings_count.png)
+---
+
+
+## Data Processing Flow
+
+
+
+**Flow Overview:**
+↳ Raw city request data ingested into staging tables  
+↳ Category and city values cleaned and standardized  
+↳ Requests grouped and counted by city and category  
+↳ Final tables prepared for reporting and visualization  
+
+
+![standardize values](https://github.com/peter28data/SQL-/blob/main/standardize_values.png)
+---
+
+
+## Tools & Techniques
+- SQL (CTEs, aggregations, string functions)
+- Data standardization and validation
+- Relational database design principles
+
+
+
+
+
+
+![temporary table](https://github.com/peter28data/SQL-/blob/main/temporary_table.png)
+
+![update table](https://github.com/peter28data/SQL-/blob/main/update_values.png)
+
+----
