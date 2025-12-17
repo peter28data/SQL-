@@ -5,7 +5,7 @@
 
 -- Limitation: WITHOUT the context of Noise/Loud being in the category title.
 
-SELECT category, count(*)
+SELECT category, COUNT(*)
 FROM evanston311 
 WHERE (description ILIKE '%noise%'
   OR description ILIKE '%loud%')
@@ -16,7 +16,7 @@ WHERE (description ILIKE '%noise%'
   
 -- Below Counts by Category
 GROUP BY category
-ORDER BY count DESC
+ORDER BY COUNT DESC
 LIMIT 10;
 
 ---------------------------------------------
@@ -42,7 +42,7 @@ FROM evanston311
 
 -- Explanation: The LTRIM function will remove any spaces from the left side of the value, Concat will combine strings.
 
--------------------------------------------------------------------
+-----------------------------------------------
 
 -- Split Strings
 -- Goal: Extract the first word of the street names to find the most common streets regardless of the suffix afterwards such as 'Avenue', 'Road', or 'Street'.
@@ -50,7 +50,7 @@ FROM evanston311
 -- Use Case #1: Emails Brand Counts, City/Country Counts
   
 SELECT
-SPLIT_PART(street, ' ', 1) as street_name,
+SPLIT_PART(street, ' ', 1) AS street_name,
   
 COUNT(*)
 FROM evanston311
@@ -61,7 +61,7 @@ LIMIT 20;
 
 -- Explanation: The SPLIT_PART function will need a delimiter, in this case an empty space, and the first or second part of the argrument based on the delimiter. 
 
-------------------------------------------------------------------------
+-----------------------------------------------
 
 -- Database Management
 -- Shorten Strings to 50 Characters
@@ -70,7 +70,7 @@ LIMIT 20;
 
 SELECT
 CASE
-WHEN length(description) > 50 THEN left(description, 50) || '...'
+WHEN LENGTH(description) > 50 THEN LEFT(description, 50) || '...'
 
 ELSE description
 END
@@ -78,7 +78,7 @@ FROM evanston311
 WHERE description LIKE 'I %'
 ORDER BY description;
 
--------------------------------------------------------------------------
+-----------------------------------------------
 
 -- Recode Values
 -- Goal: Which category of City Requests are most common?
@@ -105,7 +105,7 @@ OR standardized LIKE 'Snow%Removal%';
 
 -- Explanation: The SPLIT_PART() function separates what is in the category column with the delimiter '-'. For example, 'Noise Complaint,Loud Neighbors - Resolved' would return 'Noise Complaint,Loud Neighbors'.
 
----------------------------------------------------------
+-----------------------------------------------
 
 -- Update Values
 -- Goal: After creating a temporary table we can safely change the selected values. 
@@ -128,7 +128,7 @@ FROM recode
 WHERE standardized LIKE 'Noise%Complaint%'
 OR standardized LIKE 'Snow%Removal%';
 
---------------------------------------------------------
+-----------------------------------------------
 
 -- Handle Outliers
 -- The goal is to standardize values of category, however, there are odd inputs such as the ones below. These will be grouped together using the update, set, where IN clause.
@@ -140,7 +140,7 @@ WHERE standardized IN (
   '(DO NOT USE) WATER Bill',
   'NO LONGER IN USE');
 
---------------------------------------------------------
+-----------------------------------------------
 
 -- Join the 'evanston311' and 'recode' tables
 -- We will only keep values that have a match in the recode table because it is cleaned but do
@@ -156,7 +156,7 @@ ORDER BY COUNT DESC;
 -- Explanation: After cleaning the data and standardizing outliers, we can return an accurate description of the count and proportion of inquires. 'Broken Parking Meter' has 6092 inquiries whereas 'Trash' has 3699 as second most.
 
 -- Insight: Snow Removal has 195 inquiries and 'UNUSED' inquiries have 679, meaning a sizable portion of complaints go inactive. 
---------------------------------------------------------
+-----------------------------------------------
 
 -- Indicator Variables
 -- The goal is to determine whether medium or high priority requests in the table are more likely to contain requester's contact information. 
@@ -173,19 +173,21 @@ FROM evanston311;
 
 -- Explanation: LIKE function produces TRUE or FALSE. Therefore, by casting a TRUE/FLASE to integer with the CAST() function, we can summarize how many inquiries included their contact information. 
 
---------------------------------------------------------
+-----------------------------------------------
 
 -- Proportion of Contacts by Priority
--- The goal is to see if high priority complaints have contact information to compare to medium priority complaints.
+-- Goal: Investigate database for high priority complaints for contact information and compare to medium priority complaints.
+
 SELECT 
 priority,
-sum(email)/count(*)::numeric AS email_prop,
-sum(phone)/count(*)::numeric AS phone_prop
+  
+SUM(email)/COUNT(*)::numeric AS email_prop,
+SUM(phone)/COUNT(*)::numeric AS phone_prop
+  
 FROM evanston311
 LEFT JOIN indicators
 ON evanston311.id = indicators.id
 GROUP BY priority;
-
 
 -- Explanation: since email was turned to integers 0 or 1, we can use the sum() function and divide by the count of all rows. By casting this as a numeric we can see a percentage. Grouping by priority will give us the insight that medium complaints have 2% of email and 1.8% phone numbers as contact information. High priority has 1.1% for emails and 2.3% for phone numbers. 
 
