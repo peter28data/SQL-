@@ -28,11 +28,10 @@
 
 ## Executive Summary
 
-This project demonstrates database management and analytical skills using SQL to clean, standardize, and analyze city service request data. The goal is to transform inconsistent raw records into reliable, query-ready tables that support accurate reporting and decision-making.
+This project demonstrates database management using SQL to clean, standardize, and analyze city service request data. The goal is to transform inconsistent raw records into reliable, query-ready tables that support accurate reporting and decision-making.
 
-☆ Standardized inconsistent category and location fields for analysis  
+☆ Standardized inconsistent category and mislabeled fields for analysis  
 ☆ Built aggregation queries to count requests by city and category  
-☆ Produced clean, validated outputs suitable for dashboards and reporting  
 
 
 ---
@@ -40,19 +39,32 @@ This project demonstrates database management and analytical skills using SQL to
 
 ![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
 
+----
 
 ## Business Problem
 
-City service request data is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. These issues make it difficult to accurately count and compare service request categories across cities.
+City service request data is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. These issues make it difficult to accurately compare service request categories across streets and cities.
 
-This project focuses on:
-- **Standardizing category and city values** to ensure consistency  
-- **Aggregating service requests** by city and request category  
-- **Improving data reliability** for downstream reporting and analysis  
+First the code below:
+- **Standardizes the Data** by removing all unwanted characters
+  
+----
 
-The final output enables stakeholders to clearly understand which request categories are most common in each city and where operational resources may be required.
+![standardize values](https://github.com/peter28data/SQL-/blob/main/standardize_values.png)
+
+----
+Second the code below:
+- **Splits Strings** to report which streets receive the most calls
+- **Aggregating service requests** by street name
+----
 
 ![split strings](https://github.com/peter28data/SQL-/blob/main/split_strings_count.png)
+
+----
+
+The final output enables stakeholders to clearly understand which request categories are most common in each street and where operational resources may be required.
+
+
 ---
 
 
@@ -67,7 +79,6 @@ The final output enables stakeholders to clearly understand which request catego
 ↳ Final tables prepared for reporting and visualization  
 
 
-![standardize values](https://github.com/peter28data/SQL-/blob/main/standardize_values.png)
 ---
 
 
@@ -76,10 +87,7 @@ The final output enables stakeholders to clearly understand which request catego
 - Data standardization and validation
 - Relational database design principles
 
-
-
-
-
+----
 
 ![temporary table](https://github.com/peter28data/SQL-/blob/main/temporary_table.png)
 
