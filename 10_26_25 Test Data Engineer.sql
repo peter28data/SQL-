@@ -9,6 +9,8 @@
 
 
 
+
+
 -----------------------------------------------------------------
 
 --which aws service is most appropriate to automatically move objects between storage classess based on access patterns? S3 Intelligent-Tiering
