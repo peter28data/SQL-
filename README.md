@@ -36,6 +36,10 @@ This project demonstrates database management using SQL to clean, standardize, a
 
 ---
 
+![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
+
+---
+
 
 ![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
 
@@ -70,27 +74,41 @@ The final output enables stakeholders to clearly understand which request catego
 
 ## Data Processing Flow
 
-
-
 **Flow Overview:**
-↳ Raw city request data ingested into staging tables  
-↳ Category and city values cleaned and standardized  
-↳ Requests grouped and counted by city and category  
-↳ Final tables prepared for reporting and visualization  
 
+↳ Final visual above built from Inital graph below
+
+↳ Red marker for average across categories, title size, and figure size changed
+
+↳ Requests grouped and counted by category  
 
 ---
 
+![city response](https://github.com/peter28data/SQL/blob/main/city_noise_responses_categories10.6.png)
 
-## Tools & Techniques
-- SQL (CTEs, aggregations, string functions)
-- Data standardization and validation
-- Relational database design principles
+---
 
-----
 
 ![temporary table](https://github.com/peter28data/SQL-/blob/main/temporary_table.png)
 
 ![update table](https://github.com/peter28data/SQL-/blob/main/update_values.png)
 
 ----
+
+## Tools & Techniques
+- SQL (CTEs, aggregations, string functions)
+- Data standardization and validation
+
+----
+
+![case replace](https://github.com/peter28data/SQL/blob/main/replace_null_before_year.png)
+
+---
+
+## Missing Values Management ##
+1. Case When Function: Utilized above to handle complex for one feature such as changing another feature in dataset if the other is before a timeline of 2021. 
+3. Coalesce Function: Utilized below for less tasks such as removing unwanted characters, changing data type, and lower casing but for four features instead of one.
+
+---
+
+![coalesce](https://github.com/peter28data/SQL/blob/main/clean_categorical_data.png)
