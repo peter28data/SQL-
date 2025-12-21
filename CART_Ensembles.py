@@ -1,6 +1,7 @@
 # 1. Instatiate the model 2. fit the model 3. predict the model 4. accuracy score the model
 
 # Import Decsion Tree Classifier to predict whether a tumor is lamignant or benign based on the mean radius of the tumor and its mean number of concave points
+
 from sklearn.tree import DecisionTreeClassifier
 SEED = 1
 dt = DecisionTreeClassifier(max_depth=6, random_state=SEED)
@@ -19,9 +20,10 @@ logreg.fit(X_train, y_train)
 clfs = [logreg, dt]
 plot_labeled_decision_regions(X_test, y_test, clfs)
 
-# ---------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Classification Tree Learning
 # Each node the data is split based on maximizing Information Gain. Entropy as a criterion for Breast Cancer classification dataset
+
 from sklearn.tree import DecisionTreeClassifier
 dt_entropy = DecisionTreeClassifier(max_depth=8,
                                     criterion='entropy',
@@ -56,9 +58,9 @@ rmse_lr mse_lr**(1/2)
 print('Linear Regression test set RMSE: {:.2f}'.format(rmse_lr))
 print('Regression Tree test set RMSE: {:.2f}'.format(rmse_dt))
 
-# ---------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Generalization Error, Bias-Variance Tradeoff
-# Underfitting: not flexivle enough, Overfitting: fits the training set noise too much
+# Underfitting: not flexible enough, Overfitting: fits the training set noise too much
 # GE = bias^2 + variance + noise
 from sklearn.model_selection import train_test_split
 SEED = 1 
