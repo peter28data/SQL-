@@ -1,7 +1,8 @@
 <h1 align="center">Hi 👋, I'm Peter </h1>
 <h3 align="center">A dedicated analyst in SQL, Tableau, and Python.</h3>
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=peter28data" alt="peter28data" /></a> </p>
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=ryo-ma&title=Commit" alt="peter28data" /></a> </p>
+
 
 
 <h3 align="left">Languages and Tools:</h3>
@@ -28,39 +29,43 @@
 
 ## Executive Summary
 
-This project demonstrates database management using SQL to clean, standardize, and analyze city service request data. The goal is to transform inconsistent raw records into reliable, query-ready tables that support accurate reporting and decision-making.
-
-☆ Standardized inconsistent category and mislabeled fields for analysis  
-☆ Built aggregation queries to count requests by city and category  
-
+This project demonstrates database management using SQL to clean, standardize, and analyze city service request data. The goal is to transform inconsistent records into reliable, query-ready tables that support accurate reporting and decision-making.
 
 ---
 
 ![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
 
----
-
-
-![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
-
 ----
 
 ## Business Problem
 
-City service request data is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. These issues make it difficult to accurately compare service request categories across streets and cities.
+City Service Request data is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
 
-First the code below:
+These issues make it difficult for management to accurately compare service request categories across sectors.
+
+1️⃣ First, the code below:
 - **Standardizes the Data** by removing all unwanted characters
   
 ----
 
 ![standardize values](https://github.com/peter28data/SQL-/blob/main/standardize_values.png)
 
-----
-Second the code below:
+---
+
+2️⃣ Second, the code below:
 - **Splits Strings** to report which streets receive the most calls
-- **Aggregating service requests** by street name
+  
 ----
+
+![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
+
+----
+
+3️⃣ Third, the code below:
+
+- **Aggregating service requests** by street name
+
+---
 
 ![split strings](https://github.com/peter28data/SQL-/blob/main/split_strings_count.png)
 
@@ -72,19 +77,19 @@ The final output enables stakeholders to clearly understand which request catego
 ---
 
 
-## Data Processing Flow
-
-**Flow Overview:**
-
-↳ Final visual above built from Inital graph below
-
-↳ Red marker for average across categories, title size, and figure size changed
-
-↳ Requests grouped and counted by category  
+## 🧪 Junior vs Mid-Level Visuals
+![city response](https://github.com/peter28data/SQL/blob/main/city_noise_responses_categories10.6.png)
 
 ---
 
-![city response](https://github.com/peter28data/SQL/blob/main/city_noise_responses_categories10.6.png)
+![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
+
+---
+
+## 📊 Changes between a Junior and Mid-level Visual
+1. Red marker for average across categories, title size, and figure size changed
+
+2. Requests grouped and counted by category  
 
 ---
 
@@ -95,20 +100,27 @@ The final output enables stakeholders to clearly understand which request catego
 
 ----
 
-## Tools & Techniques
-- SQL (CTEs, aggregations, string functions)
-- Data standardization and validation
+## 🧩Missing Values Management ##
+1. CASE WHEN Function: Utilized above to handle complex for one feature such as changing another feature in dataset if the other is before a timeline of 2021.
 
-----
+
+2. COALESCE Function: Utilized below for less tasks such as removing unwanted characters, changing data type, and lower casing but for four features instead of one.
+
+---
 
 ![case replace](https://github.com/peter28data/SQL/blob/main/replace_null_before_year.png)
 
 ---
+![coalesce](https://github.com/peter28data/SQL/blob/main/clean_categorical_data.png)
 
-## Missing Values Management ##
-1. Case When Function: Utilized above to handle complex for one feature such as changing another feature in dataset if the other is before a timeline of 2021. 
-3. Coalesce Function: Utilized below for less tasks such as removing unwanted characters, changing data type, and lower casing but for four features instead of one.
+---
+## 🤝 Done!  Thank you for Reading
+For questions or collaboration opportunities:
+
+📧 peter.garayrobles@gmail.com  
+🔗 Portfolio Link: https://github.com/peter28data/SQL-/blob/main/8_10_2025_Cleaning%20Data.sql
 
 ---
 
-![coalesce](https://github.com/peter28data/SQL/blob/main/clean_categorical_data.png)
+### ⭐ If you like this project, please star the repo!
+
