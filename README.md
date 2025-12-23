@@ -39,7 +39,7 @@ This project demonstrates database management using SQL to clean, standardize, a
 
 ## Business Problem
 
-City Service Request data is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
+Open-source data from real Washington D.C. 311 Service-Request calls is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
 
 These issues make it difficult for management to accurately compare service request categories across sectors.
 
@@ -57,17 +57,17 @@ These issues make it difficult for management to accurately compare service requ
   
 ----
 
-![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
+![split strings](https://github.com/peter28data/SQL-/blob/main/split_strings_count.png)
 
 ----
 
 3️⃣ Third, the code below:
 
-- **Aggregating service requests** by street name
+- **Aggregating Service Requests** by Noise-Type Category
 
 ---
 
-![split strings](https://github.com/peter28data/SQL-/blob/main/split_strings_count.png)
+![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
 
 ----
 
@@ -77,7 +77,12 @@ The final output enables stakeholders to clearly understand which request catego
 ---
 
 
-## 🧪 Junior vs Mid-Level Visuals
+## 📊 Chat-GPT Graph vs Senior Analyst
+The initial graph below is the result of using Chat-GPT to produce a visual. 
+
+The second graph are the changes produced by prompt engineering at a senior analyst level. 
+
+---
 ![city response](https://github.com/peter28data/SQL/blob/main/city_noise_responses_categories10.6.png)
 
 ---
@@ -86,15 +91,36 @@ The final output enables stakeholders to clearly understand which request catego
 
 ---
 
-## 📊 Changes between a Junior and Mid-level Visual
-1. Red marker for average across categories, title size, and figure size changed
+## 🧩 Changes made: Chat-GPT Graph vs Senior Analyst
+1. Red marker for average across categories and Title size
 
-2. Requests grouped and counted by category  
+2. Shaded color based the Count of Categories
+
+3. Figure size changed from (10,6) to (7,4)
 
 ---
 
+## 🎯 Recap
+1. Trimmed Data to remove numbers from street names
+2. Split Strings to remove 'St, Ave, Ln'
+3. Aggregated by Noise-Type Categories
+
+Now we can create a temporary table to not alter the original database and store the cleaned data. 
+
+---
 
 ![temporary table](https://github.com/peter28data/SQL-/blob/main/temporary_table.png)
+
+---
+
+## 📌 Filtering
+
+SPLIT STRING Function: The category labels such as "Snow Removal-Tree Obstruction" have been standardized to "Snow Removal" by removing part of the string.
+
+- WHERE & LIKE clauses in the SQL query are used to identify Categories that may have been logged in differently
+- UPDATE clause will create change any variation of specific categories to be spelled in a uniform way
+
+---
 
 ![update table](https://github.com/peter28data/SQL-/blob/main/update_values.png)
 
@@ -111,7 +137,8 @@ The final output enables stakeholders to clearly understand which request catego
 ![case replace](https://github.com/peter28data/SQL/blob/main/replace_null_before_year.png)
 
 ---
-![coalesce](https://github.com/peter28data/SQL/blob/main/clean_categorical_data.png)
+
+![coalesce](https://github.com/peter28data/SQL/blob/main/coalesce%20function.png)
 
 ---
 ## 🤝 Done!  Thank you for Reading
