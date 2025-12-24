@@ -22,13 +22,17 @@ LIMIT 10;
 ---------------------------------------------
 
 -- Standardize Values
--- Goal: Remove unwanted characters such as #, /, ., spaces, or any numbers to return the street name.
+-- Question: Which streets in Washington D.C. recieve the most        Service-Request calls?
+
+-- Goal: To Count the Number Service-Request calls by street name 
+
+-- Challenge: We must remove unwanted characters such as #, /, .,     spaces, or any numbers.
 
 SELECT DISTINCT
 street,
 TRIM(street, '0123456789 #/.') AS cleaned_streetname
   
-FROM evanston311
+FROM washington_dc
 ORDER BY street;
 
 -- Combine Strings
@@ -159,7 +163,7 @@ ORDER BY COUNT DESC;
 -----------------------------------------------
 
 -- Indicator Variables
--- The goal is to determine whether medium or high priority requests in the table are more likely to contain requester's contact information. 
+-- Goal: To determine if either Medium or High priority requests are more likely to contain requester's contact information. 
 
 -- Using LIKE and delimiters such as '%' and '_' allow us to match any number of characters or a single character. 
 
@@ -171,7 +175,10 @@ CAST(description LIKE '%@%' AS INTEGER) AS email,
 CAST(description LIKE '%___-___-____%' AS INTEGER) AS phone
 FROM evanston311;
 
--- Explanation: LIKE function produces TRUE or FALSE. Therefore, by casting a TRUE/FLASE to integer with the CAST() function, we can summarize how many inquiries included their contact information. 
+-- LIKE Function: Produces TRUE or FALSE if matches search. 
+-- CAST Function: Changes the data type to Integer to change TRUE values to 1 and FALSE to 0.
+
+-- Why?: To create a count of emails records and phone records, therefore summarizing how many inquiries included contact information. 
 
 -----------------------------------------------
 
@@ -181,12 +188,12 @@ FROM evanston311;
 SELECT 
 priority,
   
-SUM(email)/COUNT(*)::numeric AS email_prop,
-SUM(phone)/COUNT(*)::numeric AS phone_prop
+SUM(email)/COUNT(*)::NUMERIC AS email_prop,
+SUM(phone)/COUNT(*)::NUMERIC AS phone_prop
   
-FROM evanston311
+FROM washington_dc
 LEFT JOIN indicators
-ON evanston311.id = indicators.id
+ON washington_dc.id = indicators.id
 GROUP BY priority;
 
 -- Explanation: since email was turned to integers 0 or 1, we can use the sum() function and divide by the count of all rows. By casting this as a numeric we can see a percentage. Grouping by priority will give us the insight that medium complaints have 2% of email and 1.8% phone numbers as contact information. High priority has 1.1% for emails and 2.3% for phone numbers. 
