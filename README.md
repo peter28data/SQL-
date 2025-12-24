@@ -134,7 +134,7 @@ SPLIT STRING Function: The category labels such as "Snow Removal-Tree Obstructio
 
 ---
 
-![case replace](https://github.com/peter28data/SQL/blob/main/replace_null_before_year.png)
+![case replace](https://github.com/peter28data/SQL/blob/main/replace%20before%202021.png)
 
 ---
 
