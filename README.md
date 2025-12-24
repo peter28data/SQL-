@@ -91,16 +91,16 @@ The second graph are the changes produced by prompt engineering at a senior anal
 
 ---
 
-## 🧩 Changes made: Chat-GPT Graph vs Senior Analyst
-1. Red marker for average across categories and Title size
+## 🧩 Changes Made: Chat-GPT Graph vs Senior Analyst
+1. Red dash marker for average across all categories 
 
-2. Shaded color based the Count of Categories
+2. Shaded color integrated with Count of Categories
 
-3. Figure size changed from (10,6) to (7,4)
+3. Figure size changed from (10,6) to (7,4) for readability
 
 ---
 
-## 🎯 Recap
+## 🎯 Recap: SQL Queries
 1. Trimmed Data to remove numbers from street names
 2. Split Strings to remove 'St, Ave, Ln'
 3. Aggregated by Noise-Type Categories
@@ -113,7 +113,7 @@ Now we can create a temporary table to not alter the original database and store
 
 ---
 
-## 📌 Filtering
+## 📌 Managing Mislabeled Categories
 
 SPLIT STRING Function: The category labels such as "Snow Removal-Tree Obstruction" have been standardized to "Snow Removal" by removing part of the string.
 
