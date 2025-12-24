@@ -295,22 +295,43 @@ AND TO_DATE(SUBSTRING(event_time FROM 1 FOR 10), 'YYYY-MM-DD') <'2021-01-01'::DA
 -- Task 2: Replace missing values before year 2021 with game_id for running
 -- Conditional Logic, Type Casting, String Handling
 
--- Challenge: event_time is stored as Text, not timestamp so we use CASE WHEN to replace the game_id with 4 when the year is before 2021.
--- Final Query
+-- Challenge: 'event_time' is stored as a Text data type, not timestamp so we use CASE WHEN to replace the game_id with 4 when the year is before 2021.
+
 SELECT
   CASE
   WHEN (
   game_id IS NULL
   )
-   AND TO_TIMESTAMP(NULLIF(TRIM(event_time), ''), 'YYYY-MM-DD"T"HH24:MI:SS.MS') < '2021-01-01 00:00:00'::TIMESTAMP
+   AND TO_TIMESTAMP(NULLIF(TRIM(event_time), ''), 'YYYY-MM-DD HH24:MI:SS') < '2021-01-01 00:00:00'::TIMESTAMP
 	THEN 4
 	ELSE game_id::INTEGER
 	END AS events_with_game_id,
 	*
 FROM events
 
+-- I rely on case short-circuting the lexicographical ordering of ISO dates to safely isolate timstamp parsng only for null game IDs with pre-2021 event times
 
+-- Goal: Replace missing values for 'game_id' column if 'event_time' column is before the year 2021
 
+-- Challenge: event_time is stored as TEXT data type so it must be converted to timestamp. Null values can also be empty strings. 
+
+SELECT
+  CASE
+    WHEN game_id IS NULL
+         AND event_time < '2021-01-01'
+         AND (
+              event_time IS NULL
+              OR TRIM(event_time) = ''
+              OR TO_TIMESTAMP(event_time, 'YYYY-MM-DD HH24:MI:SS')
+                   < TIMESTAMP '2021-01-01'
+         )
+    THEN 4
+    ELSE game_id::INTEGER
+  END AS game_id,
+  *
+FROM events;
+
+	
 -----------------------------------------------------------------
 
 --GOOD
