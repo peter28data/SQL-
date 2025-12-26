@@ -1,3 +1,17 @@
+-- Porfolio Goal for Portfolio Project
+
+-- An end-to-end analytics project that tracks healthcare claims from submission through payment, identifies billing bottlenecks and denial drivers, and delivers Tableau dashboards.
+
+-- Goals: Operaltional Analyctics, Stakeholder-Driven Reporting, Revenue cylcle Fluency
+-- Deliverables: Translate messy data in its raw form from data collection to executive dashboards. This should improve timeliness, accuracy, and cash flow. 
+
+-- Business Problem: Claims are delayed or denied due to data quality issues, process bottlenecks, and payer variability --- impacting cash flow and operational efficiency. 
+-- Business Goal: Ensure every claim gets on file timely and accurately. To promote operational excellence and support decision-making dashboards should be optimized for readability and have clear directives. 
+
+-------------------------------------
+
+
+
 /*
 Marketing Analytics
 -The Process of analyzing data to understand performance
