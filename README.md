@@ -22,7 +22,7 @@ The Goal: To transform inconsistent records into reliable, query-ready tables th
 
 Open-source data from real Washington D.C. 311 Service-Request calls is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
 
-These issues make it difficult for management to accurately compare service request categories across sectors.
+These issues make it difficult for management to accurately compare sectors across service request categories.
 
 1️⃣ First, the code below:
 - **Standardizes the Data** by removing all unwanted characters
@@ -81,10 +81,23 @@ The second graph are the changes produced by prompt engineering at a senior anal
 
 ---
 
-## 🎯 Recap: SQL Queries
+## 🎯 Recap: SQL Queries to Prepare Data
 1. Trimmed Data to remove numbers from street names
 2. Split Strings to remove 'St, Ave, Ln'
 3. Aggregated by Noise-Type Categories
+
+---
+
+## 🧪 Next Steps: SQL Queries to Analyze Data
+1. Creative Strategy for Identifying Contact Information
+
+Business Problem: Call Center Representatives have let management know that cannot always receive contact information such as email or phone numbers when they receive Service-Request calls in Washington D.C. due to the fast paced nature of certain calls. 
+
+Business Solution: Investigate the Database to see if the proportion of Service-Request calls with and without contact information vary between sectors or due to the natures of calls being medium or high priority to justify the lack of contact information. 
+
+Translate Business to Data: (Advanced) SQL operators such as 'LIKE' can be used in the 'WHERE' clause to to filter data based on specific matching criteria. A deep understanding of how SQL functions work together by principles have lead me to find a creative solution. 
+
+Translate Business to Data: (Advanced) Using the 'LIKE' operator with '%@%' will return a TRUE or FALSE for every record that has a value similar to the syntax for emails. The creative strategy is when the CAST 
 
 ---
 
