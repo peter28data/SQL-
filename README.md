@@ -4,13 +4,26 @@
 
 ----
 
-# 📊 Database Management Portfolio — SQL
+# 📊 Database Management Portfolio 
+## 📌 End-to-End SQL Analytics Project
 
 ## Executive Summary
 
 This project demonstrates database management using SQL to clean, standardize, and analyze city service request data. 
 
-The Goal: To transform inconsistent records into reliable, query-ready tables that support accurate reporting and decision-making.
+The Goal: Transform inconsistent records into reliable, query-ready tables that support accurate reporting and decision-making through the following steps below.
+
+1. Trimmed Data to remove numbers from street names
+2. Split Strings to remove 'St, Ave, Ln'
+3. Aggregated by Noise-Type Categories
+
+---
+
+## 🧪 Business Problem 
+
+Open-source data from real Washington D.C. 311 Service-Request calls is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
+
+These issues make it difficult for management to accurately compare sectors across service request categories. Clean the messy data in three steps and create a visual.
 
 ---
 
@@ -18,18 +31,12 @@ The Goal: To transform inconsistent records into reliable, query-ready tables th
 
 ----
 
-## Business Problem
-
-Open-source data from real Washington D.C. 311 Service-Request calls is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
-
-These issues make it difficult for management to accurately compare sectors across service request categories.
-
 1️⃣ First, the code below:
-- **Standardizes the Data** by removing all unwanted characters
+- **Standardizes the Data** by removing all unwanted characters from street names such as numbers
   
 ----
 
-![standardize values](https://github.com/peter28data/SQL/blob/main/standardize_streets.png)
+![standardize values](https://github.com/peter28data/SQL/blob/main/images/trim_streets.png)
 
 ---
 
@@ -38,7 +45,7 @@ These issues make it difficult for management to accurately compare sectors acro
   
 ----
 
-![split strings](https://github.com/peter28data/SQL-/blob/main/split_strings_count.png)
+![split strings](https://github.com/peter28data/SQL/blob/main/images/split_part.png)
 
 ----
 
@@ -48,27 +55,23 @@ These issues make it difficult for management to accurately compare sectors acro
 
 ---
 
-![category Count](https://github.com/peter28data/SQL-/blob/main/category_count.png)
+![category Count](https://github.com/peter28data/SQL/blob/main/images/category_aggregated.png)
 
 ----
 
 The final output enables stakeholders to clearly understand which request categories are most common in each street and where operational resources may be required.
 
+A visual can now be generated to count the number of Servie-Requests calls in each category.
 
 ---
 
-
 ## 📊 Chat-GPT Graph vs Senior Analyst
-The initial graph below is the result of using Chat-GPT to produce a visual. 
+The initial graph below is the result of using Chat-GPT to produce a visual for Noise-Related Service-Request categories. 
 
 The second graph are the changes produced by prompt engineering at a senior analyst level. 
 
 ---
 ![city response](https://github.com/peter28data/SQL/blob/main/city_noise_responses_categories10.6.png)
-
----
-
-![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
 
 ---
 
@@ -81,31 +84,40 @@ The second graph are the changes produced by prompt engineering at a senior anal
 
 ---
 
-## 🎯 Recap: SQL Queries to Prepare Data
+![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
+
+---
+
+## 🎯 Recap: SQL Queries to Clean Data
 1. Trimmed Data to remove numbers from street names
 2. Split Strings to remove 'St, Ave, Ln'
 3. Aggregated by Noise-Type Categories
 
 ---
 
-## 🧪 Next Steps: SQL Queries to Analyze Data
-1. Creative Strategy for Identifying Contact Information
+## 🧪 New Business Problem: Translate to Data 
+1. Identifying deliverable metrics for Solution
 
-Business Problem: Call Center Representatives have let management know that cannot always receive contact information such as email or phone numbers when they receive Service-Request calls in Washington D.C. due to the fast paced nature of certain calls. 
+Business Problem: Call Center Representatives have reported to management they cannot always receive contact information such as email or phone numbers when they process Service-Request calls in Washington D.C. due to the fast paced nature of calls. 
 
-Business Solution: Investigate the Database to see if the proportion of Service-Request calls with and without contact information vary between sectors or due to the natures of calls being medium or high priority to justify the lack of contact information. 
-
-Translate Business to Data: (Advanced) SQL operators such as 'LIKE' can be used in the 'WHERE' clause to to filter data based on specific matching criteria. A deep understanding of how SQL functions work together by principles have lead me to find a creative solution. 
-
-Translate Business to Data: (Advanced) Using the 'LIKE' operator with '%@%' will return a TRUE or FALSE for every record that has a value similar to the syntax for emails. The creative strategy is when the CAST 
+Business Solution: Investigate the Database to see if the *Proportion* of Service-Request calls with and without contact information vary between sectors or due to the natures of calls, medium or high priority, justify the lack of contact information. 
 
 ---
 
-![casting](https://github.com/peter28data/SQL/blob/main/casting%20contact%20info.png)
+![casting](https://github.com/peter28data/SQL/blob/main/images/proportion_priority.png)
 
 ---
 
-![proportion](https://github.com/peter28data/SQL/blob/main/proportion.png)
+## 🧪 Next Step: SQL Queries to Analyze Data
+2. Creative Strategy for Identifying Contact Information
+
+SQL operators such as 'LIKE' can be used to return values based on specific matching criteria. Integrating this operator with '%@%' will return a TRUE or FALSE if somewhere in the description box for the Service-Requests contains a value with any numbers of characters before and after the '@' such as "john123@gmail" or "jane123@outlook".
+
+(Advanced) Normally, the CAST function is used to change the data type of values. However, a senior analyst can understand a creative strategy when converting TRUE and FALSE values to numeric indicators using a CAST function, enabling straightforward aggregation. As a result, we can quanitify how many records contain email adresses and calculate their proportion, as shown below. 
+
+---
+
+![proportion](https://github.com/peter28data/SQL/blob/main/images/casting_like_integer.png)
 
 ---
 
@@ -113,7 +125,7 @@ Now we can create a temporary table to not alter the original database and store
 
 ---
 
-![temporary table](https://github.com/peter28data/SQL-/blob/main/temporary_table.png)
+![temporary table](https://github.com/peter28data/SQL/blob/main/images/temp_table_where.png)
 
 ---
 
@@ -126,7 +138,7 @@ SPLIT_PART Function: The category labels such as "Snow Removal-Tree Obstruction"
 
 ---
 
-![update table](https://github.com/peter28data/SQL-/blob/main/update_values.png)
+![update table](https://github.com/peter28data/SQL/blob/main/images/updated_temp_table.png)
 
 ----
 
@@ -138,11 +150,11 @@ SPLIT_PART Function: The category labels such as "Snow Removal-Tree Obstruction"
 
 ---
 
-![case replace](https://github.com/peter28data/SQL/blob/main/replace%20before%202021.png)
+![case replace](https://github.com/peter28data/SQL/blob/main/images/case_when_missing.png)
 
 ---
 
-![coalesce](https://github.com/peter28data/SQL/blob/main/coalesce%20function.png)
+![coalesce](https://github.com/peter28data/SQL/blob/main/images/coalesce_columns.png)
 
 ---
 ## 🤝 Done!  Thank you for Reading
