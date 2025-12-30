@@ -12,6 +12,9 @@ INTRODUCTION
 The full course is originally from Cousera in collaboration with IBM to make a Beginner course introduction to Data Science and its applications. This course covers statistics, algorithms, data cleaning, and guidance from Data Scientists active in the field. 
 HYPOTHESIS
 Sports teams may use data from overhead cameras to analyze most productive plays. Netflix and other streaming platforms may use machine learning to allocate resources to most watched genres. Lufthansa and other airlines may use data science to improve customer service. 
+-Customer Service
+-Streaming Services
+-Sports Overhead Cameras
 
 DATA
 Modules
@@ -264,9 +267,11 @@ Leaflet - Interactive plots
 Once reviewed, it overwrites the file in the main branch. 
 
 ---------------------Data Science Methodology: Problem to Approach-------------------------------
+
 DS combines statistics, technology, and domain expertise to extract insights from vast data.
 Methodology: A system of methods or guideline for decision-making during the scientific process.
 DS Methodology: Guides Data Scientists in solving complex problems with data. 
+
 -Perform Data Collection Methods such as Database for Speed or Static 
 -Measurement strategies for ETL pipeline from Data Lake to Data Warehouse
 -Comparison of data analysis methods relative to business goals. 
@@ -282,4 +287,4 @@ DS Methodology: Guides Data Scientists in solving complex problems with data.
 9. Deployment - Can you put the model into practice?
 10. Feedback - Can you get constructive feedback from the data and the stakeholder to answer the business question?
 
-
+-------------------------------------------------------------------------------------------------
