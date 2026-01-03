@@ -23,7 +23,7 @@ The Goal: Transform inconsistent records into reliable, query-ready tables that 
 
 Open-source data from real Washington D.C. 311 Service-Request calls is often collected from multiple sources and contains inconsistent formatting, duplicate values, and non-standard category labels. 
 
-These issues make it difficult for management to accurately compare sectors across service request categories. Clean the messy data in three steps and create a visual.
+These issues make it difficult for management to accurately compare sectors across service request categories. The messy data will be cleaned in three steps and create a visual.
 
 ---
 
@@ -61,7 +61,7 @@ These issues make it difficult for management to accurately compare sectors acro
 
 The final output enables stakeholders to clearly understand which request categories are most common in each street and where operational resources may be required.
 
-A visual can now be generated to count the number of Servie-Requests calls in each category.
+A visual can now be generated to count the number of Service-Requests calls in each category.
 
 ---
 
