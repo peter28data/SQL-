@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm Peter </h1>
+<h1 align="center">Peter Garay-Robles </h1>
 
 <h3 align="center">A Data Engineer in SQL and Python.</h3>
 
@@ -61,7 +61,7 @@ These issues make it difficult for management to accurately compare sectors acro
 
 The final output enables stakeholders to clearly understand which request categories are most common in each street and where operational resources may be required.
 
-A visual can now be generated to count the number of Service-Requests calls in each category.
+A visual can now be generated to count the number of Service-Request calls in each category.
 
 ---
 
