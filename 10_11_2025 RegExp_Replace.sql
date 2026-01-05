@@ -11,6 +11,7 @@ SET username = REGEXP_REPLACE(username, '[^A-Za-z0-9]', '', 'g')
 
 
 
+  
 -------------------------- Task 2: Swap First/Last Name ------------------------------------------------
 
 UPDATE employees
