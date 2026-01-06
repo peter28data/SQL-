@@ -27,7 +27,7 @@ These issues make it difficult for management to accurately compare sectors acro
 
 ---
 
-![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
+![noise related](https://github.com/peter28data/SQL/blob/d828cb9eeacb768d5d4bae8303bfc66c1c8243f8/images/noise_related_requests_category74.png)
 
 ----
 
@@ -71,7 +71,7 @@ The initial graph below is the result of using Chat-GPT to produce a visual for 
 The second graph are the changes produced by prompt engineering at a senior analyst level. 
 
 ---
-![city response](https://github.com/peter28data/SQL/blob/main/city_noise_responses_categories10.6.png)
+![city response](https://github.com/peter28data/SQL/blob/d828cb9eeacb768d5d4bae8303bfc66c1c8243f8/images/city_noise_responses_categories10.6.png)
 
 ---
 
@@ -84,7 +84,7 @@ The second graph are the changes produced by prompt engineering at a senior anal
 
 ---
 
-![noise related](https://github.com/peter28data/SQL/blob/main/noise_related_requests_category74.png)
+![noise related](https://github.com/peter28data/SQL/blob/d828cb9eeacb768d5d4bae8303bfc66c1c8243f8/images/noise_related_requests_category74.png)
 
 ---
 
