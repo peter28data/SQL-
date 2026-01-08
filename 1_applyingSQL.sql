@@ -15,22 +15,6 @@ ON p.customer_id = c.customer_id
 GROUP BY active;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --#2 Aggregating Strings: 
 --Demonstrate family-friendly/multi-lingual films
 --The query below will return a column with a list of all the different languages following by a column including all the film titles that are available in that language. This query demonstrates only films released in 2010 with a 'G' rating by combining two tables on the primary key 'language_id'.
@@ -69,7 +53,6 @@ WHERE table_schema = 'public'
 GROUP BY table_name;
 SELECT *
 FROM table_columns
-
 
 
 -- #5 Aggregate Film Lenths
