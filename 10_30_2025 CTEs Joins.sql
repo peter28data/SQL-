@@ -29,35 +29,6 @@ ON s.start_station = e.end_station
 ORDER BY starts DESC
 LIMIT 3;
 
-
-
-
------------------------------------------------------------------
-
--- Larger Market from Subscribers or Non-subscribers?
-
-
-
-
-
-
------------------------------------------------------------------
-
--- CASE Statement inside a Window Function
--- Calcualte Running Total of Hot Days (75F+)
-
-SELECT
-
-
-
-
------------------------------------------------------------------
-
--- How many columns in the Outer Query were referenced in the Correlated Subquery?
-
-
-
-
 -----------------------------------------------------------------
 
 -- Nested Subquery
@@ -79,24 +50,4 @@ HAVING COUNT(*) <
 LIMIT 5;
 
 
-
-
 -----------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
