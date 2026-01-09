@@ -1,3 +1,5 @@
+--------------------------------------------------------------------------
+
 -- Window Functions
 ROW_NUMBER()
 DENSE RANK() OVER(ORDER BY salary DESC) AS row_num
