@@ -161,7 +161,8 @@ SPLIT_PART Function: The category labels such as "Snow Removal-Tree Obstruction"
 For questions or collaboration opportunities:
 
 📧 peter.garayrobles@gmail.com  
-🔗 Portfolio Link: https://github.com/peter28data/SQL-/blob/main/8_10_2025_Cleaning%20Data.sql
+🔗 Portfolio Link: https://github.com/peter28data/Python
+🔗 Portfolio Link: https://github.com/peter28data/SQL
 
 ---
 
