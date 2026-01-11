@@ -28,9 +28,9 @@ WHERE product_rank < 6;
 
 ---------------------------------------------------------------------------------------------
 
-
 -- Second SQL cell
 -- impute_missing_values
+
 -- Calculate the Quantity for orders with Missing values
 -- By determining the unit price
 
@@ -85,4 +85,4 @@ AND orders.discount = up.discount;
 
 ---------------------------------------------------------------------------------------------
 
-
+-- Created on 8.5.2025
