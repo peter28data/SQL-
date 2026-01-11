@@ -1,24 +1,17 @@
-----------------------------------Ch.1: Revenue, Cost, Profit----------------------------------------
--- Calculating Profit
+---------------- Business Data Project --------------------------
+-- Goal 1: Calculate Revenue, Cost & Profit ----------------------
+
+-- Method: SQL Joins for tables 'meals' with prices & 'orders' for order_quanitiy
+
 SELECT
   order_id,
+  
   -- Multiply each meal's price by ordered quantity
   SUM(meal_price * order_quantity) AS revenue   
   
 FROM meals
 JOIN orders ON meals.meal_id = orders.meal_id
 GROUP BY order_id;
-
-
-
-
--- Working with dates
-DATE_TRUNC('week', '2018-06-12') :: DATE     -- Changes date to start of week '2018-06-11'
-DATE_TRUNC('month', '2018-06-12') :: DATE    -- Changes date to start of month '2018-06-01'
-  
-DATE_TRUNC('quarter', '2018-06-12') :: DATE  -- Changes date to start of quarter '2018-04-11'
-DATE_TRUNC('year', '2018-06-12') :: DATE     -- Changes date to start of year '2018-01-01'
-
 
   
 -- Common Table Expressions (CTEs) and Cost
@@ -30,6 +23,7 @@ WITH costs_and_quanitities AS (
   FROM meals
   JOIN stock ON meals.meal_id = stock.meal_id
   GROUP BY meals.meal_id)
+  
 /*
 This query save results to only pull from data that meets the following conditions. In the next query, the meal ID, total stocked quantity, and total stocking costs of the otp 3 meals by stocking costs are selected from the CTE 'costs_and_quantities' as if it were any other table. The CTE is deleted after the query finishes running. 
 */
@@ -49,6 +43,7 @@ LIMIT 3;
 -- Profit per month; to track profit over time
 The following query will create two CTEs to calculate revenue and cost to identify the KPIs identified above. The third query will return the top 3 meals by profit. 
 */
+
 WITH revenue AS (
   SELECT
   meals.meal_id,
@@ -74,16 +69,20 @@ JOIN cost ON revenue.meal_id = cost.meal_id
 ORDER BY proft DESC
 LIMIT 3;
 
-----------------------------------Ch.2: User Centric KPIs-------------------------------------------
+---------Ch.2: User Centric KPIs-------------------------------------------
 -- Registration Date is the minimum order date because it is when the user first made a purchase
+
 SELECT
 user_id,
-MIN(order_date) AS reg_date
+MIN(order_date) AS registration_date
 FROM orders
 GROUP BY user_id
 ORDER BY user_id
 LIMIT 3;
+
+-- 
 -- Store the previous query's results in a CTE to store each user's registration date. The next query will truncate the reg_date column we just created to extract the month in which each registratio occurs. Then, we count the distinct user IDs in each month. This will give us a count of how many customers are registering every month. Finally we will order by month ascending to give us the new customer registrations KPI for the first 3 months of the year. 
+
 WITH reg_dates AS (
   SELECT
   user_id,
