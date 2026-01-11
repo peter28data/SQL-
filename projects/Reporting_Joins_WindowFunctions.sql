@@ -473,8 +473,9 @@ HAVING SUM(gold) IS NOT NULL
 ORDER BY gold_medals DESC;
 
 
+----------------------------------
 
-
+-- Created on 8.13.2025
 
 
 
