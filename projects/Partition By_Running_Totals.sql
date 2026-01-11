@@ -103,6 +103,9 @@ away AS (
 
 -- Organize the queries together starting with the CTEs followed by the selecting query, then the Joins, ending with the filtering.
 
+-------------------------------------------
+
+-- Created on 8.9.2025
 
 
 
