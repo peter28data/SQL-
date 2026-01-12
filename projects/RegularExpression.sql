@@ -161,8 +161,6 @@ SELECT NOW() + INTERVAL '2 weeks' AS interval_value
 -- Takeaway: If a name is changed, INTERSECT would not include that changed row but inner join would if joined on a primary key such as customer_id. 
 
 
-  
-
 --------------------------------------------------------------------------
 
 -- Return records not in 2013
@@ -176,11 +174,11 @@ FROM bike_stations
 WHERE installation_date < '2013-01-01'
   OR installation_date >= '2014-01-01'
 
---------------------------- Test Review   ------------------------------------
+  
+--------------------------- Review  ------------------------------------
 
--- why answers were wrong
 
--- forgot parenthesis
+-- Focus parenthesis
 ON (t.id = f.song_id) AND (t.dance = f.dance_level)
 
 -- misread which column to look for missing values
@@ -198,7 +196,9 @@ INNER JOIN artist_names
 SELECT name,
   (revenue * 0.7) AS correct_revenue
 
+------------------------------------------------------------------------
 
+-- Created on 9.21.2025
 
 
 
