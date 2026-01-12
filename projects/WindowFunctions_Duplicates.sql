@@ -107,9 +107,9 @@ WHERE row_number = 1
 SELECT * FROM final_table
 
 
-
 -------------------------------------
 
+-- Created on 9.3.2025
 
 
 
