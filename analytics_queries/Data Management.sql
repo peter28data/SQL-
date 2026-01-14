@@ -277,6 +277,9 @@ ORDER BY year;
 
 -- Explanation: The advantage of using EXCEPT is that it removes duplicates by default and returns rows in the first query but not in the second query whereas LEFT JOIN combines rows.  
 
+-----------------------------
+
+-- Created on 7.31.2025
 
 
 
