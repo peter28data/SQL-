@@ -370,5 +370,6 @@ WHERE g.game_type IS NOT NULL
 GROUP BY g.game_type, e.game_id
 ORDER BY g.game_type, e.game_id;
 
+------------------------------------------------
 
-
+-- Created on 10.26.25 
