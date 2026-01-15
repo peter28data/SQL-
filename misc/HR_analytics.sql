@@ -29,5 +29,7 @@ Employee - education level | Many to One Education = education level ID
 -- Mixed or multiple ethnic groups have the lowest average salaries.
 
 
+-------------------------------------------------------
 
+-- Created on 7.30.2025
 
