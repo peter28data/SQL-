@@ -1,40 +1,7 @@
---------------------------------------------------------------------------
-
--- Window Functions
-ROW_NUMBER()
-DENSE RANK() OVER(ORDER BY salary DESC) AS row_num
-LAG(sales_amount, 1) OVER(ORDER BY order_date) AS prev_day_sale
-
-
--- String Functions
-TRIM()
-LOWER()
-REPLACE()
-
--- Date Functions
-CURRENT_DATE()  /  NOW()         --current date/time
-DATEDIFF()  /  TIMESTAMPDIFF()    --Difference between two dates
-EXTRACT(MONTH FROM date_joined)   --Extract month number
-LAST_DAY()                        --Last day of the month
-
-
--- Conditional Functions
-IF()  / CASE()              -- Conditional logic
-COALESCE()                  -- First non-null value in a list
-NULLIF()                    -- Return NULL if two values are equal
-IFNULL()  /   ISNULL()      -- Check if a value is NULL
-
-
--- Filtering Functions
-IN() NOT IN()
-WHERE EXISTS()
-LIKE  /  NOT LIKE  /  ILIKE
-BETWEEN  /  NOT BETWEEN
-
-
 -------------------------------------------------------------------------------------------------
 -- Q1: Identify VIP users for Netflix 
 -- They are defined as the most active in terms of the number of hours of content they watch. Write a SQL query that will retrieve the top 10 users with the most watched hours in the last month.
+  
 SELECT
 user_id,
 SUM(hours_watched) AS watch_hours
@@ -46,9 +13,11 @@ GROUP BY user_id
 ORDER BY watch_hours DESC
 LIMIT 2;
 
+---------------------------------------------------------------------------------------------
 
 -- Q2: Analyzing Ratings for Netflix Shows
 -- Calculate the average rating for each show within a given month.
+
 SELECT
 user_id,
 MONTH(review_date) AS 'Month',
@@ -57,9 +26,11 @@ FROM show_reviews
 GROUP BY MONTH(review_date), show_id
 GROUP BY MONTH(review_date), average_rating DESC;
 
+-------------------------------------------------------------------------------
 
 -- Q3: Filter Netflix Users Based on Viewing History and Subscription Status
 -- Find all active customers who watched more than 10 episodes of a show called 'Stranger Things' in the last 30 days. This gives 4 criterias for the list of users. 
+
 SELECT
 u.user_id,
 FROM users AS u
@@ -72,11 +43,11 @@ AND vh.watch_date > CURDATE() - INTERVAL 30 DAY      -- The last 30 days
 GROUP BY u.user_id
 HAVING COUNT(DISTINCT vh.episode_id) > 10; 
 
-
-
+------------------------------------------------------------------------------
 
 -- Q4: Filter and Match Customer's Viewing Records
 -- You are tasked with analyzing the customer's viewing records. You have gathered requirments related to your task and confirmed that management is interested in customers who have viewed more than five 'Documentary' movies within the last month. Taking into account that 'Documentary' could be a part of a broader genre category in the genre field (for example: 'Documentary, History'). Therefore the matching pattern could occur anywhere within the string. 
+
 SELECT
 c.name,
 c.email
@@ -92,6 +63,7 @@ HAVING COUNT(*) > 5;       -- More than 5 documentary movies
 -------------------------------------------------------------------------------------------------
 -- Q5: Explain the difference between GROUP BY and HAVING.
 -- Use GROUP BY to group data and HAVING to filter aggreagated results 
+
 SELECT
 department_id,
 COUNT(*) AS employee_count
@@ -184,7 +156,38 @@ WITH high_earners AS (
 SELECT *
 FROM high_earners
 
+--------------------------------------------------------------------------
 
+-- Window Functions
+ROW_NUMBER()
+DENSE RANK() OVER(ORDER BY salary DESC) AS row_num
+LAG(sales_amount, 1) OVER(ORDER BY order_date) AS prev_day_sale
+
+
+-- String Functions
+TRIM()
+LOWER()
+REPLACE()
+
+-- Date Functions
+CURRENT_DATE()  /  NOW()         --current date/time
+DATEDIFF()  /  TIMESTAMPDIFF()    --Difference between two dates
+EXTRACT(MONTH FROM date_joined)   --Extract month number
+LAST_DAY()                        --Last day of the month
+
+
+-- Conditional Functions
+IF()  / CASE()              -- Conditional logic
+COALESCE()                  -- First non-null value in a list
+NULLIF()                    -- Return NULL if two values are equal
+IFNULL()  /   ISNULL()      -- Check if a value is NULL
+
+
+-- Filtering Functions
+IN() NOT IN()
+WHERE EXISTS()
+LIKE  /  NOT LIKE  /  ILIKE
+BETWEEN  /  NOT BETWEEN
 
 
 
