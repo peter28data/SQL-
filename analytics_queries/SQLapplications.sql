@@ -334,39 +334,6 @@ LIMIT 1;
 #2 The 'day' column is currently stored as a string, day-month-year, convert to */
 to_char(to_date(day, 'dd-mm-yyyy') AS day_converted
 
-/*
-#3 Change whitespace to underscore
-
-
-
-#4 Filter for customers with 4 or 5 previous transactions
-
-
-
-#5 Datatype
-From varchar  to integer
-
-
-
-#6 Aggregate by Region
-
-
-
-#7 Storage size of Column in bytes
-
-
-
-#8 Num of Unique values 
-
-
-
-#9 extract month
-
-
-
-#10 top 5 books highest price
-
-*/
 
 --#11 sales between dates
 SELECT 
@@ -418,16 +385,6 @@ FROM users
 WHERE username LIKE 'apple%';
 
 
-
---#18 Player info from certain players
-
-
-
---#19 Subquery in Where clause
---This retrieves the names of bakery products that have been sold. the subquery is needed to see if the bakery product appears in the sales table
-
-
-
 --#20 Range of Amount Paid
 MIN/MAX
 SELECT 
@@ -459,21 +416,9 @@ SELECT
   STDDEV(question_pct)
 FROM stackoverflow
 
-
-
---#32 correlation between hours_studied and exam_score
-
-
-
---#33 No missing values
-
-
-
---#34 correlation between ratings and price
-
-
---### EXAM DA101
+---------------------------------------------------------------------------
 --show employee names of people that have salaries less than the average.
+	
 SELECT
   x.Employee_name, y.Salary
 FROM 
@@ -545,6 +490,7 @@ ORDER BY product_line, month, net_revenue DESC
 -- Paste code into first SQL cell
 
 -- This query calculates the average exam score of students who studied more than 10 hours and participated in extracurricular activities.
+	
 SELECT Hours_Studied, AVG(Exam_Score) AS avg_exam_score
 FROM student_performance
 -- Filters the data to include only those who studied more than 10 hours and participated in extracurricular activities.
@@ -608,9 +554,10 @@ COUNT(CASE WHEN preferred_foot = 'right'
 FROM players
 GROUP BY defensive_work_rate;
 
--------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 -- Window Functions: The pupose is to perform calculations based on a results set, or a window of data.
 -- Rank Extreme weather incidents
+
 SELECT
 date,
 max_wind_mph,
