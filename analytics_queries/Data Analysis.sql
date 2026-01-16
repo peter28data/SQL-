@@ -1,34 +1,31 @@
---1&2 join the tables find the pairing that goes with each wine and the price of wine
+
+-- Display all artists and the first genre listed in the 'genre' column if the 'genre' column contains an array with multiple values
+  
+SELECT
+  SPLIT_PART(genre,',',1) AS main_genre  -- Wrong version
+  genre[1] AS main_genre                 -- Correct version
 
 
---3 the first and last names of directors are stored in separate tables. to create an invitation list for a marketing event, combine the two tables. 
-
-
---4 return month from the timestamp '2005-01-24'
+-- Return month from the timestamp '2005-01-24'
+  
 SELECT
 EXTRACT(month FROM timestamp '2005-01-24') AS month
 
---5 display all artists and the first genre listed in the 'genre' column if the 'genre' column contains an array with multiple values
-SELECT
-  SPLIT_PART(genre,',',1) AS main_genre  -- Wrong
-  genre[1] AS main_genre                 -- Correct
-
-
-  
   
 ----------------------------------------------------------------------------------------------
   
   
---7 determine the highest count of bottles amongst all types with CTE
+-- Determine the highest count of wine bottles for Vineyard LLC amongst all category types with a CTE
+  
 WITH type_count as (
   SELECT type, count(id) as bottle_count
   from wine
   group by type)
 select MAX(bottle_count)
-from type_count    -- max is 5
+from type_count    
 
-
--- 8 using the 'accounts' table create a new column code_part that contains an extract of the 'code' column starting at position 3 with a total length of 4 characters
+-- Using the 'accounts' table create a new column code_part that contains an extract of the 'code' column starting at position 3 with a total length of 4 characters
+  
 SELECT
   SUBSTR(code FROM 3 FOR 4) AS code_part  -- Wrong
   substring(code, 3, 4) AS code_part      -- Correct
@@ -43,9 +40,6 @@ SELECT
 FROM orders
 ORDER BY id, product
 LIMIT 5;
-
--- Explanantion: 
-
 
 
 --10 average number of employees
@@ -67,6 +61,7 @@ SELECT CAST('2 weeks' AS INTERVAL); -- wrong ->INTERVAL 2 WEEK AS interval_value
 
 --14 Use a CTE to aggregate the date from current date to have a column for days overdue
 -- Then filter that CTE with the final query in the where clause for 60+ days overdue
+
 WITH overdue AS (
   SELECT
   reference,
@@ -78,20 +73,16 @@ WHERE days_overdue > 60
   
 
 
---15 Include a subquery in the WHERE clause
+-- Subquery in the WHERE clause
 -- To identify rows where the rating for the client is higher than the average.
+  
 WHERE rating > (
-  SELECT AVG(rating)    -- Subquery
+  SELECT AVG(rating)    
   FROM ratings)
 
   ORDER BY show_id
 LIMIT 10;
 
-
-
-
---QUESTIONS to go over
---3,4,5,8,9,12,13
 
 --3 Create a new categorical variable to group prices into three levels
 SELECT price_item
@@ -183,5 +174,7 @@ SELECT product_code,
 quantity_ordered,
 SUM(quantity_ordered
 
+--------------------------------------------------------------------------
 
+-- Created on 8.6.2025
 
