@@ -1,23 +1,38 @@
-------------------------------------- Data Associate Test -------------------------------------
+-------------------------------------  -------------------------------------
 
--- Pearson Coefficient
--- Using a CTE to find the average sales price for all the years in the retail table for multiple retail locations to calculate the Pearson coefficient in the main query.
-WITH sub_table AS (
-  SELECT
-    PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY price ASC) AS median, -- Calculate Median
+-- Revies after End_date
+-- This is to find rows where the condition is violated for validation or cleanup
+SELECT project_id, review_date, end_date
+FROM employee_projects AS ep
+WHERE review_date <= (
+  SELECT MAX(end_date)
+  FROM employee_projects
+  WHERE project_id = ep.project_id);
 
-    AVG(price) AS mean,
-    STDDEV(price) AS std_dev
-  FROM retail
-)
-
-SELECT
-  (3 * (mean - median))/std_dev AS Pearson_Coefficient
-  
-FROM sub_table;
+-- This table tracks the projects assigned to employees in a company. The query is to ensure that for each project id, the review date is always After the end date of the Latest end date for that project ID. 
 
 --------------------------------------------------------------------------
 
+-- Two Tables
+
+WITH subquery AS (
+  SELECT 
+    movie_id,
+    SUM(total_views) all_views,
+    SUM(total_minutes) all_minutes
+  FROM viewings
+  GROUP BY movie_id
+  WHERE ____) 
+
+SELECT 
+  a.movie_name,
+  FLOOR(b.all_minutes / a.movie_length) AS full_views
+FROM movies AS a
+JOIN movie_views AS b
+ON a.movie_id = b.movie_id
+WHERE FLOOR(b.all_minutes / a.movie_length) < 600;
+
+--------------------------------------------------
 
 -- Identify Usernames
 -- Each username contains lowercase letters, digits, and some special characters, create a query to identify users whose username Ends with a digit given the possible characters
@@ -52,22 +67,22 @@ WHERE username LIKE '%!_%' ESCAPE '!';
 
 --------------------------------------------------------------------------
 
+-- Pearson Coefficient
+-- Using a CTE to find the average sales price for all the years in the retail table for multiple retail locations to calculate the Pearson coefficient in the main query.
+WITH sub_table AS (
+  SELECT
+    PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY price ASC) AS median, -- Calculate Median
 
--- Get the Data Type
+    AVG(price) AS mean,
+    STDDEV(price) AS std_dev
+  FROM retail
+)
+
 SELECT
-  pg_typeof(amount_paid) AS "Data Type"    -- Double quotes perserves the space and proper case
-FROM customers
-
+  (3 * (mean - median))/std_dev AS Pearson_Coefficient
   
---------------------------------------------------------------------------
+FROM sub_table;
 
-
--- Change the table
--- From CHAR data type to VARCHAR data type
-ALTER TABLE employee
-ALTER COLUMN employee_name TYPE VARCHAR
-
-  
 --------------------------------------------------------------------------
 
 -- Combine Tables
@@ -141,8 +156,6 @@ ORDER BY title_length DESC
 
 --------------------------------------------------------------------------
 
--- 9/16/2025
-
 -- Analyze Customer Feedback
 SELECT
   ROUND(AVG(rating),2) AS average_rating,
@@ -169,75 +182,8 @@ SELECT
 FROM exam_results;
 
 
---------------------------------------------------------------------------
+----------------------------------------------------
 
--- Revies after End_date
--- This is to find rows where the condition is violated for validation or cleanup
-SELECT project_id, review_date, end_date
-FROM employee_projects AS ep
-WHERE review_date <= (
-  SELECT MAX(end_date)
-  FROM employee_projects
-  WHERE project_id = ep.project_id);
-
--- This table tracks the projects assigned to employees in a company. The query is to ensure that for each project id, the review date is always After the end date of the Latest end date for that project ID. 
---------------------------------------------------------------------------
-
--- Two Tables
-
-WITH subquery AS (
-  SELECT 
-    movie_id,
-    SUM(total_views) all_views,
-    SUM(total_minutes) all_minutes
-  FROM viewings
-  GROUP BY movie_id
-  WHERE ____) 
-
-SELECT 
-  a.movie_name,
-  FLOOR(b.all_minutes / a.movie_length) AS full_views
-FROM movies AS a
-JOIN movie_views AS b
-ON a.movie_id = b.movie_id
-WHERE FLOOR(b.all_minutes / a.movie_length) < 600;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Created on 9.11.2025
 
 
