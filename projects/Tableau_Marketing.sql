@@ -92,3 +92,6 @@ STR(purchase_id) + " " + STR(session_id)
 
 --IFNULL
 -- To combine these string fields, we use the ifnull function to use one ad group field and switch to the other if the first is null. 
+
+
+-- Created on 7.29.2015_
