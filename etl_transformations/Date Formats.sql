@@ -1,3 +1,10 @@
+---------------------------------------------------------
+
+-- ETL Transformations require preparation of date and timestamp data types. Below are the various techniques necessary to prepare these data types.
+
+----------------------------------------------------------
+
+
 -- Date Comparisons
 -- The format will return either a 0 or 49 requests. 
 SELECT COUNT(*)
@@ -7,8 +14,6 @@ WHERE date_created = '2018-01-01';
 
 -- The query above will not return anything. However, when we convert the query to a timestamp it will return 49 requests.
 WHERE date_created = '2018-01-02'::timestamp;
-
-
 
 
 ----------------------------------------------------------
@@ -69,7 +74,6 @@ SELECT
 now() + '100 days'::INTERVAL
 
 
-  
 --------------------------------------------------------------
 
 -- Avg completion Time
@@ -116,6 +120,7 @@ from evanston311
 group by hour
 order by hour;
 
+
 -------------------------------------------------------------
 
 -- Variation by Day of Week
@@ -136,6 +141,8 @@ ORDER BY EXTRACT(DOW FROM date_created);
 -- Explanation: This does order from Sunday to to Saturday since sunday is given the integer value of 0 ascending to saturday as 6.
 
 -- Insight: Requests created at the beginning of the work week such as monday and tuesday are closed sooner than the average time.
+
+
 -------------------------------------------------------------
 
 -- Avg Requests per Month
@@ -232,7 +239,6 @@ GROUP BY lower, upper
 ORDER BY lower;
 
 -- Explanation: This will return one column 'lower' with 9am, noon, and 3pm records to display the count of requests during that block of time. 
-
 
 
 -------------------------------------------------------------------
@@ -339,15 +345,4 @@ SELECT created.month,
 
 -------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
+-- Created on 8.11.2025
