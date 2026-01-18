@@ -21,9 +21,6 @@ ON p1.id = p2.id
 LIMIT 5;
 
 
-
-
-
 ------------------------------------------------------------------
 
 -- Nested Subquery to Find Number of Matches with double the average goals scored for Each Year
@@ -41,7 +38,6 @@ LIMIT 3;
 
 
 
-
 -----------------------------------------------------------------
 
 -- Subquery
@@ -54,7 +50,6 @@ LEFT JOIN match AS m
 ON c.id = m.country_id
 GROUP BY c.name
 LIMIT 3;
-
 
 
 
@@ -76,8 +71,6 @@ ORDER BY start_station DESC
 LIMIT 5;
 
 
-
-
 -----------------------------------------------------------------
 
 -- Subquery
@@ -95,16 +88,6 @@ ON l.id = m.country_id
 LIMIT 5;
 
 
-
-
-
-
-
 -----------------------------------------------------------------
 
-
-
-
-
-
-
+-- Created on 10.13.2025 
