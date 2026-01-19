@@ -1,4 +1,9 @@
+-------------------------------------------------------------------------------------------------
+
+-- ETL transformations require preparation of VARCHAR data types. Below are various use-cases of Regular Expression functions for the purposes of replacing usernames, first and last names, and global changes across the database. 
+
 ------------------------ Task 1: Remove Special Characters --------------------------------------------------
+
 
 UPDATE accounts
 SET username = REGEXP_REPLACE(username, '[^A-Za-z0-9]', '', 'g')
@@ -10,8 +15,6 @@ SET username = REGEXP_REPLACE(username, '[^A-Za-z0-9]', '', 'g')
 
 
 
-
-  
 -------------------------- Task 2: Swap First/Last Name ------------------------------------------------
 
 UPDATE employees
@@ -37,7 +40,6 @@ SET year_only = REGEXP_REPLACE(order_date::text, '(\d{4})-\d{2}-\d{2}', '\1')
 
 
 
-
 -------------------------- Task 4: Examples with Flags -----------------------------------------------
 
 -- Case-Insensitive, Global Replacement (meaning not just the first instance, but all)
@@ -48,17 +50,5 @@ SET body = regexp_replace(body, 'sql', 'SQL', 'gi')
 
 
 
-
 --------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
---------------------------------------------------------------------------
