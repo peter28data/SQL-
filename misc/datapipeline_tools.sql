@@ -1,3 +1,9 @@
+-------------------------------------------------------------
+
+-- Data Engineering requires a knowledge of the limitations of different tools for different sections of the data pipeline process. 
+
+-------------------------------------------------------------
+
 /*
 AWS DynamoDB
 Offers low latency + high throughput
@@ -32,3 +38,7 @@ Create a separate table for the products and their attributes
 #15
 Azure Data Factory
 create and manage Data Pipelines
+
+---------------------------------------------------------------
+
+-- Created on 8.7.2025.
