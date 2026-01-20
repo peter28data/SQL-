@@ -50,7 +50,9 @@ print(linear_layer.bias)
 # The Weights reflect the importance of different features
 # the Bias is independent of the weight that provides the neuron with a baseline output
 
+# ---------------------------------------------------
 
+# Created on 9.10.2025
 
 
 
