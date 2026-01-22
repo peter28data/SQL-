@@ -37,10 +37,12 @@ FROM (
 	where a.row_number >= 5
 ) AS b;
 
+
 ----------------------------------------------------------------------------------
 
 -- Window Functions
 -- MIN/MAX can are available as window functions. In the case of retail, creating a new column with the minimum and maximum discount for different product IDs can be helpful for at-a-glance analysis.
+
 SELECT
 order_id,
 product_id,
@@ -49,10 +51,12 @@ MIN(discount) over (partition by product_id) as min_discount,
 MAX(discount) over (partition by product_id) as max_discount,
 AVG(discount) over (partition by product_id) as avg_discount,
 
+	
 ---------------------------------------------------------------------------------------
 	
 -- PARTITION BY
 -- What if we want to compare each product's price with the average of that year? to do that we use the avg() window function and partition by the model year as such
+	
 SELECT
 	model_year,
 	product_name,
@@ -61,6 +65,7 @@ SELECT
 FROM products_table
 
 -- Explanation: Notice how the avg_price of 2018 is exactly the same whether we use the partition by clause or the group by clause. Both of these queries return the same results but the Window functions free up the GROUP BY clause for other uses.
+	
 SELECT
 	model_year,
 	product_name,
@@ -72,7 +77,8 @@ GROUP BY model_year
 	
 -----------------------------------------------------------------------------------------
 
--- ORDER BY
+-- ORDER BY Clause
+	
 SELECT
 	product_name,
 	list_price,
@@ -90,6 +96,7 @@ FROM products
 ---------------------------------------------------------------------------------------
 
 -- Value Window Functions
+	
 SELECT
 	product_name,
 	list_price,
@@ -122,34 +129,4 @@ FROM products
 
 ---------------------------------------------------------------------------------------
 
--- WINDOW keyword
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Created on 8.7.2025
