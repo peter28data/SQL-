@@ -164,6 +164,8 @@ For Project in Python, click below:
 
 🔗 Python Portfolio Link: https://github.com/peter28data/Python
 
+🔗 Tableau Portfolio Link: https://github.com/peter28data/github
+
 🔗 Current Portfolio Link: https://github.com/peter28data/SQL
 
 ---
