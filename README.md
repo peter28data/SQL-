@@ -184,10 +184,6 @@ For Project in Python, click below:
 
 - 📫 How to reach me **peter.garayrobles@gmail.com**
 
-<h3 align="left">Connect with me @ peter.garayrobles.com</h3>
-<p align="left">
-</p>
-
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=peter28data&" alt="peter28data" /></p>
 
