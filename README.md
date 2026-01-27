@@ -170,9 +170,6 @@ For Project in Python, click below:
 
 ---
 
-### ⭐ If you like this project, please star the repo!
-
-
 
 
 <h3 align="left">Languages and Tools:</h3>
