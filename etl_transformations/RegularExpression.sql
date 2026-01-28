@@ -27,7 +27,6 @@ SET full_name = regexp_replace(full_name, '(\w+),\s*(\w+)', '\2 \1');
 
 
 
-
 -------------------------- Task 3: Extract year from Dates ------------------------------------------------
 
 UPDATE orders
