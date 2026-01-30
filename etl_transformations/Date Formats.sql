@@ -4,7 +4,6 @@
 
 ----------------------------------------------------------
 
-
 -- Date Comparisons
 -- The format will return either a 0 or 49 requests. 
 SELECT COUNT(*)
