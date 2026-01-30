@@ -1,4 +1,4 @@
---2
+--
 select
 category,
 item,
@@ -9,20 +9,19 @@ having avg(price) > 3
 
 
 
-
---6 return rows where the title contains 'k' or 'm' only in lowercase
+-- return rows where the title contains 'k' or 'm' only in lowercase
 WHERE title SIMILAR TO '%(k|m)%';    -- LIKE can be used for lowercase specific character
 
 -- the LIKE operator does not support Regular expressions or pattern alternation using Parentheses and the pipe symbol ( (k|m) ).
 
 
 
---7 the title does Not only contain word characters(letters, numbers or underscores)
+-- the title does Not only contain word characters(letters, numbers or underscores)
 WHERE title NOT SIMILAR TO '\w*';
 
 
 
---15 return the movie titles which only includes four letters
+-- return the movie titles which only includes four letters
 -- Wrong--WHERE title LIKE length(title) =4;
 WHERE title LIKE '____';    -- 4 underscores indicate 4 characters
 
