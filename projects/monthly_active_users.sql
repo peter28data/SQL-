@@ -1,4 +1,5 @@
 ---------------- Business Data Project --------------------------
+
 -- Goal 1: Calculate Revenue, Cost & Profit ----------------------
 
 -- Method: SQL Joins for tables 'meals' with prices & 'orders' for order_quanitiy
@@ -80,7 +81,6 @@ GROUP BY user_id
 ORDER BY user_id
 LIMIT 3;
 
--- 
 -- Store the previous query's results in a CTE to store each user's registration date. The next query will truncate the reg_date column we just created to extract the month in which each registratio occurs. Then, we count the distinct user IDs in each month. This will give us a count of how many customers are registering every month. Finally we will order by month ascending to give us the new customer registrations KPI for the first 3 months of the year. 
 
 WITH reg_dates AS (
@@ -113,6 +113,7 @@ LIMIT 3;
 -- SUM(regs) OVER (ORDER BY delivr_month ASC) 
 -- The use case for window functions is to perform an operation across a set of rows related to the current row. The registrations KPI only counts registrations by month, but what if you want the registered users overall by month? You can't compare the current and previous months' monthly active users unless the two values are in one row. This is why window functions are useful.
 -- Running Total: A cumulative sum of a variable's previous values. 
+
 WITH reg_dates AS (
   SELECT
   user_id,
@@ -137,6 +138,7 @@ LIMIT 3;
 
 -- Delta is the absolute change where as the growth rate is a percentage that show the change in a variable over time relative to that variable's initial value. The first month's growth rate is meaningless as it has nothing to compare to. The sequential growth rates will steadily decline until a stable growth rate is reached. 
 -- (Current value - previous value)/previous value is the formula for growth rate. 
+
 WITH maus AS (...),
 maus_lag AS (...)
 SELECT 
@@ -157,6 +159,7 @@ Users who were not active the previous month but returned to activity this month
 
 Retention Rate: The CTE will store a list of months and the users that were active in these months by selecting the distinct order dates, truncated to the month, and the user IDs. The final query will select the previous month then, count the distinct active users in the current month and divide them by the count of distinct active users in the current month. By casting the numerator to NUMERIC and rounding the results, a cleaner output is returned. The GREATEST function is used to avoid dividing by zero, in case the previous month has zero active users. In case it does, it defaults to 1. Finally select from the CTE as 'previous' for previous month. Then, left join on the same CTE aliased as 'current'. The common key should be user ID and the previous month being equal to the current month minus an interval of one month. This way, you 'peek into' the future and see whether a user stayed in the month after the previous month.  
 */
+
 WITH user_monthly_activity AS (
   SELECT DISTINCT DATE_TRUNC('month', order_date) :: DATE AS delivr_month,
   user_id
@@ -184,6 +187,7 @@ ORDER BY previous.delivr_month ASC;
 Example: Average Revenue Per User (ARPU): Overall revenue / Count of users
 The Unit Economic ARPU measures a company's success in scaling its business model and can be useful to secure financial loans based on future projections at the current Unit Economics and other growth rates. The first query will be useful to track over time because it can be easily grouped by month. The second way is useful to see the distribution of revenue per users for a histogram. */
 -- ARPU Query 1: returns total revenue and users column
+
 WITH kpis AS (
   SELECT
   DATE_TRUNC('month', order_date) AS delivr_month,
@@ -247,6 +251,7 @@ GROUP BY revenue_100
 ORDER BY revenue_100 ASC;
 
 /* Bucketing: seperating data into categories such as Low, Medium, or High priced meals with CASE statements. */
+
 SELECT
 CASE 
   WHEN meal_price < 4 THEN 'Low-price meal'
@@ -261,6 +266,7 @@ GROUP BY price_category;
 Example: If the 25th percentile of user orders is 17, this means that 25% of users have ordered less than 17 times. Conversely, 75% of users have ordered at least more than 17 times. 
 Symmetrical Distribution: A normal bell curve dataset will have the median be the same as the mean and the mode. Whereas a Positive skewed dataset will have the mean be larger than the median, and a Negative skew will have the mean be smaller than the median. 
 Quartiles Query: First store each user's count of orders in a CTE. The percentile window function takes a decimal value and returns the percentile value. */
+
 WITH user_orders AS (
   SELECT
   user_id,
@@ -282,6 +288,7 @@ FROM user_orders;
 /* Survey of Useful Functions
 From DATE_TRUNC() to TO_CHAR(): This will return a readable date format such as 'Friday 13, 2018'
 */
+
 TO_CHAR('2018-08-13', 'FMDay DD, FMMonth YYYY')
 TO_CHAR('2018-06-02', 'Dy')      -- 'Sat'    
 TO_CHAR('2018-06-02', 'Dy - DD') -- 'Sat - 02'
@@ -301,6 +308,7 @@ LIMIT 3;
 /* Window Function Revisited
 SUM() OVER() calculates the column's running total. An example would to be keep track of the total registrations to date for a delivery app. 
 LAG() OVER() fetches a preceding row's value which is useful for calculating retention rates to see if last month's previous users are also in this month's active users. RANK() OVER() ranks users, eateries, or months by how much revenue each generated. */
+
 WITH user_revenues AS (
   SELECT
   user_id,
@@ -317,6 +325,7 @@ LIMIT 3;
 
 -- Pivoting Data is Transposing Data
 -- Pivoting allows one to change the table's shape while perserving its data. Unstacked data read in a wide table is often easier to read than stacked data. 
+
 CREATE EXTENSION IF NOT EXISTS tablefunc;
 SELECT * FROM CROSSTAB($$
 SELECT
@@ -338,6 +347,7 @@ ORDER BY meal_id ASC;
 /* Producing Executive Reports
 Readability includes TO_CHAR(), ROUND(), and CROSSTAB() to read in wide format. 
 #1 Ranking of Delivr's partner eateries by their order amount for the past quarter.*/
+
 CREATE EXTENSION IF NOT EXISTS tablefunc;
 SELECT * FROM CROSSTAB($$
 
@@ -363,7 +373,8 @@ $$) AS ct (eatery TEXT,
         "12-Dec 2018" INT)
 ORDER BY eatery ASC;
 
--------------------------------------Course Recap------------------------------------------------
+
+------------------------------------- Recap------------------------------------------------
 /* 
 Ch.1 Revenue, Cost, Proft
 ch.2 User-Center Metrics
