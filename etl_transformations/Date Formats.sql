@@ -53,7 +53,6 @@ SELECT
 '2018-12-10'::DATE + '1 year'::INTERVAL,  -- Adds One Year
 '2018-12-10'::DATE + '1 year 2 days 3 minutes'::INTERVAL;
 
-
 -- Explanation: To create filters for date ranges we need to be able to add date intervals to dates.
 
 ----------------------------------------------------------
