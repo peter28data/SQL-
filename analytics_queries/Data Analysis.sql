@@ -1,3 +1,4 @@
+---------------------------------------------------------------------------------------------
 
 -- Display all artists and the first genre listed in the 'genre' column if the 'genre' column contains an array with multiple values
   
