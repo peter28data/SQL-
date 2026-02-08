@@ -1,13 +1,4 @@
---
-select
-category,
-item,
-avg(price) as avg_price
-from fruit_2022
-group by category, item
-having avg(price) > 3
-
-
+-----------------------------------------------------------------------
 
 -- return rows where the title contains 'k' or 'm' only in lowercase
 WHERE title SIMILAR TO '%(k|m)%';    -- LIKE can be used for lowercase specific character
@@ -25,9 +16,7 @@ WHERE title NOT SIMILAR TO '\w*';
 -- Wrong--WHERE title LIKE length(title) =4;
 WHERE title LIKE '____';    -- 4 underscores indicate 4 characters
 
-
---8 Pattern Matching is to prepare and clean a table, for this query, the goal is to retrieve the orders from Canada from the 'id' column. 
-
+--------------------------------------------------------------------
 
 --9 return the rows with the second to fourth highest price 
 ORDER BY price DESC
@@ -88,7 +77,8 @@ SELECT
   
 
 --------------------------------------------------------------------------------------------
---15 return number of duplicates records
+
+  --15 return number of duplicates records
 SELECT
 name,
 city,
@@ -215,8 +205,8 @@ SELECT *
 FROM station
 WHERE installation_date NOT BETWEEN '2013-01-01' AND '2013-12-31';
 
--------------------------------------
 
+-------------------------------------
 
 SELECT 
 start_station,
@@ -279,14 +269,4 @@ ORDER BY year;
 -----------------------------
 
 -- Created on 7.31.2025
-
-
-
-
-
-
-
-
-
-
 
