@@ -1,7 +1,8 @@
--------------------------------------  -------------------------------------
+--------------------------------------------------------------------------
 
--- Revies after End_date
--- This is to find rows where the condition is violated for validation or cleanup
+-- Reviews after End_date
+-- Find rows where the condition is violated for validation or cleanup
+
 SELECT project_id, review_date, end_date
 FROM employee_projects AS ep
 WHERE review_date <= (
