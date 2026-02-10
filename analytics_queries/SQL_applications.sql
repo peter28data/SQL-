@@ -18,6 +18,7 @@ GROUP BY active;
 --#2 Aggregating Strings: 
 --Demonstrate family-friendly/multi-lingual films
 --The query below will return a column with a list of all the different languages following by a column including all the film titles that are available in that language. This query demonstrates only films released in 2010 with a 'G' rating by combining two tables on the primary key 'language_id'.
+
 SELECT
   name,
   STRING_AGG(title, ',') AS film_titles
@@ -80,6 +81,7 @@ Problem: There is no common key between these tables so we use the 'customer' ta
 There is no common id.
 'inventory' table has film_id from 'films' and inventory_id from 'rental'.
 */
+
 SELECT
   title,
   COUNT(title)
@@ -251,10 +253,10 @@ HAVING count(*) >=100;
 --Find the five most common values of 'street' column and a count of each
 SELECT
   street,
-  count(*)
+  COUNT(*)
 FROM evanston311
 GROUP BY street
-ORDER BY count(*) DESC
+ORDER BY COUNT(*) DESC
 LIMIT 5;
 
 
@@ -268,7 +270,7 @@ LIMIT 5;
 --The following query will return values of 'apple' but will not return values that have whitespace before or after, and will not return plural versions of 'apple'.
 SELECT *
 FROM fruit_table
-WHERE lower(fruit_column)='apple';
+WHERE lower(fruit_column)= 'apple';
 
 
 
@@ -285,33 +287,33 @@ WHERE fruit_colulmn ILIKE '%apple%';
 
 --#28 Limits
 --This will return values such as pineapple since apple is in the value. Another way to return values without whitespace is to use the trim function. This removes space from left and right side. 'rtrim' and 'ltrim' to specify sides.
-SELECT trim(' abc '):
+SELECT TRIM(' abc '):
 
 
 
 --#29 Limits
 --The previous funcion only removes spaces but not tabs or new lines in the value. Using the second argument we can specify which characters to remove. This would return the value 'o' since all other characters were specified.
-SELECT trim('Wow!', '!wW');
+SELECT TRIM('Wow!', '!wW');
 
 
 
 --#30 Combining
 --We can execute the lower function to the first argument of the trim function so that we do not have to specify the upper case 'W' in the second argument of the trim function.
-SELECT trim(lower('Wow!'), '!w');
+SELECT TRIM(lower('Wow!'), '!w');
 
 
 
 --#31 Frequent Categories
 --The query goes through inquires from for help. The goal is to see how well the 'category' captures what is in the 'description'. The method is to find inquires that mention trash or garbage in the description without those keywords in the category. What is the most frequent categories for these constraints.
 SELECT
-  category, count(*)
+  category, COUNT(*)
 FROM evanston311
 WHERE (description ILIKE '%trash%'
 OR description ILIKE '%garbage%')
 AND category NOT LIKE '%Trash%'
 AND category NOT LIKE '%Garbage%';
 GROUP BY category
-ORDER BY count DESC
+ORDER BY COUNT DESC
 LIMIT 10;
 
 
