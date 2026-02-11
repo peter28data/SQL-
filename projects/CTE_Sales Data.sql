@@ -1,9 +1,3 @@
-
--- Find the top 5 products
--- Based on total sales
--- From each Category
-
-
 ---------------------------------------------------------------------------------------------
 
 -- First SQL cell
