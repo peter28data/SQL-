@@ -22,11 +22,11 @@ LIMIT 10;
 ---------------------------------------------
 
 -- Standardize Values
--- Question: Which streets in Washington D.C. recieve the most        Service-Request calls?
+-- Question: Which streets in Washington D.C. recieve the most Service-Request calls?
 
 -- Goal: To Count the Number Service-Request calls by street name 
 
--- Challenge: We must remove unwanted characters such as #, /, .,     spaces, or any numbers.
+-- Challenge: We must remove unwanted characters such as #, /, ., spaces, or any numbers.
 
 SELECT DISTINCT
 street,
