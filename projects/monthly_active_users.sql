@@ -28,6 +28,7 @@ WITH costs_and_quanitities AS (
 /*
 This query save results to only pull from data that meets the following conditions. In the next query, the meal ID, total stocked quantity, and total stocking costs of the otp 3 meals by stocking costs are selected from the CTE 'costs_and_quantities' as if it were any other table. The CTE is deleted after the query finishes running. 
 */
+
 SELECT
   meal_id,
   quantity,
