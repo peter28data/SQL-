@@ -6,6 +6,7 @@
 
 -- Date Comparisons
 -- The format will return either a 0 or 49 requests. 
+
 SELECT COUNT(*)
 FROM evanston311
 WHERE date_created = '2018-01-01';
