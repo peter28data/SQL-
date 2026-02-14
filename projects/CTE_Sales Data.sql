@@ -20,6 +20,7 @@ WHERE product_rank < 6;
 
 -- Explanation: By casting the sales column as numeric
 
+
 ---------------------------------------------------------------------------------------------
 
 -- Second SQL cell
@@ -56,12 +57,14 @@ INNER JOIN unit_prices AS up
 
 
 -- Summary: The sales data is written as 'double precision' data type so it is converted to numeric data type first then divided by the unit price from the final query's Inner Join clause. Even though unit_prices is a CTE, it is given an alias in the final query.
----------------------------------------------------------------------------------------------
 
+
+---------------------------------------------------------------------------------------------
 
 -- How it Works: First we find rows with missing quantity and set that aside with a CTE. Then we use a second CTE to calculate the unit price from product id's that are not missing, this way we can calculate the unit price for product id's with quantity data missing. Lastly, in the third query we create a new column 'calculated_quantity' to divide the sales by the unit price and round to the whole number. 
 
 -- Impute the NULL Quanitities
+
 UPDATE orders
 SET quantity = ROUND(o.sales / up.unit_price)
 FROM (
