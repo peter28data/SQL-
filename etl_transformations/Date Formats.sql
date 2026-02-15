@@ -41,6 +41,7 @@ AND date_created < '2017-03-13'::DATE + 1;  -- Adds One Day
 
 -- Explanation: By adding + 1, it sets the upper limit to March 14. The < operator ensures that only requests created before March 14 are included. This way only requests created ON March 13 are counted. 
 
+
 ---------------------------------------------------------
 
 -- Date Subtraction
@@ -82,6 +83,7 @@ AVG(date_completed - date_created) AS completion_time
 FROM evanston311
 GROUP BY category
 ORDER BY completion_time DESC;
+
 
 --------------------------------------------------------------
 
@@ -188,14 +190,15 @@ generate_series('2018-02-01', '2019-01-01', '1 month'::INTERVAL) - '1 day'::INTE
 -- 2018-01-31     This was feb 1st minus one day
 -- 2018-2-28      This was march 1st minues one day
 
+
 ------------------------------------------------------------------
 
-
--- generate series to include hours with no sales
+-- Generate series to include hours with no sales
 WITH hour_series AS (
   SELECT generate_series('2018-04-23 09:00:00', '2018-04-23 14:00:00', '1 hour'::INTERVAL) AS hours)
 
 -- Join to sales date ON 
+
 SELECT
 hours,
 count(date)
