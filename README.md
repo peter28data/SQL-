@@ -4,8 +4,8 @@
 
 ----
 
-# 📊 Database Management Portfolio 
-## 📌 End-to-End SQL Analytics Project
+# 📊 End-to-End SQL Analytics Project
+## Database Management Portfolio 
 
 ## Executive Summary
 
