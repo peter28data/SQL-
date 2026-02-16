@@ -59,7 +59,6 @@ FROM sales
 WHERE customer NOT LIKE '^CDX[0-9]+';  -- or '<>' instead of not like, or NOT SIMILAR TO?
 
 
-
 -- Find all of the credit lines with promo codes that start with a number
 WHERE promoCode ~ '^[0-9]';
 
@@ -68,7 +67,6 @@ WHERE promoCode ~ '^[0-9]';
 
 -- Identify users whose username ends iwth a digit
 WHERE username ~ '[0-9]$';
-
 
 
 --7 Alter the table to update column from CHAR to VARCHAR
@@ -84,4 +82,4 @@ USING ROUND(amount);
 
 ------------------------------------------------------------------------
 
--- Created on 8.8.2025 SQL Associate
+-- Created on 8.8.2025 
