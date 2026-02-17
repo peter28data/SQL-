@@ -33,9 +33,9 @@ These issues make it difficult for management to accurately compare sectors acro
 ----
 
 1️⃣ First, the code below:
-- **Standardizes the Data** by removing all unwanted characters from street names such as numbers
-  
-----
+- **Standardize the Data** by removing all unwanted characters from street names such as numbers
+
+---
 
 ![standardize values](https://github.com/peter28data/SQL/blob/main/images/trim_streets.png)
 
