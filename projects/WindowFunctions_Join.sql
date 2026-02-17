@@ -47,6 +47,7 @@ ORDER BY sport, athletes DESC;
 ------------------------------------------------------------------------------
 
 -- Subquery to filter from young athletes
+
 SELECT
   SUM(bronze) AS bronze_medals,
   SUM(silver) AS silver_medals,
