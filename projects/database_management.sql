@@ -18,6 +18,7 @@ GROUP BY table_name;
 SELECT *
 FROM table_columns
 
+  
 ------------------------------------------------------------
 
 -- Q6: Data Cleaning for Outliers
