@@ -101,7 +101,7 @@ The second graph are the changes produced by prompt engineering at a senior anal
 
 Business Problem: Call Center Representatives have reported to management they cannot always receive contact information such as email or phone numbers when they process Service-Request calls in Washington D.C. due to the fast paced nature of calls. 
 
-Business Solution: Investigate the Database to see if the *Proportion* of Service-Request calls with and without contact information vary between sectors or due to the natures of calls, medium or high priority, justify the lack of contact information. 
+Business Solution: Investigate the Database to see if the *Proportion* of Service-Request calls with and without contact information vary between sectors or due to the natures of calls, medium or high priority, to justify the lack of contact information. 
 
 ---
 
@@ -112,9 +112,11 @@ Business Solution: Investigate the Database to see if the *Proportion* of Servic
 ## 🧪 Next Step: SQL Queries to Analyze Data
 2. Creative Strategy for Identifying Contact Information
 
+(Advanced Explanation) 
+
 SQL operators such as 'LIKE' can be used to return values based on specific matching criteria. Integrating this operator with '%@%' will return a TRUE or FALSE if somewhere in the description box for the Service-Requests contains a value with any numbers of characters before and after the '@' such as "john123@gmail" or "jane123@outlook".
 
-(Advanced) Normally, the CAST function is used to change the data type of values. However, a senior analyst can understand a creative strategy when converting TRUE and FALSE values to numeric indicators using a CAST function, enabling straightforward aggregation. As a result, we can quanitify how many records contain email adresses and calculate their proportion, as shown below. 
+Normally, the CAST function is used to change the data type of values. However, a senior analyst can understand a creative strategy when converting TRUE and FALSE values to numeric indicators using a CAST function, enabling straightforward aggregation. As a result, we can quanitify how many records contain email adresses and calculate their proportion, as shown below. 
 
 ---
 
