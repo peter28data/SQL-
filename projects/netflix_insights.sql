@@ -93,6 +93,7 @@ HAVING COUNT(*) > 1;
 
 -- Q8: What is a window function in SQL?
 -- A window function performs calculations across a set of table rows related to the current row - without collapsing rows like GROUP BY.
+
 ROW_NUMBER() OVER(PARTITION BY department ORDER BY salary DESC) AS row_num -- each employee within the same department gets a row number based on salary rank (highest first)
 RANK() OVER(PARTITION BY department ORDER BY  salary DESC) as rank_num -- if 2 employees have the same salary, both get rank 1, and the next gets rank 3.
 
