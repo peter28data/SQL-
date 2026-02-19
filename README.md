@@ -1,6 +1,6 @@
 <h1 align="center">Peter Garay-Robles </h1>
 
-<h3 align="center">A Senior Analyst in SQL and Python.</h3>
+<h3 align="center">A Senior Analyst in SQL and Tableau </h3>
 
 ----
 
@@ -161,12 +161,12 @@ SPLIT_PART Function: The category labels such as "Snow Removal-Tree Obstruction"
 
 ---
 ## 🤝 Done!  Thank you for Reading
-For Project in Python, click below:
+For Project in Tableau, click below:
 
+🔗 Tableau Portfolio Link: https://github.com/peter28data/github
 
 🔗 Python Portfolio Link: https://github.com/peter28data/Python
 
-🔗 Tableau Portfolio Link: https://github.com/peter28data/github
 
 🔗 Current Portfolio Link: https://github.com/peter28data/SQL
 
@@ -175,7 +175,7 @@ For Project in Python, click below:
 
 ## 📫 How to Connect With Me:
 
-📧 Email: peter.garayrobles@gmail.com 
+🔗 Email: peter.garayrobles@gmail.com 
 
 ---
 
