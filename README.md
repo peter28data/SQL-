@@ -1,6 +1,6 @@
 <h1 align="center">Peter Garay-Robles </h1>
 
-<h3 align="center">A Senior Analyst in SQL and Tableau </h3>
+<h3 align="center">A Senior Analyst in SQL and Tableau. </h3>
 
 ----
 
