@@ -1,0 +1,202 @@
+This file covers the Coursera SAP Professional Certificate Program.
+
+SAP - Systems, Applications, and Products in Data Processing
+
+SAP is a suite of software applications that allow companies to standardize processes across departments and countries. For industries such as Oil & Gas, Utilities & Energy, Manufacturing (automotive, electronics), and Retail, SAP is used to:
+1. Gather requirements
+2. Process modeling
+3. Data Analysis
+4. Reporting & KPIs
+5. Testing & UAT
+
+ERP - Enterprise Resource Planning
+SAP is a ERP system, connecting different departments such as Finance & Accounting, HR, Sales & Customer Service, Procurement & Inventory, and Supply Chain & Logistics in one unified database to share real-time data. This also allows companies to audit trails to meet strict compliance needs. The goal for this program is to be equipped to help businesses streamline their operations, improve customer experiences, and ultimately increase their profitability.
+
+This program for Business Analysts is segmented into four courses.
+1. Foundations of Business Analysis
+  introduction to BA
+  Software development lifecycle
+  agile and hybrid methodlologies
+  BA role in project delivery
+2. Requirements Gathering and Documentation
+3. Business Process Modeling and Analysis
+4. Strategic Analysis and Solution Design
+
+Foundations of Business Analysis highlights a structured approach for analyzing business problems and identifying opportunities. Developing a value proposition statement and success metric to effectively measure the impact of work. Business Analysts work with companies to understand specific business requirements. They analyze the current processes and drill down to find the precise areas that need to be improved. Next, they work with the technical team to design and implement solutions. BAs make sure the solutions from the technical team meet the specific business needs of the company. Therefore, BAs help improve efficiency, increase customer satisfaction, and drive growth for the businesses. 
+
+Example Scenario: You are tasked with analyzing sales data to identify trends and improve sales forecasting. SAP Analytics Cloud can be used to create dashboards to show seasonal patterns, regional differences, and product performance. BAs might recommend to adjust inventory levels, target specific customer groups, or introduce new products. SAP Signavio is used to create flowcharts to display the flow of processes. This can also be used to display the relationship between a customer and a supplier when a customer places an order. Creating a quick model in SAP Signavio begins with defining user activities, populating the swim lanes under each activity, and organizing by the 'who' and linking process tasks in the diagram.
+
+Frameworks such as Business Process Modeling Notation (BPMN) help to map out and visualize how processes work such as order fulfillment, inventory management, and supply chain operations. One major issue could be manual data entry to check stock availability for order fulfillment will slow the process down. Inventory tracking is not in real-time, therefore, some items may appear available when out of stock leading to frustrated customers and missed sales. The solution is to implement barcode scanning, mobile app scanning with SAP S/4HANA to manage inventory in real-time to provide accurate stock information. This improves backend efficiancy but to deliver value to the customer an improvement on delivery and shopping experience are focused. 
+
+Leveraging ChatGPT for SWOT/PESTLE analysis can give a business analyst an edge. To explore options on how to deal with a competitive threat, a prompt can be written as so: "What are the potential competitive advantages and disadvantages of the competitor's solution compared to our proposed SAP S/4HANA implementation?" The answer can go in the "ChaptGPT Insights" section of a Business Case Analysis Report to highlight the role of AI in the analysis process and to demonstrate how to effectively utilize AI to generate insights. The executive summary provides a concise overview of the business case, key findings, and recommendations. 
+
+The most significant contribution of business analysis frameworks in defining effective requirements for an SAP solution is to enable alignment between the SAP solution and business needs. Frameworks ensure the solution solves the right problem by guiding the process of understanding the business context and translating it into actionable requirements. 
+
+Value proposition to implement new Enterprise Resource Planning systems should be different for every stakeholder. The selling point for shop floor workers would be to save energy and time by removing the foot traffic they would need to gain access to essential information such as inventory levels, production levels, and ensuring quality checks. For warehouse staff managing shipments and organizing warehouse space can be automated. For production managers, gaining real-time data to dashboards to track Key Performance Indicators and highlight areas for improvement can enable managers to make faster decisions and allow for more time for consideration. Sales and marketing teams need to respond to customers fast with ERP systems. For IT departments, built-in compliance features and robust security protocols minimizes the risk of breaches to allow IT teams to focus on innovation rather than routine maintenance. Another benefit to employees is making their jobs easier, teaching new skils, or improving career opportunities. A consideration is to be early, upfront, and show concern openly with employees about the challenges a new implementation project can be. 
+
+SAP Extended Warehouse Management (EWM) help to optimize stock levels, reduce downtime, and improve production efficiency. SAP Integrated Business Planning (IBP) is for demand forecasting that can improve decision-making for supply chain optimization. SAP EWM can be used for better inventory control to also improve supply chain. To decide which technology is the better option, a cost-benefit analysis can be broken down into implementation costs, ongoing costs, expected benefits, and risks such as a high learning curve for Warehouse Management could lead to a temporary inefficiency before full adoption. 
+
+Defining measurable outcomes create clear goals to guide work, track progress, and prove impact to stakeholders. A vague statement "We want a better HR system" can be broken down into boosting employee engagement by comparing satisfaction scores through surveys, speed up hiring from 45 days to 30 days with ATS, automated job postings, improve employee retention with better career development programs with course completion rates to reduce turnover by 10%, improve development with training programs increasing participation by 20% and checking if employees are applying the upskilling they have sought. 
+
+Specific, Measureable, Attainable, Relevant, and Timed goals empower ideas to be promoted in a structured and compelling case to executives and managers with a meaningful impact. For example, working with the Accounts Payable Department to reduce late payments and enhance Days Payable Outstanding to 20 days. The current late payment rate is 85% and reducing this by 15% is attainable. 
+
+What is the key contribution of an SAP business analyst in a large-scale SAP implementation for a global company looking to standardize its business processes across all subsidiaries.
+X manage the training implementation, training teams handle this
+Y BA should identify commonalities and differences in processes to harmonize diverse business processes within the SAP system.
+
+What is the first step a BA should take when improving a company's order fulfillment process.
+X document the current order fulfillment process
+Y BA should work with users to capture their needs and perspectives to understand stakeholder wants and needs.
+
+Which approach is the most persuasive in demonstrating the value of the SAP system upgrade to senior management?
+X presenting the benefits through case studies of other companies that benefitted, it will only act as a support to the actual solution
+
+When researching other industries' approaches to value and success measurement a key question to consider is what are the key factors that drive value in their industries and how they relate to the current industry's drivers.
+
+Which skill will help the analyst produce clear and structured documentation?
+X facilitating workshops and stakeholder discussions
+X evaluating system performance and technical feasibility
+Y structuring complex information and defining precise details to set clear, organized, and detailed making it easier for teams to implement effectively
+
+Which structured approach would be most effective in evaluating potential effects when introducing a new product and how it affects various aspects of its operations?
+X Process mapping
+Y Impact analyst helps businesses anticipate and assess the potential effects of a new product launch across different operational areas
+
+Which structured approach would be most effective for prioritizing requirements and making sure that the solution addresses the most essential needs?
+X Process mapping
+X Six thinking hats
+Y MoSCoW method
+
+The Software Development Life Cycle allows BAs to communicate better with developers, so that you can bridge the gap with information they need at any stage to reduce errors and delays. The planning phase involves the projects scope and objectives, necessary resources, and timeline. The analysis phase is when the BA gathers requirements from stakeholders to identify the problems the software is meant to solve. The design phase covers user interface, database structure, and system architecture. The development is writing actual code. Testing phase includes functional testing, performance testing, and security testing. deployment phase rolling out to sample customers, migrating data or training users. Maintenance phase includes regular updates, bug fixes, and enhancements to remain effective.
+
+The SAP Activate methodology is an agile framework. It includes Project preparation, Blueprint, Realization, Final preparation, and Go-live & support. Key principles include agile and iterative approach such as breaking down projects into smaller, manageable sprints. A sprint focuses on delivering specific functionalities, enabling rapid deployment and validation. SAP Activate divides the project lifecycle into six phases; Discover, Prepare, Explore, Realize, Deploy, Run. The Discover phase is for gathering high-level requirements to understand the overall needs and scope. The Prepare phase conducts detailed workshops to gather specific requirements such as inventory management, batch tracking, and order fulfillment; it involves understanding the detailed needs of stakeholders. The realize phase focuses on building and configuring the system to meet specific requirements
+
+Traditional Waterfall approaches struggle to keep up with the fast paced environment so Agile methods focus on specific functionality for rapid deployment and validation. Targeting sprints produces something tangible and helps to confirm that the solution is moving in the right direction. It begins with requirements gathering, design, development, testing, deployment. The key difference is with an Agile methodoly a minimum viable product is presented to the customer to gather feedback to plan for the next sprint. Scrum is a popular agile framework that provides a structured approach to managing complex projects. The scrum helps the team overcome obstacles and removes any impediments that are preventing the team from making progress. The product owner defines what the product should do and are responsible for creating and maintaining the product backlog, a prioritized list of features and requirements for the product.
+
+Daily Scrum is a 15 minute meeting where the team discusses what they did yesterday, what they plan to do today, and any obstacles they are facing. Sprint Planning is where the product owner presents the product backlog items and the Devlepment Team selects the items they will commit to completing during the sprint. Sprint Review is where the team demonstrates the working product to the stakeholders. Sprint Retrospective is where the team reflects on the sprint. They discuss what went well, what could be improved, how they can work more effectively in the future. 
+
+Kanban and Scrum are agile frameworks however Kanban focuses on visualizing work, limiting work in progress, and maximizing efficiency. By limiting the number of items being worked on for each "production line", the team can identify bottlenecks, reduce waste, and optimize the flow of value. 
+
+Implementing a system for ongoing feedback and collabortive interactions with all stakeholder groups is generally the most effective for managing stakeholder involvement to support the project's success.
+
+A significant challenge when choosing the waterfall method is the difficulty in adapting to evolving requirements, regarding accessbility and user feedback, within the existing system. 
+
+SAP Active's most significant consideration is the methodology's ability to smoothly integrate with and leverage the existing SAP System's functionalilties, adhering to SAP best practices. 
+
+If a key assumption about a company turned out to be incorrect it might lead to reconsidering the methodology choice, as different assumptions could favor a different approach.
+
+Accessibility requirements influence methodology selection as ongoing accessiblity improvements favor a methodology iterative development, testing, and user feedback. 
+
+Using an agile apprach to implement SAP S/4HANA the challenge of changing requirements uses short iterations to develop and test features allowing for adjustments based on feedback and changing needs. The iterative nature of sprints allows for flexibility.
+
+Scrum is more structered than Kanban when roles are defined with fixed-length sprints, whereas Kanban focuses on improving the workflow with visuals, more flexibility, and continuous flow to allow the team to adapt to specific needs. 
+
+Jira, how to create a workflow plan in Jira for project management, an atlassian product. Once in the project, choose create on the right most side of the tabs. A pop-up for "Create" appears and the issue type dropdown will have an epic option. The summary is more of a title, therefore label it Requirements Gathering. Repeat this process for System Configuration, and Testing and Deployment. A seprate issue, Story should have the summary "Conduct Stakeholder Interviews" with the Parent dropdown have the option for Requirements Gathering Epic. Another Story "Document Functional Requirements" also under Requirements Gathering Epic. A third Story, "Document technical requirements" to the same Epic. 
+
+The leftside of the Jira software will have a Pane for Timelines, which include the Epics, and a Pane for Backlog for Stories. In the menu on the right, after clicking the story, select add and then child issue, the subtask field should be filled with "schedule interviews with stakeholders". After selecting create, click the same story and the subtask will appear. Another subtask should be made for "Prepare interview questions" and another for "conduct interviews".
+
+Imagine you are an SAP business analyst, why is it important to adapt your approach and activities throughout the software development life cycle.
+To make sure that the project solution aligns with the evolving business requirements due to internal and external factors to confirm that the project delivers value.
+X Not to identify and mitigate potential risks as this is a part of every project
+
+You are planning the requirements gathering phase in Jira. which elements should be included in your Jira workflow plan?
+Y A communication plan on how to share information with stakeholders, including the frequency of updates, communication channels, and escalation procedures.
+X Not a clear definition
+X A detailed budget
+Y A risk assessment plan
+
+As an SAP business analyst, you need to document a complex business process and communicate your findings to the project team. 
+X Not Jira as this is useful for managing requirements
+Y SAP Signavio
+
+You are using Jira to manage the requirements gathering phase. What is the first step to set up your workflow plan?
+Y Identify and document the project goals and scope.
+X Not create a new Jira project and define the project's key parameters
+
+DEVELOPING A BA WORKFLOW PLAN IN JIRA
+Which Jira Issue represents the major phases of the "Senior Scam Prevention Workshop" - planning the workshop content?
+Epic
+
+Its important to define epics to establish an overall structure, provide a high-level view of the project's major phases, and key components of the project.
+
+Epic "Logistics and Promotion" for the Project "Senior Scam Prevention Workshop", a Story represents individual actions such as "Secure workshop venue".
+
+Breaking down the Story into subtasks help to clarify the steps needed to complete each story and ensure no critical actions are overlooked.
+
+The Primary purpose of a sprint is to define a timeframe to track and manage all workshop tasks.
+
+The Primary benefit of moving tasks in the Jira board columns is to visually track the progress of each task.
+
+SOFTWARE DEVELOPMENT LIFECYCLE
+
+
+Above has been Module 1, the business analyst role, framework, and value creation and measurement, and module 2 covering SDLC and SAP Activate, Waterfall vs. Agile methodologies, and Jira management and BA role in project delivery. Module 3 is for strategic analysis broken down into ch.1 for business strategy fundamentals, ch.2; requirements to strategy alignment, and ch.3 measuring business value. Module 4 is Stakeholder management broken down into ch.1 for stakeholder identification, ch.2 stakholder communication, ch.3 managing complex stakeholders. The course for Foundations of Business Analysis is complete after Module 4.
+
+Summarized
+the Certificate has 4 courses, each course has 4 modules, each module has 3 or 4 chapters, each chapter has 2 quizzes, articles and videos.
+
+Module 1 for starategic analysis fundamentals focuses on structed analysis and financial evaluation for developing a strong business case such as SWOT, PESTLE, strategic alignment plans
+
+The second course for the SAP business analyst professional certificate program is Requirments Gathering and Documentation. Third is Business Process Modeling and Analysis. Fourth is Strategic Analysis and Solution Design. 
+
+
+The Strategics Analysis and Solution Design Course, Module 1: Strategic Business case development include module 1 ch.2: cost-benefit analysis then module 1 ch.3 building the business case. For module 1 ch.2, NPV & IRR, Payback Period Method, and Benefit-Cost method that implicate the present value of the benefits to the present value of the cost is greater when bigger than 1. 
+
+TANGIBLE BENEFITS
+Reduced operational costs result from lower expenses due to process automation. Increase revenue comes from improved sales, better customer insights, and market expansion. Higher efficiency is achieved through faster workflows, less manual effort, and optimized resource allocation. Lower inventory holding costs stem from better demand forecasting and stock management. 
+
+INTANGIBLE BENEFITS
+Employee satisfaction improves as outdated systems are replaced reduces frustration and increasing engagement. Enhanced customer experience results in faster response times and better service levels. Stronger compliance leads to better adherence to industry regulations and reporting requirements. Improved brand reputation enhances trust and credibililty in the market. 
+
+
+FOUNDATIONAL ELEMENTS OF A BUSINESS CASE
+Executive Summary provides a concise overview: the problem solution, benefits, and financial implications.
+Problem Statement explains the current challenge and its business impact if left unaddressed.
+Proposed Solution presents the scope, integration, and resources.
+Strategic Alignment shows how the project supports key strategic priorities such as digital transformation or cost reduction, optimize supply chain, enhance operational efficiency. 
+Financial Analysis includes ROI, NPV, Payback Period, and cost-benefit analysis covering both tangible and intangible benefits. 
+Risk Assessment highlights project risks such as data migration and user adoption. 
+Implementation Plan provides high-level timelines, milestonesk, and responsible teams across all phases.
+Expected Outcomes & Metrics list key success indicators such as improved processing time, reduce dcosts, and customer satisfaction.
+
+EFFECTIVE DOCUMENTATION
+Clarity is essential, ensuring the metrics are measureable, and explaining the rationale for choosing the metric. 
+The most important reason to include explanations for each metric is to demonstrate how the metrics align with project objectives. 
+
+Course: Strategic Analysis, Module 2:Risk Analysis, Ch.1 Enterprise risk management, risk response planning, risk monitoring. 
+
+Committee of Sponsoring Organizations of the Treadway Commission (COSO)
+Enterprise Risk Management (ERM)
+COSO Internal Control Framework focuses on designing, implementing, and evaluating internal controls. This has five componenets such as control environment, risk assessment, control activities, informationa and communication, and monitoring.
+
+
+Quiz: Enterprise Risk Management
+
+1. Risk Management helps companies undersstand and navigate diverse risks specific to each market.
+2. Risk Management focuses on potential risks that could impact the achievement of organizational objectives
+3. SAP Analytics Cloud can be used for an e-commerce platform designed to integrate customer loyalty programs with online shopping by creating simulated environments to model various risk scenarios.
+4. SAP Analytics Cloud can be used to identify a significant risk of supply chain operations due to escalating geopolitical tensions in key regions by building a simulation model that allows testing the impact of various mitigation strategies.
+5. SAP Analytics Cloud can be used for a large hospital network looking to monitor a new patient data security protocol to comply with evolving regulatory requirements and to protect sensitive patient information by building real-time dashboard that integrates data from systems and user activity monitoring. 
+
+Quiz: Analyze business process data and create a performance report
+1. identify which vendor might be causing delays
+How long on average it takes for different vendors to deliver goods after an order is placed
+2. The total amount of money that has been paid to each vendor over a period of time
+3. with a moderate average PO processing time. Supplies Company might be acceptable given their total invoice volume, but its worth monitoring for potential improvements
+4. One of the longer average PO processing times.
+Not They consistently submit the highest total invoice amounts
+INTERPRET KPIs
+5. Not They consistently submit the highest total invoice amounts
+5. 
+
+Quiz: Process Performance
+1. A manufacturing company wants to reduce production costs. They are unsure where to focus their improvement efforts. How will understanding process performance help this company make better decisions to reduce costs? Select the best answer.
+-It will pinpoint specific areas
+2. How can SAP Analytics Cloud help the sales team identify the reason for a decline in closed deals in a specific region? Select the best answer.
+X It offers predictive analytics capabilities
+3. Your coworker is new. She hears about SAP Analytics Cloud and is curious. How would you describe it to her? 
+-A cloud-based analytics platform
+4. What is a common next step in SAP Analytics Cloud after connecting to a data source? 
+X Immediately build a dashboard
+5. A logistics company wants to improve its delivery process. How can SAP Analytics Cloud help this company analyze the performance of its delivery process? 
+X it facilitates
