@@ -1,3 +1,5 @@
+---------------------------------------------
+
 -- Removing Duplicates with Window Function ROW_NUMBER()
 
 -- We can remove duplicates by using window functions to label a row number to each row based on conditions. 
