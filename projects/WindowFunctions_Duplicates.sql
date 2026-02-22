@@ -33,6 +33,7 @@ FROM product_inventory_table
   )
 WHERE row_number = 1   -- Keep only Unique rows
 
+  
 --------------------------------------------
 
 -- Use Common Table Expressions to Clean Data
@@ -40,7 +41,6 @@ WHERE row_number = 1   -- Keep only Unique rows
 -- INITCAP() will upper case the first letter in each word and lowercase the rest for clean customer names
 
 -- CASE WHEN will lowercase all values in the order status to use the LIKE operater to return anything that may have misspelled as "deliver, return, refund, pend, or ship" and return each as a proper case.
-
 
 -- Final Query
   
@@ -111,7 +111,3 @@ SELECT * FROM final_table
 -------------------------------------
 
 -- Created on 9.3.2025
-
-
-
-
